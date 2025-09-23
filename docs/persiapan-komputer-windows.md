@@ -300,4 +300,4 @@ Komputer Windows Anda sekarang siap untuk menjalankan Moodle dengan Docker Compo
 - Close aplikasi yang tidak perlu saat running Docker
 - Regular restart Docker Desktop untuk clear cache
 
-**Next:** [Bab 3 - Setup Moodle dengan Docker Compose →](03-setup-moodle-docker-compose.md)
+**Next:** [Bab 3 - Setup Moodle dengan Docker Compose →](setup-moodle-docker-compose.md)

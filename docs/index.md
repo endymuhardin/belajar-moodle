@@ -70,25 +70,25 @@ Buku ini adalah panduan komprehensif untuk mempelajari **Moodle Learning Managem
 ## 📖 Struktur Buku
 
 ### Bagian 1: Persiapan
-- [Bab 1: Deskripsi dan Outline](chapters/01-deskripsi-dan-outline.md)
-- [Bab 2: Persiapan Komputer Windows](chapters/02-persiapan-komputer-windows.md)
+- [Bab 1: Deskripsi dan Outline](deskripsi-dan-outline.md)
+- [Bab 2: Persiapan Komputer Windows](persiapan-komputer-windows.md)
 
 ### Bagian 2: Instalasi
-- [Bab 3: Setup Moodle dengan Docker Compose](chapters/03-setup-moodle-docker-compose.md)
+- [Bab 3: Setup Moodle dengan Docker Compose](setup-moodle-docker-compose.md)
 
 ### Bagian 3: Administrasi
-- [Bab 4: Administrasi Moodle](chapters/04-administrasi-moodle.md)
-- [Bab 5: Manajemen Pengguna dan Role](chapters/05-pengguna-dan-role.md)
+- [Bab 4: Administrasi Moodle](administrasi-moodle.md)
+- [Bab 5: Manajemen Pengguna dan Role](pengguna-dan-role.md)
 
 ### Bagian 4: Course Management
-- [Bab 6: Membuat dan Mengelola Course](chapters/06-course-management.md)
+- [Bab 6: Membuat dan Mengelola Course](course-management.md)
 
 ### Bagian 5: Maintenance
-- [Bab 7: Backup dan Restore](chapters/07-backup-restore.md)
-- [Bab 8: Troubleshooting](chapters/08-troubleshooting.md)
+- [Bab 7: Backup dan Restore](backup-restore.md)
+- [Bab 8: Troubleshooting](troubleshooting.md)
 
 ### Appendix
-- [Referensi dan Dokumentasi](chapters/appendix-referensi.md)
+- [Referensi dan Dokumentasi](referensi.md)
 
 ## 💡 Fitur Buku Ini
 
@@ -188,11 +188,11 @@ Setelah menyelesaikan buku ini, Anda siap untuk:
 
 Ready untuk memulai journey pembelajaran Moodle? 
 
-**[→ Mulai dari Bab 1: Deskripsi dan Outline](chapters/01-deskripsi-dan-outline.md)**
+**[→ Mulai dari Bab 1: Deskripsi dan Outline](deskripsi-dan-outline.md)**
 
 Atau jika sudah siap dengan environment:
 
-**[→ Langsung ke Bab 3: Setup Moodle](chapters/03-setup-moodle-docker-compose.md)**
+**[→ Langsung ke Bab 3: Setup Moodle](setup-moodle-docker-compose.md)**
 
 ---
 

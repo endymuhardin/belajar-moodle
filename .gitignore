@@ -30,9 +30,9 @@ desktop.ini
 *.log
 logs/
 
-# GitBook build files
-gitbook/_book/
-gitbook/node_modules/
+# MkDocs build files
+site/
+mkdocs-env/
 *.pdf
 *.epub
 *.mobi

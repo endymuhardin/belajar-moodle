@@ -1,11 +1,12 @@
-name: Deploy GitBook to GitHub Pages
+name: Deploy MkDocs to GitHub Pages
 
 on:
   push:
     branches: [ master, main ]
     paths:
-      - 'gitbook/**'
-      - '.github/workflows/deploy-gitbook.yml'
+      - 'docs/**'
+      - 'mkdocs.yml'
+      - '.github/workflows/deploy-mkdocs.yml'
   workflow_dispatch:
 
 permissions:
@@ -24,25 +25,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Setup Python
+        uses: actions/setup-python@v4
         with:
-          node-version: '16'
+          python-version: '3.x'
 
-      - name: Install GitBook CLI
+      - name: Install dependencies
         run: |
-          npm install -g gitbook-cli
-          gitbook -V
+          pip install -r requirements.txt
 
-      - name: Install GitBook dependencies
-        working-directory: ./gitbook
+      - name: Build MkDocs
         run: |
-          gitbook install
-
-      - name: Build GitBook
-        working-directory: ./gitbook
-        run: |
-          gitbook build
+          mkdocs build
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -50,7 +44,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './gitbook/_book'
+          path: './site'
 
   deploy:
     environment:

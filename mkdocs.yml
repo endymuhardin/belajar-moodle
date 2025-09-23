@@ -1,0 +1,91 @@
+site_name: Panduan Lengkap Moodle dengan Docker
+site_description: Buku panduan komprehensif untuk mempelajari Moodle LMS dengan Docker Compose
+site_author: Moodle Learning Team
+site_url: https://endymuhardin.github.io/belajar-moodle/
+
+repo_name: endymuhardin/belajar-moodle
+repo_url: https://github.com/endymuhardin/belajar-moodle
+edit_uri: edit/master/docs/
+
+theme:
+  name: material
+  language: id
+  palette:
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.path
+    - navigation.top
+    - search.highlight
+    - search.share
+    - toc.integrate
+    - content.code.copy
+    - content.code.annotate
+
+plugins:
+  - search:
+      lang: en
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - tables
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - Pendahuluan:
+    - Deskripsi dan Outline: deskripsi-dan-outline.md
+  - Persiapan:
+    - Persiapan Komputer Windows: persiapan-komputer-windows.md
+  - Instalasi:
+    - Setup Moodle dengan Docker Compose: setup-moodle-docker-compose.md
+  - Administrasi:
+    - Administrasi Moodle: administrasi-moodle.md
+    - Manajemen Pengguna dan Role: pengguna-dan-role.md
+  - Course Management:
+    - Membuat dan Mengelola Course: course-management.md
+  - Maintenance:
+    - Backup dan Restore: backup-restore.md
+    - Troubleshooting: troubleshooting.md
+  - Appendix:
+    - Referensi dan Dokumentasi: referensi.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/endymuhardin/belajar-moodle
+  version:
+    provider: mike
+
+copyright: Copyright &copy; 2025 Moodle Learning Team - Licensed under CC BY-SA 4.0

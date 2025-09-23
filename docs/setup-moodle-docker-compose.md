@@ -485,4 +485,4 @@ Pada bab selanjutnya, kita akan explore:
 | `docker compose ps` | Check status |
 | `docker compose exec moodle bash` | Enter container |
 
-**Next:** [Bab 4 - Administrasi Moodle →](04-administrasi-moodle.md)
+**Next:** [Bab 4 - Administrasi Moodle →](administrasi-moodle.md)
