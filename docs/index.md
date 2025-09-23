@@ -1,6 +1,6 @@
 # Panduan Lengkap Moodle dengan Docker
 
-![Moodle Logo](https://moodle.org/logo/moodle-logo.png)
+![Moodle Logo](img/moodle-logo.svg)
 
 ## Selamat Datang!
 

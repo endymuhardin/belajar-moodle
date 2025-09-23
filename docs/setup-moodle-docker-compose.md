@@ -494,4 +494,6 @@ Pada bab selanjutnya, kita akan explore:
 | `docker compose ps` | Check status |
 | `docker compose exec moodle bash` | Enter container |
 
+**Selesai!** Moodle sudah siap digunakan. Selanjutnya pelajari cara administrasi sistem.
+
 **Next:** [Bab 4 - Administrasi Moodle →](administrasi-moodle.md)
