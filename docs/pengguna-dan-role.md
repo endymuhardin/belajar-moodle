@@ -44,7 +44,7 @@ Moodle menggunakan sistem role-based access control (RBAC) yang fleksibel untuk 
    - Click "Create user" button
    - User akan immediately active dan dapat login
 
-<!-- TODO: Screenshot Manual user creation form -->
+![Manual User Creation Form](img/pengguna/02-add-new-user.png)
 
 #### Metode 2: Bulk User Upload via CSV
 
@@ -103,7 +103,7 @@ Moodle menggunakan sistem role-based access control (RBAC) yang fleksibel untuk 
    - Click "Upload users"
    - Check results untuk errors atau warnings
 
-<!-- TODO: Screenshot CSV upload interface -->
+![CSV Upload Interface](img/pengguna/03-bulk-upload.png)
 
 #### Metode 3: External Authentication
 
@@ -144,7 +144,7 @@ Moodle menggunakan sistem role-based access control (RBAC) yang fleksibel untuk 
    - User tidak bisa login tapi account tetap active
    - Useful untuk temporary suspension
 
-<!-- TODO: Screenshot Suspend user interface -->
+![Suspend User Interface](img/pengguna/01-browse-users.png)
 
 #### Metode 2: Bulk User Actions
 
@@ -205,7 +205,7 @@ Moodle menggunakan sistem role-based access control (RBAC) yang fleksibel untuk 
    - Verify course enrollments still active
    - Confirm role assignments intact
 
-<!-- TODO: Screenshot Reactivate user process -->
+![Reactivate User Process](img/pengguna/15-user-edit-form.png)
 
 #### Bulk Reactivation
 
@@ -316,7 +316,7 @@ Role di Moodle adalah kumpulan permissions (izin) yang menentukan apa yang bisa 
 - **Capabilities**: Permission spesifik (seperti create course, grade students)
 - **Assignment**: Pemberian role kepada user dalam context tertentu
 
-<!-- TODO: Screenshot Role assignment interface -->
+![Role Assignment Interface](img/pengguna/05-assign-system-roles.png)
 
 ### Hierarki Context di Moodle
 
@@ -329,7 +329,7 @@ Context menentukan cakupan dimana role berlaku:
 5. **Block Context**: Block tertentu
 6. **User Context**: Profile user tertentu
 
-<!-- TODO: Screenshot Context hierarchy diagram -->
+![Context Hierarchy](img/pengguna/13-role-matrix.png)
 
 ## Standard Roles di Moodle
 
@@ -361,7 +361,7 @@ moodle/backup:backupsection - Backup courses
 moodle/restore:restoresection - Restore courses
 ```
 
-<!-- TODO: Screenshot Administrator capabilities -->
+![Administrator Capabilities](img/pengguna/04-define-roles.png)
 
 **Best Practices:**
 - Limit jumlah Administrator (maksimal 2-3 orang)
@@ -397,7 +397,7 @@ moodle/user:viewdetails - View user profiles
 moodle/course:manageactivities - Manage course activities
 ```
 
-<!-- TODO: Screenshot Manager interface -->
+![Manager Interface](img/pengguna/04-define-roles.png)
 
 **Manager vs Administrator:**
 | Aspect | Manager | Administrator |
@@ -435,7 +435,7 @@ moodle/role:assign - Assign teachers to courses
 moodle/course:visibility - Change course visibility
 ```
 
-<!-- TODO: Screenshot Course Creator workflow -->
+![Course Creator Workflow](img/pengguna/04-define-roles.png)
 
 **Course Creator Workflow:**
 1. Create course dengan basic settings
@@ -474,7 +474,7 @@ moodle/restore:restorecourse - Restore course
 moodle/course:update - Update course settings
 ```
 
-<!-- TODO: Screenshot Teacher interface -->
+![Teacher Interface](img/pengguna/04-define-roles.png)
 
 **Teacher Responsibilities:**
 - **Content Creation**: Develop learning materials
@@ -511,7 +511,7 @@ moodle/grade:viewall - View all grades
 moodle/user:viewdetails - View student profiles
 ```
 
-<!-- TODO: Screenshot Non-editing Teacher interface -->
+![Non-editing Teacher Interface](img/pengguna/04-define-roles.png)
 
 **Non-editing Teacher vs Teacher:**
 | Capability | Non-editing Teacher | Teacher |
@@ -552,7 +552,7 @@ moodle/mod/forum:replypost - Reply in forums
 moodle/grade:view - View own grades
 ```
 
-<!-- TODO: Screenshot Student interface -->
+![Student Interface](img/pengguna/04-define-roles.png)
 
 **Student Experience:**
 - **Course Access**: Navigate course content
@@ -579,7 +579,7 @@ moodle/grade:view - View own grades
 - Demonstration Account
 - Trial Access
 
-<!-- TODO: Screenshot Guest access -->
+![Guest Access](img/pengguna/04-define-roles.png)
 
 **Guest Limitations:**
 - Cannot submit assignments
@@ -602,7 +602,7 @@ moodle/grade:view - View own grades
 
 **Automatic Assignment**: Setiap user yang login automatically mendapat role ini
 
-<!-- TODO: Screenshot Authenticated user interface -->
+![Authenticated User Interface](img/pengguna/04-define-roles.png)
 
 ## Advanced Roles dan Custom Roles
 
@@ -637,7 +637,7 @@ Capabilities:
 - No content editing
 ```
 
-<!-- TODO: Screenshot Custom role creation -->
+![Custom Role Creation](img/pengguna/04-define-roles.png)
 
 ### Creating Custom Roles
 
@@ -658,7 +658,7 @@ Capabilities:
    - Assign role ke users dalam appropriate context
    - Monitor usage dan adjust permissions
 
-<!-- TODO: Screenshot Role creation process -->
+![Role Creation Process](img/pengguna/04-define-roles.png)
 
 ## Role Assignment dan Management
 
@@ -670,7 +670,7 @@ Capabilities:
 3. Search dan select users untuk assign
 4. Click "Add" untuk assign role
 
-<!-- TODO: Screenshot System role assignment -->
+![System Role Assignment](img/pengguna/05-assign-system-roles.png)
 
 #### At Course Level
 1. Go to course
@@ -679,7 +679,7 @@ Capabilities:
 4. Select role dan search users
 5. Confirm assignment
 
-<!-- TODO: Screenshot Course role assignment -->
+![Course Role Assignment](img/pengguna/05-assign-system-roles.png)
 
 #### At Category Level
 1. Navigate ke course category
@@ -700,7 +700,7 @@ Capabilities:
 2. Assign roles ke entire cohorts
 3. Use cohort enrollment untuk automatic course access
 
-<!-- TODO: Screenshot Bulk operations -->
+![Bulk Operations](img/pengguna/11-bulk-actions.png)
 
 ### Role Override dan Prohibit
 
@@ -714,7 +714,7 @@ Capabilities:
 - Cannot be overridden di child contexts
 - Use untuk security restrictions
 
-<!-- TODO: Screenshot Override/Prohibit interface -->
+![Override/Prohibit Interface](img/pengguna/06-user-permissions.png)
 
 ## Enrollment Methods dan Role Assignment
 
@@ -738,7 +738,7 @@ Capabilities:
 - Automatic role assignment based pada database records
 - Enterprise-level user management
 
-<!-- TODO: Screenshot Enrollment methods configuration -->
+![Enrollment Methods](img/pengguna/12-authentication.png)
 
 ## Permission System Details
 
@@ -758,7 +758,7 @@ Moodle menggunakan capability matrix untuk determine final permissions:
 3. **Allow** grants permission
 4. **Inherit** uses parent context permission
 
-<!-- TODO: Screenshot Permission resolution diagram -->
+![Permission Resolution](img/pengguna/13-role-matrix.png)
 
 ### Checking Permissions
 
@@ -774,7 +774,7 @@ Moodle menggunakan capability matrix untuk determine final permissions:
 - Capability auditing
 - Context-specific permissions
 
-<!-- TODO: Screenshot Permission checking tools -->
+![Permission Checking Tools](img/pengguna/07-check-permissions.png)
 
 ## Best Practices untuk Role Management
 
@@ -895,7 +895,7 @@ Administrator (Principal/IT)
 - Parent Access (for younger students)
 - Guest (for prospective students)
 
-<!-- TODO: Screenshot Role hierarchy examples -->
+![Role Hierarchy Examples](img/pengguna/13-role-matrix.png)
 
 ## Monitoring dan Reporting
 
@@ -911,7 +911,7 @@ Administrator (Principal/IT)
    - Role assignment history
    - Access pattern monitoring
 
-<!-- TODO: Screenshot Activity reports -->
+![Activity Reports](img/pengguna/01-browse-users.png)
 
 ### Compliance Monitoring
 
@@ -996,7 +996,7 @@ Administrator (Principal/IT)
    - Monitor untuk errors
    - Validate permissions
 
-<!-- TODO: Screenshot Import/Export process -->
+![Import/Export Process](img/pengguna/14-csv-template.png)
 
 ## Kesimpulan
 

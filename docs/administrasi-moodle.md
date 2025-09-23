@@ -12,7 +12,7 @@ Site Administration adalah pusat kontrol untuk mengatur seluruh aspek sistem Moo
 2. Klik **Site administration** di sidebar kiri
 3. Atau akses melalui user menu → **Site administration**
 
-<!-- TODO: Screenshot Site Administration menu -->
+![Site Administration Menu](img/administrasi/01-site-administration-main.png)
 
 ## Konfigurasi Dasar Situs
 
@@ -26,7 +26,7 @@ Site Administration adalah pusat kontrol untuk mengatur seluruh aspek sistem Moo
    - **Front page summary**: Teks yang muncul di halaman depan
    - **Maximum upload file size**: Ukuran maksimum file yang bisa diupload
 
-<!-- TODO: Screenshot Basic settings page -->
+![Basic Settings](img/administrasi/02-basic-settings.png)
 
 **Pengaturan Penting:**
 ```
@@ -44,7 +44,7 @@ Maximum upload file size: 50MB (atau sesuai kebutuhan)
    - **News items to show**: Jumlah berita yang ditampilkan
    - **Course summary**: Tampilkan ringkasan course
 
-<!-- TODO: Screenshot Front page settings -->
+![Front Page Settings](img/administrasi/02-basic-settings.png)
 
 ### 2. Language Settings
 
@@ -55,7 +55,7 @@ Maximum upload file size: 50MB (atau sesuai kebutuhan)
    - **Display language menu**: Tampilkan menu pemilihan bahasa
    - **Cache language menu**: Cache menu bahasa untuk performa
 
-<!-- TODO: Screenshot Language settings -->
+![Language Settings](img/administrasi/03-language-settings.png)
 
 #### Installing Language Packs
 1. Go to **Site administration** → **Language** → **Language packs**
@@ -66,7 +66,7 @@ Recommended language packs:
 - **Indonesian (id)** - Bahasa Indonesia
 - **English (en)** - Default language
 
-<!-- TODO: Screenshot Language packs installation -->
+![Language Packs Installation](img/administrasi/03-language-settings.png)
 
 ### 3. Location Settings
 
@@ -76,7 +76,7 @@ Recommended language packs:
    - **Force timezone**: Paksa semua user menggunakan timezone ini
    - **Default country**: Indonesia
 
-<!-- TODO: Screenshot Location settings -->
+![Location Settings](img/administrasi/03-language-settings.png)
 
 ## User Management
 
@@ -90,7 +90,7 @@ Recommended language packs:
    - **LDAP server**: Integrasi dengan LDAP
    - **External database**: Database eksternal
 
-<!-- TODO: Screenshot Authentication methods -->
+![Authentication Methods](img/administrasi/04-authentication-methods.png)
 
 **Recommended Settings:**
 - Enable **Email-based self-registration** untuk public course
@@ -104,7 +104,7 @@ Recommended language packs:
    - **Default role**: Student (role default untuk user baru)
    - **Auth instructions**: Instruksi untuk user
 
-<!-- TODO: Screenshot Email registration settings -->
+![Email Registration Settings](img/administrasi/04-authentication-methods.png)
 
 ### 2. User Policies
 
@@ -115,7 +115,7 @@ Recommended language packs:
    - **Forgotten password URL**: URL reset password
    - **Maximum time to edit posts**: Waktu edit posting maksimal
 
-<!-- TODO: Screenshot User policies -->
+![User Policies](img/administrasi/05-security-settings.png)
 
 ### 3. Default Role Assignment
 
@@ -137,7 +137,7 @@ Recommended language packs:
    - **Force users to login for profiles**: Paksa login untuk lihat profile
    - **Protect usernames**: Sembunyikan username dari publik
 
-<!-- TODO: Screenshot Site security settings -->
+![Site Security Settings](img/administrasi/05-security-settings.png)
 
 **Recommended Security Configuration:**
 ```
@@ -155,7 +155,7 @@ Maximum session time: 8 hours
    - **Cookie secure**: Enable jika menggunakan HTTPS
    - **Cookie same site**: Lax untuk kompatibilitas
 
-<!-- TODO: Screenshot HTTP security settings -->
+![HTTP Security Settings](img/administrasi/05-security-settings.png)
 
 ### 2. IP Blocker
 
@@ -165,7 +165,7 @@ Maximum session time: 8 hours
    - Format: `192.168.1.100` untuk block IP spesifik
 3. Add allowed IP ranges jika diperlukan
 
-<!-- TODO: Screenshot IP blocker -->
+![IP Blocker](img/administrasi/05-security-settings.png)
 
 ### 3. Notifications
 
@@ -178,7 +178,7 @@ Common security notifications:
 - **Display errors**: Disable error display di production
 - **Password policy**: Set password policy yang kuat
 
-<!-- TODO: Screenshot Security notifications -->
+![Security Notifications](img/administrasi/14-notifications.png)
 
 ## Appearance and Themes
 
@@ -196,7 +196,7 @@ Popular themes:
 - **Classic**: Traditional Moodle appearance
 - **More**: Theme dengan sidebar yang dapat dikustomisasi
 
-<!-- TODO: Screenshot Theme selector -->
+![Theme Selector](img/administrasi/06-theme-selector.png)
 
 #### Theme Settings
 1. Go to **Site administration** → **Appearance** → **Themes** → **Boost** (atau theme yang dipilih)
@@ -205,9 +205,300 @@ Popular themes:
    - **Brand color**: Warna utama brand
    - **Advanced settings**: Custom CSS
 
-<!-- TODO: Screenshot Boost theme settings -->
+![Theme Settings](img/administrasi/06-theme-selector.png)
 
-### 2. Navigation
+### 2. Theme Management dan Installation
+
+#### Installing New Themes
+
+##### Method 1: Install dari Moodle Plugins Directory
+1. Navigate ke **Site administration** → **Plugins** → **Install plugins**
+2. Search theme yang diinginkan
+3. Click **Install now**
+4. Follow installation wizard
+5. Activate theme di Theme selector
+
+##### Method 2: Manual Installation
+1. Download theme dari sumber terpercaya
+2. Extract file theme
+3. Upload ke folder `/theme/` di Moodle installation
+4. Navigate ke **Site administration** → **Notifications**
+5. Complete installation process
+6. Activate theme di Theme selector
+
+##### Method 3: Install via Docker (untuk setup Docker)
+```bash
+# Masuk ke container
+docker compose exec moodle bash
+
+# Navigate ke theme directory
+cd /bitnami/moodle/theme
+
+# Download theme (contoh: Moove theme)
+wget https://github.com/willianmano/moodle-theme_moove/archive/refs/heads/master.zip
+unzip master.zip
+mv moodle-theme_moove-master moove
+
+# Set permissions
+chown -R bitnami:root moove
+chmod -R 755 moove
+
+# Exit container
+exit
+```
+
+Setelah install, visit **Site administration** → **Notifications** untuk complete installation.
+
+#### Switching Themes
+1. Go to **Site administration** → **Appearance** → **Themes** → **Theme selector**
+2. Click **Change theme** pada device type yang diinginkan
+3. Preview available themes
+4. Click **Use theme** untuk theme yang dipilih
+5. Save changes
+
+![Available Themes](img/administrasi/07-available-themes.png)
+
+### 3. Free Moodle Themes
+
+#### Premium-Quality Free Themes
+
+##### 1. **Moove**
+- **URL**: https://moodle.org/plugins/theme_moove
+- **Features**:
+  - Modern dan clean design
+  - Fully responsive
+  - Custom login page
+  - Marketing sections
+  - Social media integration
+- **Best for**: Universitas dan institusi pendidikan
+- **Download**: https://github.com/willianmano/moodle-theme_moove
+
+##### 2. **Eguru**
+- **URL**: https://moodle.org/plugins/theme_eguru
+- **Features**:
+  - Professional look
+  - Multiple color schemes
+  - Custom slider
+  - Marketing spots
+  - Quick links section
+- **Best for**: Corporate training dan e-learning platforms
+- **Download**: https://github.com/ProjetoSophiaDev/eguru4
+
+##### 3. **Academi**
+- **URL**: https://moodle.org/plugins/theme_academi
+- **Features**:
+  - Bootstrap 4 based
+  - Multiple layouts
+  - Custom blocks
+  - Responsive design
+  - RTL support
+- **Best for**: Academic institutions
+- **Download**: From Moodle plugins directory
+
+##### 4. **Lambda**
+- **URL**: https://moodle.org/plugins/theme_lambda
+- **Features**:
+  - Highly customizable
+  - Multiple layouts
+  - Social media icons
+  - Custom footer
+  - Slideshow support
+- **Best for**: General purpose educational sites
+- **Download**: https://github.com/bmbrands/moodle-theme_lambda
+
+##### 5. **Fordson**
+- **URL**: https://moodle.org/plugins/theme_fordson
+- **Features**:
+  - Enhanced navigation
+  - Icon navigation
+  - Custom presets
+  - Marketing tiles
+  - Course search enhancement
+- **Best for**: K-12 schools
+- **Download**: https://github.com/dbnschools/moodle-theme_fordson
+
+##### 6. **Adaptable**
+- **URL**: https://moodle.org/plugins/theme_adaptable
+- **Features**:
+  - Highly flexible
+  - Multiple regions
+  - Custom CSS/JS
+  - Alert system
+  - Analytics integration
+- **Best for**: Advanced users yang butuh customization
+- **Download**: https://gitlab.com/jezhops/moodle-theme_adaptable
+
+##### 7. **Trema**
+- **URL**: https://moodle.org/plugins/theme_trema
+- **Features**:
+  - Clean modern design
+  - Dark mode support
+  - Custom frontpage
+  - Login background customization
+  - Social icons
+- **Best for**: Modern educational platforms
+- **Download**: https://github.com/trema-tech/moodle-theme_trema
+
+##### 8. **Edumy**
+- **URL**: https://moodle.org/plugins/theme_edumy
+- **Features**:
+  - Marketplace style
+  - Course cards
+  - Advanced search
+  - Instructor profiles
+  - Responsive galleries
+- **Best for**: Online course marketplaces
+- **Download**: From Moodle plugins directory
+
+##### 9. **Klass**
+- **URL**: https://moodle.org/plugins/theme_klass
+- **Features**:
+  - Simple dan clean
+  - Fast loading
+  - Grid layout
+  - Custom blocks
+  - Mobile friendly
+- **Best for**: Minimalist approach
+- **Download**: From Moodle plugins directory
+
+##### 10. **Essential**
+- **URL**: https://moodle.org/plugins/theme_essential
+- **Features**:
+  - Comprehensive settings
+  - Marketing spots
+  - Analytics
+  - Social networking
+  - Extensive documentation
+- **Best for**: Feature-rich installations
+- **Download**: https://github.com/gjbarnard/moodle-theme_essential
+
+#### Theme Comparison Table
+
+| Theme | Best For | Customization | Performance | Mobile Support | Special Features |
+|-------|----------|---------------|-------------|----------------|------------------|
+| Moove | Universities | High | Good | Excellent | Marketing sections |
+| Eguru | Corporate | Medium | Good | Good | Professional look |
+| Academi | Academic | High | Good | Excellent | Bootstrap 4 |
+| Lambda | General | Very High | Medium | Good | Multiple layouts |
+| Fordson | K-12 | High | Good | Excellent | Icon navigation |
+| Adaptable | Advanced | Very High | Medium | Good | Analytics ready |
+| Trema | Modern | Medium | Excellent | Excellent | Dark mode |
+| Edumy | Marketplace | High | Good | Excellent | Course cards |
+| Klass | Minimalist | Low | Excellent | Good | Simple design |
+| Essential | Feature-rich | Very High | Medium | Good | Comprehensive |
+
+### 4. Theme Customization
+
+#### Basic Customization
+1. Navigate ke theme settings page
+2. Common customization options:
+   - **Logo**: Upload institution logo
+   - **Favicon**: Small icon untuk browser tab
+   - **Colors**: Primary, secondary, accent colors
+   - **Fonts**: Typography settings
+   - **Layout**: Sidebar positions, width settings
+
+#### Advanced Customization
+
+##### Custom CSS
+1. Go to theme settings → Advanced settings
+2. Add custom CSS code:
+```css
+/* Example: Change primary color */
+.navbar-light {
+    background-color: #2c3e50 !important;
+}
+
+/* Example: Custom course card styling */
+.course-card {
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Example: Hide specific elements */
+.hidden-element {
+    display: none !important;
+}
+```
+
+##### Custom JavaScript
+1. Add di Additional HTML settings
+2. Example customizations:
+```javascript
+// Add custom functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Custom code here
+});
+```
+
+### 5. Theme Development Resources
+
+#### Documentation dan Tutorials
+- **Official Moodle Theme Development**: https://docs.moodle.org/dev/Themes
+- **Theme Development Tutorial**: https://docs.moodle.org/dev/Creating_a_theme
+- **Bootstrap in Moodle**: https://docs.moodle.org/dev/Bootstrap
+- **Mustache Templates**: https://docs.moodle.org/dev/Templates
+
+#### Development Tools
+- **Theme Designer Mode**: Enable untuk easier development
+- **Theme Debugger**: Untuk troubleshooting
+- **Cache Purge**: Clear theme cache saat development
+
+#### Community Resources
+- **Moodle Themes Forum**: https://moodle.org/mod/forum/view.php?id=46
+- **GitHub Repositories**: Search "moodle theme" untuk examples
+- **Moodle Partners**: Professional theme development services
+
+### 6. Best Practices untuk Theme Management
+
+#### Selection Criteria
+1. **Compatibility**: Pastikan compatible dengan Moodle version
+2. **Responsiveness**: Test di berbagai devices
+3. **Performance**: Check loading speed
+4. **Accessibility**: WCAG compliance
+5. **Support**: Active development dan community
+
+#### Testing Process
+1. **Install di test environment first**
+2. **Test dengan different browsers**
+3. **Check mobile responsiveness**
+4. **Verify all functions work**
+5. **Test dengan real content**
+
+#### Maintenance Tips
+1. **Regular Updates**: Keep themes updated
+2. **Backup Before Changes**: Always backup
+3. **Document Customizations**: Track changes made
+4. **Monitor Performance**: Check impact on load times
+5. **User Feedback**: Collect dan respond to feedback
+
+### 7. Troubleshooting Theme Issues
+
+#### Common Problems dan Solutions
+
+**Problem: Theme not appearing after installation**
+- Solution: Clear all caches
+- Check file permissions
+- Verify installation path correct
+
+**Problem: Broken layout after theme switch**
+- Solution: Purge theme cache
+- Reset theme settings
+- Check for conflicting custom CSS
+
+**Problem: Slow performance with new theme**
+- Solution: Optimize images
+- Minimize custom CSS/JS
+- Enable theme caching
+- Check for heavy resources
+
+**Problem: Mobile display issues**
+- Solution: Check responsive settings
+- Test dengan real devices
+- Verify mobile theme settings
+- Update theme ke latest version
+
+### 8. Navigation
 
 1. Navigate ke **Site administration** → **Appearance** → **Navigation**
 2. Configure:
@@ -215,9 +506,9 @@ Popular themes:
    - **Include categories in nav**: Include course categories
    - **Sort my courses**: Urutan course di navigation
 
-<!-- TODO: Screenshot Navigation settings -->
+![Navigation Settings](img/administrasi/01-site-administration-main.png)
 
-### 3. HTML Settings
+### 9. HTML Settings
 
 1. Go to **Site administration** → **Appearance** → **Additional HTML**
 2. Add custom HTML/CSS/JavaScript:
@@ -225,7 +516,7 @@ Popular themes:
    - **When BODY is opened**: Code setelah opening body tag
    - **Before BODY is closed**: Code sebelum closing body tag
 
-<!-- TODO: Screenshot Additional HTML settings -->
+![Additional HTML Settings](img/administrasi/01-site-administration-main.png)
 
 ## Course Management
 
@@ -238,7 +529,7 @@ Popular themes:
    - **Show gradebook to students**: Tampilkan gradebook
    - **Show activity completion**: Tampilkan completion tracking
 
-<!-- TODO: Screenshot Course default settings -->
+![Course Default Settings](img/administrasi/08-course-defaults.png)
 
 ### 2. Course Request
 
@@ -247,7 +538,7 @@ Popular themes:
 3. Set default category untuk course request
 4. Configure notification settings
 
-<!-- TODO: Screenshot Course request settings -->
+![Course Request Settings](img/administrasi/08-course-defaults.png)
 
 ### 3. Backup Settings
 
@@ -259,7 +550,7 @@ Popular themes:
    - **Execution time**: Waktu eksekusi backup
    - **Save to**: Lokasi penyimpanan backup
 
-<!-- TODO: Screenshot Automated backup setup -->
+![Automated Backup Setup](img/administrasi/09-backup-settings.png)
 
 **Recommended Backup Settings:**
 ```
@@ -279,7 +570,7 @@ Keep: 7 backups (1 minggu)
 3. Check for updates
 4. Enable/disable plugins sesuai kebutuhan
 
-<!-- TODO: Screenshot Plugins overview -->
+![Plugins Overview](img/administrasi/10-plugins-overview.png)
 
 ### 2. Install Plugins
 
@@ -296,7 +587,7 @@ Keep: 7 backups (1 minggu)
 3. Visit **Site administration** → **Notifications**
 4. Complete installation process
 
-<!-- TODO: Screenshot Plugin installation -->
+![Plugin Installation](img/administrasi/10-plugins-overview.png)
 
 ### 3. Popular Plugins
 
@@ -318,7 +609,7 @@ Keep: 7 backups (1 minggu)
    - **PHP version**: Versi PHP
    - **Web server**: Informasi web server
 
-<!-- TODO: Screenshot System information -->
+![System Information](img/administrasi/11-system-information.png)
 
 ### 2. Environment
 
@@ -327,7 +618,7 @@ Keep: 7 backups (1 minggu)
 3. Review recommendations
 4. Fix any issues yang ditemukan
 
-<!-- TODO: Screenshot Environment check -->
+![Environment Check](img/administrasi/11-system-information.png)
 
 ### 3. PHP Info
 
@@ -342,7 +633,7 @@ Important PHP settings untuk Moodle:
 - `post_max_size`: 50M atau sesuai kebutuhan
 - `upload_max_filesize`: 50M atau sesuai kebutuhan
 
-<!-- TODO: Screenshot PHP info -->
+![PHP Information](img/administrasi/12-php-info.png)
 
 ## Performance Optimization
 
@@ -355,7 +646,7 @@ Important PHP settings untuk Moodle:
    - **Session**: Session cache
    - **Static**: Static cache untuk performa
 
-<!-- TODO: Screenshot Cache configuration -->
+![Cache Configuration](img/administrasi/11-system-information.png)
 
 #### Cache Performance
 1. Navigate ke **Site administration** → **Plugins** → **Caching** → **Test performance**
@@ -378,7 +669,7 @@ Important PHP settings untuk Moodle:
    - **Temp files**: Temporary files cleanup
    - **Backup files**: Backup file management
 
-<!-- TODO: Screenshot File management -->
+![File Management](img/administrasi/15-reports.png)
 
 ## Maintenance Mode
 
@@ -390,7 +681,7 @@ Important PHP settings untuk Moodle:
    - **Maintenance message**: Pesan untuk users
    - **Additional information**: Info tambahan
 
-<!-- TODO: Screenshot Maintenance mode -->
+![Maintenance Mode](img/administrasi/13-maintenance-mode.png)
 
 Gunakan maintenance mode untuk:
 - System updates

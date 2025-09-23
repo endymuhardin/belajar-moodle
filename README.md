@@ -302,6 +302,180 @@ docker compose restart moodle
    docker compose up -d
    ```
 
+## Membuat Screenshot Dokumentasi dengan Playwright
+
+### Persiapan
+Project ini dilengkapi dengan script Playwright untuk menghasilkan screenshot otomatis untuk dokumentasi. Screenshot akan digunakan dalam buku panduan Moodle.
+
+#### Instalasi Dependencies
+```bash
+# Install Playwright (hanya perlu sekali)
+npm install
+
+# Install Chromium browser untuk Playwright
+npx playwright install chromium
+```
+
+### Struktur Screenshot Scripts
+```
+screenshots/
+├── chapter3-installation/        # Screenshot untuk Bab 3 (Instalasi)
+│   └── installation-screenshots.js
+├── chapter4-administration/      # Screenshot untuk Bab 4 (Administrasi)
+│   └── admin-screenshots.js
+├── chapter5-user-management/     # Screenshot untuk Bab 5 (User Management)
+│   └── user-screenshots.js
+└── run-all-screenshots.js       # Script untuk menjalankan semua
+```
+
+### Cara Menjalankan Screenshot Scripts
+
+#### 1. Pastikan Moodle sudah berjalan
+```bash
+# Check status container
+docker compose ps
+
+# Jika belum berjalan, start container
+docker compose up -d
+
+# Tunggu beberapa menit sampai Moodle fully loaded
+# Cek dengan membuka http://localhost di browser
+```
+
+#### 2. Menjalankan Screenshot Individual per Bab
+
+**Untuk Chapter 3 - Instalasi:**
+```bash
+cd screenshots
+node chapter3-installation/installation-screenshots.js
+```
+
+**Untuk Chapter 4 - Administrasi:**
+```bash
+cd screenshots
+node chapter4-administration/admin-screenshots.js
+```
+
+**Untuk Chapter 5 - User Management:**
+```bash
+cd screenshots
+node chapter5-user-management/user-screenshots.js
+```
+
+#### 3. Menjalankan Semua Screenshot Sekaligus
+```bash
+cd screenshots
+node run-all-screenshots.js
+```
+
+### Lokasi Output Screenshot
+Screenshot akan tersimpan di folder `docs/img/` dengan struktur:
+```
+docs/img/
+├── instalasi/      # Screenshot Chapter 3
+├── administrasi/   # Screenshot Chapter 4
+└── pengguna/       # Screenshot Chapter 5
+```
+
+### Daftar Screenshot yang Dihasilkan
+
+#### Chapter 3 - Instalasi
+- `01-moodle-homepage.png` - Halaman utama Moodle
+- `02-login-page.png` - Halaman login
+- `03-login-filled.png` - Form login terisi
+- `04-dashboard.png` - Dashboard setelah login
+- `05-site-administration.png` - Menu Site Administration
+- `06-system-environment.png` - System environment check
+- `07-users-list.png` - Daftar users
+- `08-course-management.png` - Course management
+- `09-docker-terminal.png` - Terminal Docker commands
+
+#### Chapter 4 - Administrasi
+- `01-site-administration-main.png` - Halaman utama administrasi
+- `02-basic-settings.png` - Basic settings
+- `03-language-settings.png` - Language settings
+- `04-authentication-methods.png` - Authentication methods
+- `05-security-settings.png` - Security settings
+- `06-theme-selector.png` - Theme selector
+- `07-available-themes.png` - Available themes
+- `08-course-defaults.png` - Course default settings
+- `09-backup-settings.png` - Backup settings
+- `10-plugins-overview.png` - Plugins overview
+- `11-system-information.png` - System information
+- `12-php-info.png` - PHP info
+- `13-maintenance-mode.png` - Maintenance mode
+- `14-notifications.png` - Notifications
+- `15-reports.png` - Reports overview
+
+#### Chapter 5 - User Management
+- `01-browse-users.png` - Browse users list
+- `02-add-new-user.png` - Add new user form
+- `03-bulk-upload.png` - Bulk user upload
+- `04-define-roles.png` - Define roles
+- `05-assign-system-roles.png` - Assign system roles
+- `06-user-permissions.png` - User permissions
+- `07-check-permissions.png` - Check permissions
+- `08-user-policies.png` - User policies
+- `09-cohorts.png` - Cohorts management
+- `10-profile-fields.png` - Profile fields
+- `11-bulk-actions.png` - Bulk user actions
+- `12-authentication.png` - Authentication settings
+- `13-role-matrix.png` - Role capabilities matrix
+- `14-csv-template.png` - CSV upload template
+- `15-user-edit-form.png` - User edit form filled
+
+### Troubleshooting Screenshot Generation
+
+#### Error: Connection Refused
+Jika mendapat error `ERR_CONNECTION_REFUSED`:
+1. Pastikan Moodle container sudah berjalan: `docker compose ps`
+2. Tunggu 2-3 menit setelah start container
+3. Cek apakah Moodle accessible di browser: http://localhost
+
+#### Error: Login Failed
+Jika screenshot login gagal:
+1. Pastikan credentials di script sesuai dengan setup Moodle
+2. Default credentials:
+   - Username: `admin`
+   - Password: `Admin123!`
+3. Edit file script jika menggunakan credentials berbeda
+
+#### Error: Element Not Found
+Jika element tidak ditemukan:
+1. Moodle mungkin masih loading, tambahkan wait time
+2. UI Moodle mungkin berbeda versinya, perlu adjust selector
+
+### Customization
+
+#### Mengubah Credentials
+Edit bagian configuration di setiap script:
+```javascript
+// Configuration
+const MOODLE_URL = 'http://localhost:80';
+const ADMIN_USERNAME = 'admin';        // Ganti dengan username Anda
+const ADMIN_PASSWORD = 'Admin123!';    // Ganti dengan password Anda
+```
+
+#### Menambah Screenshot Baru
+1. Buka file script yang sesuai
+2. Tambahkan kode untuk screenshot baru:
+```javascript
+console.log('Taking screenshot: Nama screenshot...');
+await page.goto(MOODLE_URL + '/path/to/page', { waitUntil: 'networkidle' });
+await page.screenshot({
+  path: path.join(SCREENSHOTS_DIR, 'nama-screenshot.png'),
+  fullPage: false
+});
+```
+
+#### Mengubah Viewport Size
+Default viewport adalah 1280x720. Untuk mengubah:
+```javascript
+const context = await browser.newContext({
+  viewport: { width: 1920, height: 1080 }  // Full HD
+});
+```
+
 ## Sumber dan Dokumentasi
 
 ### Docker Image
