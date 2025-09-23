@@ -436,8 +436,8 @@ Jika mendapat error `ERR_CONNECTION_REFUSED`:
 Jika screenshot login gagal:
 1. Pastikan credentials di script sesuai dengan setup Moodle
 2. Default credentials:
-   - Username: `admin`
-   - Password: `Admin123!`
+   - Username: `user`
+   - Password: `bitnami`
 3. Edit file script jika menggunakan credentials berbeda
 
 #### Error: Element Not Found
@@ -452,8 +452,8 @@ Edit bagian configuration di setiap script:
 ```javascript
 // Configuration
 const MOODLE_URL = 'http://localhost:80';
-const ADMIN_USERNAME = 'admin';        // Ganti dengan username Anda
-const ADMIN_PASSWORD = 'Admin123!';    // Ganti dengan password Anda
+const ADMIN_USERNAME = 'user';         // Ganti dengan username Anda
+const ADMIN_PASSWORD = 'bitnami';      // Ganti dengan password Anda
 ```
 
 #### Menambah Screenshot Baru

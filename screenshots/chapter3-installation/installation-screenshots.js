@@ -4,8 +4,8 @@ const fs = require('fs');
 
 // Configuration
 const MOODLE_URL = 'http://localhost:80';
-const ADMIN_USERNAME = 'admin';
-const ADMIN_PASSWORD = 'Admin123!';
+const ADMIN_USERNAME = 'user';
+const ADMIN_PASSWORD = 'bitnami';
 const SCREENSHOTS_DIR = path.join(__dirname, '../../docs/img/instalasi');
 
 // Ensure screenshots directory exists
