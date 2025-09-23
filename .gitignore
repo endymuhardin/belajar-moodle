@@ -1,0 +1,31 @@
+# Docker volumes
+volumes/
+volumes/mariadb/
+volumes/moodle/
+volumes/moodledata/
+
+# Environment files
+.env
+.env.local
+
+# Backup files
+*.sql
+*.tar.gz
+*.zip
+backup_*
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+logs/

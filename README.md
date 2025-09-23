@@ -1,202 +1,323 @@
 # Moodle Learning Project
 
 ## Deskripsi Project
-Project ini merupakan lingkungan pembelajaran untuk memahami instalasi, konfigurasi, administrasi, dan penggunaan Moodle Learning Management System (LMS). Mencakup pembelajaran untuk semua role pengguna yang tersedia di Moodle seperti Administrator, Manager, Course Creator, Teacher, Non-editing Teacher, dan Student.
+Project ini merupakan lingkungan pembelajaran untuk memahami instalasi, konfigurasi, administrasi, dan penggunaan Moodle Learning Management System (LMS) menggunakan Docker Compose. Mencakup pembelajaran untuk semua role pengguna yang tersedia di Moodle seperti Administrator, Manager, Course Creator, Teacher, Non-editing Teacher, dan Student.
 
 ## Kebutuhan Software
 
-### Minimum Requirements
-- **PHP**: 8.0 atau lebih tinggi
-- **Database**: MySQL 5.7+ / MariaDB 10.6+ / PostgreSQL 13+
-- **Web Server**: Apache 2.4+ / Nginx 1.20+
-- **RAM**: Minimum 512MB (disarankan 1GB+)
-- **Disk Space**: Minimum 200MB untuk kode Moodle + ruang untuk data
-
-### Software Pendukung
-- **Git**: Untuk version control
-- **Composer**: Untuk dependency management PHP
-- **Node.js & npm**: Untuk kompilasi asset JavaScript/CSS
+### Requirements
+- **Docker Desktop**: Versi terbaru untuk Windows/Mac/Linux
+- **Docker Compose**: Biasanya sudah termasuk dalam Docker Desktop
+- **RAM**: Minimum 2GB (disarankan 4GB+)
+- **Disk Space**: Minimum 2GB untuk images dan data
+- **Port**: Port 80 dan 443 harus tersedia
 
 ## Setup di Windows 10/11 dengan WSL
 
-### 1. Instalasi WSL
+### 1. Instalasi Docker Desktop
+1. Download Docker Desktop dari [https://www.docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop)
+2. Install Docker Desktop dengan mengikuti wizard instalasi
+3. Pastikan WSL 2 backend diaktifkan (Settings → General → Use WSL 2 based engine)
+4. Restart komputer jika diminta
+
+### 2. Clone Repository Project
 ```bash
-# Buka PowerShell sebagai Administrator
-wsl --install
-
-# Atau install distribusi Linux spesifik
-wsl --install -d Ubuntu-22.04
-
-# Restart komputer setelah instalasi
-```
-
-### 2. Setup Environment di WSL
-```bash
-# Update package manager
-sudo apt update && sudo apt upgrade -y
-
-# Install Apache
-sudo apt install apache2 -y
-
-# Install MySQL
-sudo apt install mysql-server mysql-client -y
-
-# Install PHP dan ekstensi yang diperlukan
-sudo apt install php8.1 php8.1-cli php8.1-common php8.1-mysql \
-php8.1-zip php8.1-gd php8.1-mbstring php8.1-curl php8.1-xml \
-php8.1-bcmath php8.1-intl php8.1-soap php8.1-xmlrpc -y
-
-# Install Git
-sudo apt install git -y
-
-# Install Composer
-curl -sS https://getcomposer.org/installer | php
-sudo mv composer.phar /usr/local/bin/composer
-```
-
-### 3. Konfigurasi Database
-```bash
-# Masuk ke MySQL
-sudo mysql
-
-# Buat database dan user untuk Moodle
-CREATE DATABASE moodle DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-CREATE USER 'moodleuser'@'localhost' IDENTIFIED BY 'yourpassword';
-GRANT ALL PRIVILEGES ON moodle.* TO 'moodleuser'@'localhost';
-FLUSH PRIVILEGES;
-EXIT;
-```
-
-### 4. Download dan Setup Moodle
-```bash
-# Clone repository Moodle (atau download dari moodle.org)
-cd /var/www/html
-sudo git clone https://github.com/moodle/moodle.git
+# Buka Terminal/PowerShell/WSL
+git clone <repository-url>
 cd moodle
 
-# Checkout ke versi stable terbaru
-sudo git checkout MOODLE_403_STABLE
-
-# Buat direktori moodledata
-sudo mkdir /var/moodledata
-sudo chown -R www-data:www-data /var/moodledata
-sudo chmod -R 755 /var/moodledata
-
-# Set permission untuk direktori Moodle
-sudo chown -R www-data:www-data /var/www/html/moodle
-sudo chmod -R 755 /var/www/html/moodle
+# Atau buat direktori baru jika belum ada repository
+mkdir moodle
+cd moodle
 ```
 
-### 5. Konfigurasi Apache
+### 3. Setup File docker-compose.yml
+File `docker-compose.yml` sudah dikonfigurasi dengan:
+- **Moodle**: Versi 5.0 dengan Bitnami image
+- **MariaDB**: Database server untuk Moodle
+- **Local Volumes**: Data disimpan di folder `./volumes/` untuk kemudahan backup
+  - `./volumes/mariadb` - Database files
+  - `./volumes/moodle` - Moodle application files
+  - `./volumes/moodledata` - Moodle data files (uploads, cache, etc)
+
+### 4. Konfigurasi Environment (Opsional)
+Buat file `.env` untuk custom configuration:
 ```bash
-# Buat virtual host untuk Moodle
-sudo nano /etc/apache2/sites-available/moodle.conf
-```
+# Database Configuration
+MARIADB_USER=bn_moodle
+MARIADB_DATABASE=bitnami_moodle
+MARIADB_ROOT_PASSWORD=rootpassword
+MOODLE_DATABASE_PASSWORD=moodlepassword
 
-Isi dengan:
-```apache
-<VirtualHost *:80>
-    ServerAdmin admin@localhost
-    DocumentRoot /var/www/html/moodle
-    ServerName localhost
-    
-    <Directory /var/www/html/moodle>
-        Options FollowSymLinks
-        AllowOverride All
-        Require all granted
-    </Directory>
-    
-    ErrorLog ${APACHE_LOG_DIR}/moodle-error.log
-    CustomLog ${APACHE_LOG_DIR}/moodle-access.log combined
-</VirtualHost>
-```
-
-```bash
-# Enable site dan module yang diperlukan
-sudo a2ensite moodle.conf
-sudo a2enmod rewrite
-sudo a2dissite 000-default.conf
-sudo systemctl restart apache2
+# Moodle Configuration
+MOODLE_USERNAME=admin
+MOODLE_PASSWORD=adminpassword
+MOODLE_EMAIL=admin@example.com
+MOODLE_SITE_NAME=Moodle Learning Platform
 ```
 
 ## Cara Menjalankan Aplikasi
 
-### 1. Start Services
+### 1. Start Container
 ```bash
-# Start Apache
-sudo service apache2 start
+# Buat folder volumes dengan permission yang tepat (hanya perlu sekali)
+mkdir -p volumes/mariadb volumes/moodle volumes/moodledata
+chmod -R 777 volumes/
 
-# Start MySQL
-sudo service mysql start
+# Start semua services
+docker compose up -d
 
-# Cek status services
-sudo service apache2 status
-sudo service mysql status
+# Atau dengan output log
+docker compose up
+
+# Cek status container
+docker compose ps
+```
+
+**Catatan**: Jika terjadi error permission denied, jalankan:
+```bash
+# Stop container jika sedang berjalan
+docker compose down
+
+# Set permission untuk Bitnami containers
+chmod -R 777 volumes/
+
+# Atau jika memiliki akses sudo
+sudo chown -R 1001:1001 volumes/
+
+# Start ulang container
+docker compose up -d
 ```
 
 ### 2. Akses Moodle
-1. Buka browser dan akses: `http://localhost`
-2. Ikuti wizard instalasi Moodle:
-   - Pilih bahasa
-   - Konfirmasi paths
-   - Pilih database driver (mysqli)
-   - Masukkan database settings:
-     - Database host: `localhost`
-     - Database name: `moodle`
-     - Database user: `moodleuser`
-     - Database password: `yourpassword`
-   - Konfirmasi lisensi
-   - Cek system requirements
-   - Install Moodle
-   - Setup admin account
 
-### 3. Login dan Eksplorasi
-Setelah instalasi selesai:
-- Login sebagai Administrator
-- Buat course baru
-- Tambahkan user dengan berbagai role
-- Test fitur-fitur untuk setiap role:
-  - **Administrator**: Full system access
-  - **Manager**: Manage courses dan users
-  - **Course Creator**: Buat dan manage course
-  - **Teacher**: Manage course content dan grading
-  - **Non-editing Teacher**: View dan grade tanpa edit
-  - **Student**: Akses course dan submit tugas
+#### Dari WSL/Linux
+- **URL**: http://localhost
+- **HTTPS**: https://localhost (akan ada warning SSL certificate)
 
-### 4. Stop Services (Opsional)
+#### Dari Windows Browser
+Jika `localhost` tidak bisa diakses dari Windows, gunakan IP address WSL:
+1. Cek IP address WSL dengan perintah:
+   ```bash
+   ip addr show eth0 | grep inet | awk '{print $2}' | cut -d/ -f1 | head -1
+   ```
+2. Akses Moodle di browser Windows menggunakan IP tersebut:
+   - Contoh: `http://172.29.130.195`
+   - Atau: `https://172.29.130.195` (akan ada warning SSL certificate)
+
+#### Default Credentials
+- Username: `user`
+- Password: `bitnami`
+
+**PENTING**: Segera ganti password default setelah login pertama!
+
+### 3. Monitoring Container
 ```bash
-# Stop services ketika tidak digunakan
-sudo service apache2 stop
-sudo service mysql stop
+# Lihat log container
+docker compose logs -f
+
+# Lihat log spesifik service
+docker compose logs -f moodle
+docker compose logs -f mariadb
+
+# Masuk ke container Moodle
+docker compose exec moodle bash
+
+# Masuk ke container MariaDB
+docker compose exec mariadb bash
 ```
+
+### 4. Stop dan Restart Container
+```bash
+# Stop semua container
+docker compose stop
+
+# Stop dan remove container (data tetap tersimpan)
+docker compose down
+
+# Remove container dan volumes (HATI-HATI: akan menghapus semua data!)
+docker compose down -v
+
+# Restart container
+docker compose restart
+```
+
+## Administrasi Moodle
+
+### Login sebagai Administrator
+1. Akses http://localhost
+2. Login dengan credentials default atau yang sudah dikonfigurasi
+3. Akses Site Administration dari menu utama
+
+### Manage Users dan Roles
+1. **Tambah User Baru**:
+   - Site Administration → Users → Add a new user
+   - Isi form registrasi
+   - Assign role yang sesuai
+
+2. **Role yang Tersedia**:
+   - **Administrator**: Full system control
+   - **Manager**: Manage courses dan categories
+   - **Course Creator**: Create dan manage courses
+   - **Teacher**: Full control dalam course
+   - **Non-editing Teacher**: View dan grade tanpa edit
+   - **Student**: Akses learning materials
+
+### Membuat Course
+1. Site Administration → Courses → Add a new course
+2. Isi detail course:
+   - Course full name
+   - Course short name
+   - Course category
+   - Description
+3. Configure enrollment methods
+4. Add activities dan resources
+
+### Backup dan Restore
+
+#### Backup Database
+```bash
+# Backup database MariaDB
+docker compose exec mariadb mysqldump -u root -p bitnami_moodle > backup_$(date +%Y%m%d).sql
+
+# Atau backup langsung dari folder local
+tar czf mariadb_backup_$(date +%Y%m%d).tar.gz ./volumes/mariadb
+```
+
+#### Backup Moodle Data
+```bash
+# Backup semua volumes sekaligus
+tar czf moodle_full_backup_$(date +%Y%m%d).tar.gz ./volumes/
+
+# Atau backup per folder
+tar czf moodle_backup_$(date +%Y%m%d).tar.gz ./volumes/moodle
+tar czf moodledata_backup_$(date +%Y%m%d).tar.gz ./volumes/moodledata
+```
+
+#### Restore dari Backup
+```bash
+# Restore database
+docker compose exec -T mariadb mysql -u root -p bitnami_moodle < backup_20240101.sql
+
+# Restore volumes dari backup tar
+tar xzf moodle_full_backup_20240101.tar.gz
+
+# Atau restore specific folder
+tar xzf moodledata_backup_20240101.tar.gz
+```
+
+#### Backup Manual
+Karena menggunakan local volumes, Anda juga bisa:
+1. Stop container: `docker compose stop`
+2. Copy folder `./volumes/` ke tempat backup
+3. Start container: `docker compose start`
 
 ## Tips & Troubleshooting
 
-### Akses dari Windows Host
-- Moodle dapat diakses dari Windows browser di: `http://localhost`
-- Pastikan tidak ada aplikasi lain yang menggunakan port 80
+### Port Conflicts
+Jika port 80 atau 443 sudah digunakan:
+```bash
+# Edit docker-compose.yml untuk ganti port
+ports:
+  - '8080:8080'  # Ganti 80 dengan 8080
+  - '8443:8443'  # Ganti 443 dengan 8443
+```
+
+### Akses dari Windows Host Issues
+Jika tidak bisa akses dari Windows browser:
+1. Pastikan container sudah selesai instalasi (cek logs)
+2. Gunakan IP WSL sebagai pengganti localhost:
+   ```bash
+   # Di WSL, cek IP address
+   ip addr show eth0 | grep inet
+   ```
+3. Jika masih bermasalah, restart Docker Desktop dan WSL:
+   ```powershell
+   # Di PowerShell Windows (as Administrator)
+   wsl --shutdown
+   # Restart Docker Desktop
+   # Start WSL lagi dan jalankan docker compose up
+   ```
 
 ### Reset Admin Password
 ```bash
-cd /var/www/html/moodle
-sudo -u www-data php admin/cli/reset_password.php
+# Masuk ke container Moodle
+docker compose exec moodle bash
+
+# Reset password menggunakan Moodle CLI
+php admin/cli/reset_password.php
 ```
 
-### Backup Database
+### Troubleshooting Container
 ```bash
-mysqldump -u moodleuser -p moodle > moodle_backup.sql
+# Cek logs untuk error
+docker compose logs moodle
+docker compose logs mariadb
+
+# Rebuild container jika ada masalah
+docker compose down
+docker compose build --no-cache
+docker compose up -d
+
+# Cek resource usage
+docker stats
 ```
 
-### Update Moodle
+### Permission Issues
+Jika mengalami error "Permission denied":
 ```bash
-cd /var/www/html/moodle
-sudo git fetch
-sudo git checkout MOODLE_404_STABLE  # Ganti dengan versi yang diinginkan
-sudo -u www-data php admin/cli/upgrade.php
+# Option 1: Set permission 777 (development only)
+chmod -R 777 volumes/
+
+# Option 2: Set ownership untuk Bitnami user (lebih secure)
+sudo chown -R 1001:1001 volumes/
+
+# Option 3: Hapus volumes dan buat ulang dengan permission
+docker compose down -v
+rm -rf volumes/
+mkdir -p volumes/mariadb volumes/moodle volumes/moodledata
+chmod -R 777 volumes/
+docker compose up -d
 ```
 
-## Dokumentasi Tambahan
-- [Moodle Documentation](https://docs.moodle.org)
-- [Moodle Installation Guide](https://docs.moodle.org/en/Installing_Moodle)
-- [Moodle Administrator Documentation](https://docs.moodle.org/en/Administrator_documentation)
-- [Moodle Teacher Documentation](https://docs.moodle.org/en/Teacher_documentation)
+### Performance Tuning
+```bash
+# Increase PHP memory limit
+docker compose exec moodle bash
+echo "php_value memory_limit 512M" >> /opt/bitnami/moodle/.htaccess
+
+# Restart container
+docker compose restart moodle
+```
+
+### Update Moodle Version
+1. Edit `docker-compose.yml`:
+   ```yaml
+   moodle:
+     image: docker.io/bitnami/moodle:5.1  # Ganti ke versi baru
+   ```
+2. Pull image baru dan restart:
+   ```bash
+   docker compose pull
+   docker compose up -d
+   ```
+
+## Sumber dan Dokumentasi
+
+### Docker Image
+- [Bitnami Moodle Docker Hub](https://hub.docker.com/r/bitnami/moodle)
+- [Bitnami Moodle GitHub](https://github.com/bitnami/containers/tree/main/bitnami/moodle)
+
+### Moodle Documentation
+- [Moodle Official Documentation](https://docs.moodle.org)
+- [Moodle Administrator Guide](https://docs.moodle.org/en/Administrator_documentation)
+- [Moodle Teacher Guide](https://docs.moodle.org/en/Teacher_documentation)
+- [Moodle Developer Documentation](https://moodledev.io)
+
+### Docker Documentation
+- [Docker Compose Documentation](https://docs.docker.com/compose/)
+- [Docker Desktop for Windows](https://docs.docker.com/desktop/windows/)
+- [WSL 2 Backend](https://docs.docker.com/desktop/windows/wsl/)
+
+## Kontribusi
+Jika menemukan bug atau ingin berkontribusi, silakan buat issue atau pull request di repository ini.
