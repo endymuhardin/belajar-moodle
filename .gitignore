@@ -29,3 +29,10 @@ desktop.ini
 # Logs
 *.log
 logs/
+
+# GitBook build files
+gitbook/_book/
+gitbook/node_modules/
+*.pdf
+*.epub
+*.mobi
