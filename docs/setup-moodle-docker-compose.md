@@ -268,11 +268,17 @@ Jika localhost tidak bisa diakses:
    - `http://172.29.130.195`
    - `https://172.29.130.195`
 
+Jika berhasil, Anda akan melihat halaman depan Moodle sebelum login:
+
+![Moodle Front Page](img/instalasi/frontpage.png)
+
 ### Default Credentials
 
 Login dengan credentials default Bitnami:
 - **Username:** `user`
 - **Password:** `bitnami`
+
+![Moodle Login Page](img/instalasi/login.png)
 
 > **IMPORTANT:** Segera ganti password default setelah login!
 
@@ -288,6 +294,9 @@ Login dengan credentials default Bitnami:
 ### Site Configuration
 
 1. Navigate to **Site administration**
+
+![Moodle Admin Dashboard](img/instalasi/dashboard.png)
+
 2. Configure:
    - **Site name**
    - **Front page settings**
