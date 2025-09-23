@@ -78,7 +78,7 @@ async function takeScreenshots() {
 
     // 6. User Permissions
     console.log('Taking screenshot: User permissions...');
-    await page.goto(MOODLE_URL + '/admin/roles/permissions.php', { waitUntil: 'networkidle' });
+    await page.goto(MOODLE_URL + '/admin/category.php?category=users', { waitUntil: 'networkidle' });
     await page.screenshot({
       path: path.join(SCREENSHOTS_DIR, '06-user-permissions.png'),
       fullPage: false
@@ -86,7 +86,7 @@ async function takeScreenshots() {
 
     // 7. Check System Permissions
     console.log('Taking screenshot: Check permissions...');
-    await page.goto(MOODLE_URL + '/admin/roles/check.php', { waitUntil: 'networkidle' });
+    await page.goto(MOODLE_URL + '/admin/category.php?category=roles', { waitUntil: 'networkidle' });
     await page.screenshot({
       path: path.join(SCREENSHOTS_DIR, '07-check-permissions.png'),
       fullPage: false

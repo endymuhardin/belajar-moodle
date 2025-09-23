@@ -78,7 +78,7 @@ async function takeScreenshots() {
 
     // 6. Theme Selector
     console.log('Taking screenshot: Theme selector...');
-    await page.goto(MOODLE_URL + '/admin/settings.php?section=themesettings', { waitUntil: 'networkidle' });
+    await page.goto(MOODLE_URL + '/admin/category.php?category=themes', { waitUntil: 'networkidle' });
     await page.screenshot({
       path: path.join(SCREENSHOTS_DIR, '06-theme-selector.png'),
       fullPage: false
@@ -86,7 +86,7 @@ async function takeScreenshots() {
 
     // 7. Available Themes Gallery
     console.log('Taking screenshot: Available themes...');
-    await page.goto(MOODLE_URL + '/theme/index.php', { waitUntil: 'networkidle' });
+    await page.goto(MOODLE_URL + '/admin/category.php?category=appearance', { waitUntil: 'networkidle' });
     await page.screenshot({
       path: path.join(SCREENSHOTS_DIR, '07-available-themes.png'),
       fullPage: false
@@ -94,7 +94,7 @@ async function takeScreenshots() {
 
     // 8. Course Default Settings
     console.log('Taking screenshot: Course default settings...');
-    await page.goto(MOODLE_URL + '/admin/settings.php?section=coursedefaultsettings', { waitUntil: 'networkidle' });
+    await page.goto(MOODLE_URL + '/admin/category.php?category=courses', { waitUntil: 'networkidle' });
     await page.screenshot({
       path: path.join(SCREENSHOTS_DIR, '08-course-defaults.png'),
       fullPage: false
