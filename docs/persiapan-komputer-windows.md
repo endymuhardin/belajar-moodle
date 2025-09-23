@@ -16,7 +16,7 @@ Pada bab ini, kita akan mempersiapkan komputer Windows Anda untuk menjalankan Mo
 2. Ketik `winver` dan tekan Enter
 3. Pastikan versi Anda memenuhi requirement
 
-![Windows Version](images/windows-version.png)
+![Windows Version](img/persiapan/winver.png)
 
 ## Langkah 1: Mengaktifkan Virtualization
 
@@ -26,7 +26,7 @@ Pada bab ini, kita akan mempersiapkan komputer Windows Anda untuk menjalankan Mo
 3. Pilih **CPU**
 4. Lihat bagian **Virtualization** - harus **Enabled**
 
-![Virtualization Status](images/virtualization-status.png)
+![Virtualization Status](img/persiapan/virtualization.png)
 
 ### Mengaktifkan Virtualization di BIOS
 Jika Virtualization belum aktif:
@@ -142,7 +142,7 @@ Setelah restart:
    - ✅ Ubuntu (atau distro yang Anda install)
 4. Klik **Apply & restart**
 
-![Docker WSL Integration](images/docker-wsl-integration.png)
+![Docker WSL Integration](img/persiapan/docker-wsl-integration.png)
 
 ## Langkah 4: Verifikasi Instalasi
 
