@@ -66,7 +66,7 @@ async function takeScreenshots() {
 
     // 4. Enrol users
     console.log('Taking screenshot: Enrol users...');
-    await page.goto(MOODLE_URL + `/enrol/users.php?id=${courseId}`, { waitUntil: 'networkidle' });
+    await page.goto(MOODLE_URL + `/enrol/instances.php?id=${courseId}`, { waitUntil: 'networkidle' });
     await page.screenshot({
       path: path.join(SCREENSHOTS_DIR, '04-enrol-users.png'),
       fullPage: false
