@@ -6,328 +6,328 @@ Moodle menggunakan sistem role-based access control (RBAC) yang fleksibel untuk 
 
 ### Membuat Pengguna Baru
 
-#### Metode 1: Manual User Creation
+#### Metode 1: Pembuatan Pengguna Manual
 
 1. **Login sebagai Administrator**
-   - Akses Moodle dengan akun administrator
-   - Navigate ke Site Administration
+   - Akses Moodle dengan akun administrator.
+   - Navigasi ke `Site Administration`.
 
-2. **Akses User Management**
-   - Go to: **Site administration** → **Users** → **Add a new user**
-   - Atau direct URL: `/user/editadvanced.php?id=-1`
+2. **Akses Manajemen Pengguna**
+   - Buka: **Site administration** → **Users** → **Add a new user**.
+   - Atau akses URL langsung: `/user/editadvanced.php?id=-1`.
 
-3. **Isi Required Fields**
+3. **Isi Kolom yang Diperlukan**
 
-   **General Information:**
-   - **Username**: Unique identifier untuk login (lowercase, no spaces)
-   - **Authentication method**: Manual accounts (default) atau external authentication
-   - **New password**: Minimal 8 karakter dengan kombinasi huruf, angka, dan symbol
-   - **First name**: Nama depan user
-   - **Surname**: Nama belakang user
-   - **Email address**: Valid email untuk notifications
+   **Informasi Umum:**
+   - **Username**: Pengenal unik untuk login (huruf kecil, tanpa spasi).
+   - **Authentication method**: `Manual accounts` (default) atau otentikasi eksternal.
+   - **New password**: Minimal 8 karakter dengan kombinasi huruf, angka, dan simbol.
+   - **First name**: Nama depan pengguna.
+   - **Surname**: Nama belakang pengguna.
+   - **Email address**: Email yang valid untuk notifikasi.
 
-   **Additional Fields:**
-   - **Email display**: Control siapa yang bisa lihat email
-   - **City/town**: Lokasi user
-   - **Country**: Select dari dropdown
-   - **Timezone**: User's local timezone
-   - **Preferred language**: Interface language untuk user
-   - **Description**: Optional bio atau information
+   **Kolom Tambahan:**
+   - **Email display**: Kontrol siapa yang bisa melihat email.
+   - **City/town**: Lokasi pengguna.
+   - **Country**: Pilih dari dropdown.
+   - **Timezone**: Zona waktu lokal pengguna.
+   - **Preferred language**: Bahasa antarmuka untuk pengguna.
+   - **Description**: Bio atau informasi opsional.
 
-4. **Optional Settings**
-   - **Force password change**: Require user untuk change password on first login
-   - **Generate password and notify user**: System creates password dan email ke user
-   - **User picture**: Upload profile photo
-   - **Interests**: Tags untuk user interests
+4. **Pengaturan Opsional**
+   - **Force password change**: Wajibkan pengguna untuk mengubah password saat login pertama.
+   - **Generate password and notify user**: Sistem membuat password dan mengirimkannya ke email pengguna.
+   - **User picture**: Unggah foto profil.
+   - **Interests**: Tag untuk minat pengguna.
 
-5. **Create User**
-   - Click "Create user" button
-   - User akan immediately active dan dapat login
+5. **Buat Pengguna**
+   - Klik tombol "Create user".
+   - Pengguna akan langsung aktif dan dapat login.
 
 ![Manual User Creation Form](img/pengguna/02-add-new-user.png)
 
-#### Metode 2: Bulk User Upload via CSV
+#### Metode 2: Unggah Pengguna Massal via CSV
 
-1. **Prepare CSV File**
+1. **Siapkan File CSV**
 
-   Format CSV dengan headers:
+   Format CSV dengan header:
    ```csv
    username,password,firstname,lastname,email,city,country,auth
    john.doe,Pass@word123,John,Doe,john@example.com,Jakarta,ID,manual
    jane.smith,Secure#456,Jane,Smith,jane@example.com,Bandung,ID,manual
    ```
 
-   **Required fields:**
+   **Kolom yang diperlukan:**
    - username
    - firstname
    - lastname
    - email
 
-   **Optional fields:**
-   - password (jika tidak ada, akan di-generate)
-   - auth (authentication method, default: manual)
-   - idnumber (external ID)
+   **Kolom opsional:**
+   - password (jika tidak ada, akan dibuat otomatis)
+   - auth (metode otentikasi, default: manual)
+   - idnumber (ID eksternal)
    - institution
    - department
    - phone1, phone2
    - address
-   - lang (preferred language)
+   - lang (bahasa pilihan)
    - timezone
-   - course1 (untuk auto-enrollment)
-   - role1 (role dalam course1)
+   - course1 (untuk pendaftaran otomatis)
+   - role1 (peran dalam course1)
 
-2. **Upload Process**
-   - Navigate ke: **Site administration** → **Users** → **Upload users**
-   - Select CSV file
-   - Choose delimiter (comma, semicolon, atau tab)
-   - Configure encoding (UTF-8 recommended)
+2. **Proses Unggah**
+   - Navigasi ke: **Site administration** → **Users** → **Upload users**
+   - Pilih file CSV
+   - Pilih `delimiter` (koma, titik koma, atau tab)
+   - Konfigurasi `encoding` (disarankan UTF-8)
 
-3. **Preview dan Settings**
-   - Review detected fields
-   - Map CSV columns ke Moodle fields
-   - Set upload type:
-     - **Add new only**: Skip existing users
-     - **Add new and update existing**: Update jika username exists
-     - **Update existing only**: Hanya update existing users
+3. **Pratinjau dan Pengaturan**
+   - Tinjau kolom yang terdeteksi
+   - Petakan kolom CSV ke kolom Moodle
+   - Atur jenis unggah:
+     - **Add new only**: Lewati pengguna yang sudah ada
+     - **Add new and update existing**: Perbarui jika nama pengguna sudah ada
+     - **Update existing only**: Hanya perbarui pengguna yang sudah ada
 
-4. **User Creation Settings**
+4. **Pengaturan Pembuatan Pengguna**
    - **New user password**:
-     - Field required in file
-     - Create password if needed
-     - Generate and email password
-   - **Force password change**: On first login
-   - **Email new users**: Send welcome email
+     - Kolom yang diperlukan dalam file
+     - Buat password jika perlu
+     - Hasilkan dan kirim password melalui email
+   - **Force password change**: Saat login pertama
+   - **Email new users**: Kirim email selamat datang
 
-5. **Execute Upload**
-   - Review summary
-   - Click "Upload users"
-   - Check results untuk errors atau warnings
+5. **Lakukan Unggah**
+   - Tinjau ringkasan
+   - Klik "Upload users"
+   - Periksa hasil untuk kesalahan atau peringatan
 
 ![CSV Upload Interface](img/pengguna/03-bulk-upload.png)
 
-#### Metode 3: External Authentication
+#### Metode 3: Otentikasi Eksternal
 
-**LDAP/Active Directory Integration:**
-1. Configure LDAP authentication plugin
-2. Map LDAP attributes ke Moodle fields
-3. Users automatically created on first login
+**Integrasi LDAP/Active Directory:**
+1. Konfigurasi plugin otentikasi LDAP
+2. Petakan atribut LDAP ke kolom Moodle
+3. Pengguna dibuat secara otomatis saat login pertama
 
 **OAuth2 (Google, Microsoft, Facebook):**
-1. Setup OAuth2 service
-2. Configure client ID dan secret
-3. Users can self-register via social login
+1. Atur layanan OAuth2
+2. Konfigurasi `client ID` dan `secret`
+3. Pengguna dapat mendaftar sendiri melalui login sosial
 
-**Database Authentication:**
-1. Connect ke external database
-2. Map database fields
-3. Synchronize users periodically
+**Otentikasi Database:**
+1. Hubungkan ke database eksternal
+2. Petakan kolom database
+3. Sinkronkan pengguna secara berkala
 
 ### Menonaktifkan Pengguna (Suspend/Deactivate)
 
-#### Metode 1: Suspend User Account
+#### Metode 1: Menangguhkan Akun Pengguna
 
-1. **Navigate ke User List**
+1. **Navigasi ke Daftar Pengguna**
    - **Site administration** → **Users** → **Browse list of users**
-   - Search untuk user yang akan di-suspend
+   - Cari pengguna yang akan ditangguhkan.
 
-2. **Edit User Profile**
-   - Click edit icon (gear/pencil) pada user row
-   - Atau click username lalu "Edit profile"
+2. **Edit Profil Pengguna**
+   - Klik ikon edit (roda gigi/pensil) pada baris pengguna.
+   - Atau klik nama pengguna lalu "Edit profile".
 
-3. **Suspend Account**
-   - Change **Authentication method** ke "No login"
-   - Ini prevents user dari login tanpa delete data mereka
-   - User's courses, grades, dan content tetap preserved
+3. **Tangguhkan Akun**
+   - Ubah **Authentication method** menjadi "No login".
+   - Ini mencegah pengguna untuk login tanpa menghapus data mereka.
+   - `Courses`, `grades`, dan konten pengguna tetap tersimpan.
 
-4. **Alternative: Account Lockout**
-   - Di user profile, set **Suspended** ke "Yes"
-   - User tidak bisa login tapi account tetap active
-   - Useful untuk temporary suspension
+4. **Alternatif: Kunci Akun**
+   - Di profil pengguna, atur **Suspended** menjadi "Yes".
+   - Pengguna tidak bisa login tapi akun tetap aktif.
+   - Berguna untuk penangguhan sementara.
 
 ![Suspend User Interface](img/pengguna/01-browse-users.png)
 
-#### Metode 2: Bulk User Actions
+#### Metode 2: Aksi Pengguna Massal
 
-1. **Select Multiple Users**
-   - Go to **Site administration** → **Users** → **Bulk user actions**
-   - Search dan select users untuk suspend
-   - Add ke selection
+1. **Pilih Beberapa Pengguna**
+   - Buka **Site administration** → **Users** → **Bulk user actions**
+   - Cari dan pilih pengguna untuk ditangguhkan.
+   - Tambahkan ke pilihan.
 
-2. **Choose Action**
-   - Select "Force password change"
-   - Atau "Delete" untuk permanent removal
-   - Atau "Add to cohort" untuk group management
+2. **Pilih Aksi**
+   - Pilih "Force password change".
+   - Atau "Delete" untuk penghapusan permanen.
+   - Atau "Add to cohort" untuk manajemen grup.
 
-3. **Confirm Action**
-   - Review selected users
-   - Confirm suspension
+3. **Konfirmasi Aksi**
+   - Tinjau pengguna yang dipilih.
+   - Konfirmasi penangguhan.
 
-#### Metode 3: Automated Suspension
+#### Metode 3: Penangguhan Otomatis
 
-**Inactive User Cleanup:**
-1. Configure di **Site administration** → **Users** → **User policies**
-2. Set "Delete not fully setup users after" (days)
-3. Set "Delete suspended users after" (days)
-4. Enable automatic cleanup
+**Pembersihan Pengguna Tidak Aktif:**
+1. Konfigurasi di **Site administration** → **Users** → **User policies**
+2. Atur "Delete not fully setup users after" (hari)
+3. Atur "Delete suspended users after" (hari)
+4. Aktifkan pembersihan otomatis
 
-**Course Enrollment Expiry:**
-1. Set enrollment duration di course settings
-2. Configure action when enrollment expires:
-   - Keep user enrolled but suspended
-   - Unenroll user from course
-   - Notify user before expiry
+**Kedaluwarsa Pendaftaran Kursus:**
+1. Atur durasi pendaftaran di pengaturan kursus
+2. Konfigurasi tindakan saat pendaftaran berakhir:
+   - Biarkan pengguna terdaftar tetapi ditangguhkan
+   - Batalkan pendaftaran pengguna dari kursus
+   - Beri tahu pengguna sebelum kedaluwarsa
 
 ### Mengaktifkan Kembali Pengguna (Reactivate)
 
-#### Reactivate Suspended Account
+#### Mengaktifkan Kembali Akun yang Ditangguhkan
 
-1. **Find Suspended User**
+1. **Temukan Pengguna yang Ditangguhkan**
    - **Site administration** → **Users** → **Browse list of users**
-   - Filter by authentication method "No login"
-   - Atau search by username/email
+   - Filter berdasarkan metode otentikasi "No login"
+   - Atau cari berdasarkan nama pengguna/email
 
-2. **Edit User Profile**
-   - Click edit icon untuk user
-   - Access user profile settings
+2. **Edit Profil Pengguna**
+   - Klik ikon edit untuk pengguna
+   - Akses pengaturan profil pengguna
 
-3. **Restore Access**
-   - Change **Authentication method** back ke "Manual accounts"
-   - Atau original authentication method (LDAP, OAuth2, etc.)
-   - If suspended flag was used, set **Suspended** ke "No"
+3. **Pulihkan Akses**
+   - Ubah **Authentication method** kembali ke "Manual accounts"
+   - Atau metode otentikasi asli (LDAP, OAuth2, dll.)
+   - Jika bendera `suspended` digunakan, atur **Suspended** ke "No"
 
-4. **Reset Password (Optional)**
-   - Generate new password
-   - Force password change on next login
-   - Send password reset email
+4. **Setel Ulang Kata Sandi (Opsional)**
+   - Buat kata sandi baru
+   - Paksa perubahan kata sandi saat login berikutnya
+   - Kirim email pengaturan ulang kata sandi
 
-5. **Verify Reactivation**
-   - Check user can login
-   - Verify course enrollments still active
-   - Confirm role assignments intact
+5. **Verifikasi Pengaktifan Kembali**
+   - Periksa apakah pengguna dapat login
+   - Verifikasi pendaftaran kursus masih aktif
+   - Konfirmasi penetapan peran masih utuh
 
 ![Reactivate User Process](img/pengguna/15-user-edit-form.png)
 
-#### Bulk Reactivation
+#### Pengaktifan Kembali Massal
 
-1. **Using Bulk Actions**
-   - Select multiple suspended users
-   - Apply authentication method change
-   - Send notification emails
+1. **Menggunakan Aksi Massal**
+   - Pilih beberapa pengguna yang ditangguhkan
+   - Terapkan perubahan metode otentikasi
+   - Kirim email notifikasi
 
-2. **CSV Update Method**
+2. **Metode Pembaruan CSV**
    ```csv
    username,auth
    john.doe,manual
    jane.smith,manual
    ```
-   - Upload dengan "Update existing only"
-   - Changes authentication method untuk selected users
+   - Unggah dengan "Update existing only"
+   - Mengubah metode otentikasi untuk pengguna yang dipilih
 
-#### Post-Reactivation Tasks
+#### Tugas Pasca-Pengaktifan Kembali
 
-1. **Review User Permissions**
-   - Check role assignments
-   - Verify course enrollments
-   - Update group memberships if needed
+1. **Tinjau Izin Pengguna**
+   - Periksa penetapan peran
+   - Verifikasi pendaftaran kursus
+   - Perbarui keanggotaan grup jika perlu
 
-2. **Communication**
-   - Send welcome back email
-   - Provide updated login instructions
-   - Share any system changes
+2. **Komunikasi**
+   - Kirim email selamat datang kembali
+   - Berikan instruksi login yang diperbarui
+   - Bagikan setiap perubahan sistem
 
-3. **Monitoring**
-   - Track login success
-   - Monitor untuk issues
-   - Provide support if needed
+3. **Pemantauan**
+   - Lacak keberhasilan login
+   - Pantau untuk masalah
+   - Berikan dukungan jika perlu
 
-### User Account Management Best Practices
+### Praktik Terbaik Manajemen Akun Pengguna
 
-#### Security Considerations
+#### Pertimbangan Keamanan
 
-1. **Password Policies**
-   - Enforce strong passwords (min 8 chars, mixed case, numbers, symbols)
-   - Require periodic password changes
-   - Prevent password reuse
-   - Lock accounts after failed attempts
+1. **Kebijakan Kata Sandi**
+   - Terapkan kata sandi yang kuat (minimal 8 karakter, kombinasi huruf besar-kecil, angka, simbol)
+   - Wajibkan perubahan kata sandi secara berkala
+   - Cegah penggunaan kembali kata sandi
+   - Kunci akun setelah beberapa kali gagal mencoba
 
-2. **Account Monitoring**
-   - Regular audit of admin accounts
-   - Monitor unusual login patterns
-   - Track permission changes
-   - Review inactive accounts
+2. **Pemantauan Akun**
+   - Audit rutin akun admin
+   - Pantau pola login yang tidak biasa
+   - Lacak perubahan izin
+   - Tinjau akun yang tidak aktif
 
-3. **Data Protection**
-   - Implement data retention policies
-   - Regular cleanup of old accounts
-   - Secure storage of user data
-   - GDPR compliance measures
+3. **Perlindungan Data**
+   - Terapkan kebijakan retensi data
+   - Pembersihan rutin akun lama
+   - Penyimpanan data pengguna yang aman
+   - Langkah-langkah kepatuhan GDPR
 
-#### Administrative Workflows
+#### Alur Kerja Administratif
 
-1. **New User Onboarding**
+1. **Orientasi Pengguna Baru**
    ```
-   Create Account → Assign Roles → Enroll in Courses →
-   Send Welcome Email → Monitor First Login → Provide Support
-   ```
-
-2. **User Lifecycle Management**
-   ```
-   Active → Warning (inactivity) → Suspended →
-   Archived → Deleted (after retention period)
+   Buat Akun → Tetapkan Peran → Daftarkan ke Kursus →
+   Kirim Email Selamat Datang → Pantau Login Pertama → Berikan Dukungan
    ```
 
-3. **Account Recovery Process**
+2. **Manajemen Siklus Hidup Pengguna**
    ```
-   User Request → Verify Identity → Check Account Status →
-   Reset Password → Reactivate → Confirm Access
+   Aktif → Peringatan (tidak aktif) → Ditangguhkan →
+   Diarsipkan → Dihapus (setelah periode retensi)
    ```
 
-#### Common Issues dan Solutions
+3. **Proses Pemulihan Akun**
+   ```
+   Permintaan Pengguna → Verifikasi Identitas → Periksa Status Akun →
+   Setel Ulang Kata Sandi → Aktifkan Kembali → Konfirmasi Akses
+   ```
 
-**Issue: User Cannot Login**
-- Check authentication method
-- Verify account not suspended
-- Reset password if needed
-- Check email confirmation status
-- Verify username correct (case-sensitive)
+#### Masalah Umum dan Solusinya
 
-**Issue: Duplicate Accounts**
-- Merge user accounts if possible
-- Delete duplicate dengan no activity
-- Update email untuk prevent duplicates
-- Use unique ID field
+**Masalah: Pengguna Tidak Bisa Login**
+- Periksa metode otentikasi
+- Verifikasi akun tidak ditangguhkan
+- Setel ulang kata sandi jika perlu
+- Periksa status konfirmasi email
+- Verifikasi nama pengguna benar (case-sensitive)
 
-**Issue: Mass Account Creation Errors**
-- Validate CSV format
-- Check required fields
-- Verify email uniqueness
-- Review password requirements
-- Test dengan small batch first
+**Masalah: Akun Duplikat**
+- Gabungkan akun pengguna jika memungkinkan
+- Hapus duplikat tanpa aktivitas
+- Perbarui email untuk mencegah duplikat
+- Gunakan kolom ID unik
+
+**Masalah: Kesalahan Pembuatan Akun Massal**
+- Validasi format CSV
+- Periksa kolom yang diperlukan
+- Verifikasi keunikan email
+- Tinjau persyaratan kata sandi
+- Uji dengan sejumlah kecil data terlebih dahulu
 
 ## Pengenalan Role di Moodle
 
 ### Konsep Dasar Role
 
-Role di Moodle adalah kumpulan permissions (izin) yang menentukan apa yang bisa dan tidak bisa dilakukan oleh seorang user dalam sistem. Setiap user dapat memiliki berbagai role tergantung pada context (lingkup) di mana mereka berada.
+Role di Moodle adalah kumpulan `permissions` (izin) yang menentukan apa yang bisa dan tidak bisa dilakukan oleh seorang pengguna di dalam sistem. Setiap pengguna dapat memiliki berbagai `role` tergantung pada `context` (lingkup) di mana mereka berada.
 
-**Key Concepts:**
-- **Role**: Kumpulan capabilities (kemampuan)
-- **Context**: Lingkup dimana role diterapkan (System, Category, Course, Activity)
-- **Capabilities**: Permission spesifik (seperti create course, grade students)
-- **Assignment**: Pemberian role kepada user dalam context tertentu
+**Konsep Kunci:**
+- **Role**: Kumpulan `capabilities` (kemampuan).
+- **Context**: Lingkup di mana `role` diterapkan (`System`, `Category`, `Course`, `Activity`).
+- **Capabilities**: Izin spesifik (seperti membuat kursus, menilai siswa).
+- **Assignment**: Pemberian `role` kepada pengguna dalam `context` tertentu.
 
 ![Role Assignment Interface](img/pengguna/05-assign-system-roles.png)
 
 ### Hierarki Context di Moodle
 
-Context menentukan cakupan dimana role berlaku:
+`Context` menentukan cakupan di mana `role` berlaku:
 
-1. **System Context**: Seluruh sistem Moodle
-2. **Category Context**: Kategori course dan sub-kategorinya
-3. **Course Context**: Course tertentu
-4. **Activity/Module Context**: Activity atau resource tertentu
-5. **Block Context**: Block tertentu
-6. **User Context**: Profile user tertentu
+1. **System Context**: Seluruh sistem Moodle.
+2. **Category Context**: Kategori `course` dan sub-kategorinya.
+3. **Course Context**: `Course` tertentu.
+4. **Activity/Module Context**: `Activity` atau `resource` tertentu.
+5. **Block Context**: `Block` tertentu.
+6. **User Context**: Profil pengguna tertentu.
 
 ![Context Hierarchy](img/pengguna/13-role-matrix.png)
 
@@ -335,24 +335,24 @@ Context menentukan cakupan dimana role berlaku:
 
 ### 1. Administrator
 
-**Scope**: System-wide
-**Purpose**: Kontrol penuh terhadap sistem Moodle
+**Cakupan**: Seluruh sistem (`System-wide`)
+**Tujuan**: Kontrol penuh terhadap sistem Moodle
 
-**Key Capabilities:**
-- Akses ke Site Administration
-- Install dan manage plugins
-- Create dan delete users
-- Manage global settings
-- Access ke semua courses
-- Backup dan restore sistem
-- Manage security settings
+**Kemampuan Utama:**
+- Akses ke `Site Administration`
+- Instal dan kelola `plugins`
+- Buat dan hapus pengguna
+- Kelola pengaturan global
+- Akses ke semua `courses`
+- Cadangkan dan pulihkan sistem
+- Kelola pengaturan keamanan
 
-**Typical Use Cases:**
-- IT Administrator
-- System Manager
-- Technical Support Lead
+**Contoh Penggunaan Umum:**
+- Administrator TI
+- Manajer Sistem
+- Pimpinan Dukungan Teknis
 
-**Important Capabilities:**
+**Kemampuan Penting:**
 ```
 moodle/site:config - Configure site settings
 moodle/user:create - Create user accounts
@@ -363,32 +363,32 @@ moodle/restore:restoresection - Restore courses
 
 ![Administrator Capabilities](img/pengguna/04-define-roles.png)
 
-**Best Practices:**
-- Limit jumlah Administrator (maksimal 2-3 orang)
-- Use strong authentication (2FA recommended)
-- Regular audit administrator activities
-- Document semua changes yang dilakukan
+**Praktik Terbaik:**
+- Batasi jumlah `Administrator` (maksimal 2-3 orang)
+- Gunakan otentikasi yang kuat (disarankan 2FA)
+- Audit aktivitas administrator secara rutin
+- Dokumentasikan semua perubahan yang dilakukan
 
 ### 2. Manager
 
-**Scope**: Category atau Course level
-**Purpose**: Manage courses dan users tanpa access ke system configuration
+**Cakupan**: Tingkat `Category` atau `Course`
+**Tujuan**: Mengelola `courses` dan pengguna tanpa akses ke konfigurasi sistem
 
-**Key Capabilities:**
-- Create dan manage courses dalam assigned categories
-- Enroll dan unenroll users
-- Access ke course reports
-- Manage course categories
-- Assign roles dalam scope mereka
-- View course completion reports
+**Kemampuan Utama:**
+- Membuat dan mengelola `courses` dalam kategori yang ditetapkan
+- Mendaftarkan dan membatalkan pendaftaran pengguna
+- Akses ke laporan `course`
+- Mengelola kategori `course`
+- Menetapkan `roles` dalam lingkup mereka
+- Melihat laporan penyelesaian `course`
 
-**Typical Use Cases:**
-- Academic Manager
-- Dean atau Head of Department
-- Training Manager
-- Program Coordinator
+**Contoh Penggunaan Umum:**
+- Manajer Akademik
+- Dekan atau Ketua Jurusan
+- Manajer Pelatihan
+- Koordinator Program
 
-**Important Capabilities:**
+**Kemampuan Penting:**
 ```
 moodle/course:create - Create new courses
 moodle/course:delete - Delete courses
@@ -399,36 +399,36 @@ moodle/course:manageactivities - Manage course activities
 
 ![Manager Interface](img/pengguna/04-define-roles.png)
 
-**Manager vs Administrator:**
+**Perbandingan Manager dan Administrator:**
 
-| Aspect | Manager | Administrator |
-|--------|---------|---------------|
-| System settings | ❌ | ✅ |
-| Plugin management | ❌ | ✅ |
-| User creation | ✅ | ✅ |
-| Course management | ✅ | ✅ |
-| Site backup | ❌ | ✅ |
-| Security settings | ❌ | ✅ |
+| Aspek | Manager | Administrator |
+|---|---|---|
+| Pengaturan sistem | ❌ | ✅ |
+| Manajemen plugin | ❌ | ✅ |
+| Pembuatan pengguna | ✅ | ✅ |
+| Manajemen `course` | ✅ | ✅ |
+| Cadangan situs | ❌ | ✅ |
+| Pengaturan keamanan | ❌ | ✅ |
 
 ### 3. Course Creator
 
-**Scope**: System atau Category level
-**Purpose**: Create courses baru dan manage courses yang mereka buat
+**Cakupan**: Tingkat `System` atau `Category`
+**Tujuan**: Membuat `courses` baru dan mengelola `courses` yang mereka buat
 
-**Key Capabilities:**
-- Create courses baru
-- Manage courses yang mereka create
-- Set initial course settings
-- Assign teachers ke courses mereka
-- Access ke course templates
+**Kemampuan Utama:**
+- Membuat `courses` baru
+- Mengelola `courses` yang mereka buat
+- Mengatur pengaturan awal `course`
+- Menetapkan `teachers` ke `courses` mereka
+- Akses ke templat `course`
 
-**Typical Use Cases:**
-- Senior Teacher
-- Curriculum Developer
-- Instructional Designer
-- Department Head
+**Contoh Penggunaan Umum:**
+- Guru Senior
+- Pengembang Kurikulum
+- Desainer Instruksional
+- Ketua Jurusan
 
-**Important Capabilities:**
+**Kemampuan Penting:**
 ```
 moodle/course:create - Create new courses
 moodle/course:update - Edit course settings
@@ -438,34 +438,34 @@ moodle/course:visibility - Change course visibility
 
 ![Course Creator Workflow](img/pengguna/04-define-roles.png)
 
-**Course Creator Workflow:**
-1. Create course dengan basic settings
-2. Configure course format dan structure
-3. Assign teachers
-4. Set enrollment methods
-5. Transfer ownership atau maintain access
+**Alur Kerja Course Creator:**
+1. Buat `course` dengan pengaturan dasar
+2. Konfigurasi format dan struktur `course`
+3. Tetapkan `teachers`
+4. Atur metode pendaftaran
+5. Transfer kepemilikan atau pertahankan akses
 
 ### 4. Teacher (Editing Teacher)
 
-**Scope**: Course level
-**Purpose**: Full control dalam course untuk teaching dan assessment
+**Cakupan**: Tingkat `Course`
+**Tujuan**: Kontrol penuh di dalam `course` untuk pengajaran dan penilaian
 
-**Key Capabilities:**
-- Edit course content
-- Create dan manage activities
-- Grade students
-- Manage course enrollment
-- Access ke gradebook
-- Create groups dan groupings
-- Backup dan restore course
+**Kemampuan Utama:**
+- Mengedit konten `course`
+- Membuat dan mengelola `activities`
+- Menilai `students`
+- Mengelola pendaftaran `course`
+- Akses ke `gradebook`
+- Membuat `groups` dan `groupings`
+- Mencadangkan dan memulihkan `course`
 
-**Typical Use Cases:**
-- Primary Instructor
-- Subject Teacher
-- Course Owner
-- Lead Trainer
+**Contoh Penggunaan Umum:**
+- Instruktur Utama
+- Guru Mata Pelajaran
+- Pemilik `Course`
+- Pelatih Utama
 
-**Important Capabilities:**
+**Kemampuan Penting:**
 ```
 moodle/course:manageactivities - Create/edit activities
 moodle/grade:edit - Edit grades
@@ -477,34 +477,34 @@ moodle/course:update - Update course settings
 
 ![Teacher Interface](img/pengguna/04-define-roles.png)
 
-**Teacher Responsibilities:**
-- **Content Creation**: Develop learning materials
-- **Assessment**: Create dan grade assignments/quizzes
-- **Communication**: Interact dengan students
-- **Progress Tracking**: Monitor student progress
-- **Course Management**: Maintain course organization
+**Tanggung Jawab Teacher:**
+- **Pembuatan Konten**: Mengembangkan materi pembelajaran
+- **Penilaian**: Membuat dan menilai `assignments`/`quizzes`
+- **Komunikasi**: Berinteraksi dengan `students`
+- **Pelacakan Kemajuan**: Memantau kemajuan `student`
+- **Manajemen Course**: Menjaga organisasi `course`
 
 ### 5. Non-editing Teacher
 
-**Scope**: Course level
-**Purpose**: Teaching support tanpa editing privileges
+**Cakupan**: Tingkat `Course`
+**Tujuan**: Dukungan pengajaran tanpa hak `editing`
 
-**Key Capabilities:**
-- View semua course content
-- Grade students (assignments yang sudah ada)
-- Participate dalam activities
-- View reports dan gradebook
-- Communicate dengan students
-- Download course content
+**Kemampuan Utama:**
+- Melihat semua konten `course`
+- Menilai `students` (`assignments` yang sudah ada)
+- Berpartisipasi dalam `activities`
+- Melihat laporan dan `gradebook`
+- Berkomunikasi dengan `students`
+- Mengunduh konten `course`
 
-**Typical Use Cases:**
-- Teaching Assistant
-- Guest Lecturer
-- Grader
+**Contoh Penggunaan Umum:**
+- Asisten Pengajar
+- Dosen Tamu
+- Penilai
 - Tutor
-- Observer dengan grading rights
+- Pengamat dengan hak menilai
 
-**Important Capabilities:**
+**Kemampuan Penting:**
 ```
 moodle/grade:edit - Edit grades (limited)
 moodle/course:viewhiddenactivities - View hidden content
@@ -514,38 +514,38 @@ moodle/user:viewdetails - View student profiles
 
 ![Non-editing Teacher Interface](img/pengguna/04-define-roles.png)
 
-**Non-editing Teacher vs Teacher:**
+**Perbandingan Non-editing Teacher dan Teacher:**
 
-| Capability | Non-editing Teacher | Teacher |
-|------------|-------------------|---------|
-| Create activities | ❌ | ✅ |
-| Edit course content | ❌ | ✅ |
-| Grade assignments | ✅ | ✅ |
-| View gradebook | ✅ | ✅ |
-| Enroll students | ❌ | ✅ |
-| Course backup | ❌ | ✅ |
+| Kemampuan | Non-editing Teacher | Teacher |
+|---|---|---|
+| Membuat `activities` | ❌ | ✅ |
+| Mengedit konten `course` | ❌ | ✅ |
+| Menilai `assignments` | ✅ | ✅ |
+| Melihat `gradebook` | ✅ | ✅ |
+| Mendaftarkan `students` | ❌ | ✅ |
+| Cadangan `course` | ❌ | ✅ |
 
 ### 6. Student
 
-**Scope**: Course level
-**Purpose**: Learn dan participate dalam course activities
+**Cakupan**: Tingkat `Course`
+**Tujuan**: Belajar dan berpartisipasi dalam aktivitas `course`
 
-**Key Capabilities:**
-- View course content
-- Submit assignments
-- Take quizzes
-- Participate dalam forums
-- View own grades
-- Download resources
-- Participate dalam group activities
+**Kemampuan Utama:**
+- Melihat konten `course`
+- Mengirim `assignments`
+- Mengerjakan `quizzes`
+- Berpartisipasi dalam `forums`
+- Melihat nilai sendiri
+- Mengunduh `resources`
+- Berpartisipasi dalam aktivitas grup
 
-**Typical Use Cases:**
-- Learner
-- Trainee
-- Course Participant
-- Enrolled User
+**Contoh Penggunaan Umum:**
+- Pelajar
+- Peserta Pelatihan
+- Peserta `Course`
+- Pengguna Terdaftar
 
-**Important Capabilities:**
+**Kemampuan Penting:**
 ```
 moodle/course:view - View course content
 moodle/mod/assign:submit - Submit assignments
@@ -556,471 +556,471 @@ moodle/grade:view - View own grades
 
 ![Student Interface](img/pengguna/04-define-roles.png)
 
-**Student Experience:**
-- **Course Access**: Navigate course content
-- **Activity Participation**: Complete assignments dan quizzes
-- **Communication**: Forum discussions, messaging
-- **Progress Tracking**: View grades dan completion
-- **Resource Access**: Download materials
+**Pengalaman Student:**
+- **Akses Course**: Menavigasi konten `course`
+- **Partisipasi Aktivitas**: Menyelesaikan `assignments` dan `quizzes`
+- **Komunikasi**: Diskusi `forum`, pesan
+- **Pelacakan Kemajuan**: Melihat nilai dan penyelesaian
+- **Akses Resource**: Mengunduh materi
 
 ### 7. Guest
 
-**Scope**: System atau Course level (jika guest access enabled)
-**Purpose**: Limited access untuk preview content
+**Cakupan**: Tingkat `System` atau `Course` (jika akses tamu diaktifkan)
+**Tujuan**: Akses terbatas untuk pratinjau konten
 
-**Key Capabilities:**
-- View course content (read-only)
-- Browse public areas
-- No submission capabilities
-- No grade access
-- Limited forum participation
+**Kemampuan Utama:**
+- Melihat konten `course` (hanya baca)
+- Menjelajahi area publik
+- Tidak ada kemampuan pengiriman
+- Tidak ada akses nilai
+- Partisipasi `forum` terbatas
 
-**Typical Use Cases:**
-- Course Preview
-- Public Content Access
-- Demonstration Account
-- Trial Access
+**Contoh Penggunaan Umum:**
+- Pratinjau `Course`
+- Akses Konten Publik
+- Akun Demonstrasi
+- Akses Uji Coba
 
 ![Guest Access](img/pengguna/04-define-roles.png)
 
-**Guest Limitations:**
-- Cannot submit assignments
-- Cannot take graded quizzes
-- Cannot access gradebook
-- No permanent progress tracking
-- Limited forum interaction
+**Batasan Guest:**
+- Tidak dapat mengirim `assignments`
+- Tidak dapat mengerjakan `quizzes` yang dinilai
+- Tidak dapat mengakses `gradebook`
+- Tidak ada pelacakan kemajuan permanen
+- Interaksi `forum` terbatas
 
 ### 8. Authenticated User
 
-**Scope**: System level (default role)
-**Purpose**: Basic privileges untuk logged-in users
+**Cakupan**: Tingkat `System` (`role` default)
+**Tujuan**: Hak istimewa dasar untuk pengguna yang sudah `login`
 
-**Key Capabilities:**
-- Browse course catalog
-- View public profiles
-- Access frontpage content
-- Use messaging system
-- View public forums
+**Kemampuan Utama:**
+- Menjelajahi katalog `course`
+- Melihat profil publik
+- Mengakses konten halaman depan
+- Menggunakan sistem pesan
+- Melihat `forum` publik
 
-**Automatic Assignment**: Setiap user yang login automatically mendapat role ini
+**Penetapan Otomatis**: Setiap pengguna yang `login` secara otomatis mendapatkan `role` ini.
 
 ![Authenticated User Interface](img/pengguna/04-define-roles.png)
 
-## Advanced Roles dan Custom Roles
+## Role Lanjutan dan Kustom
 
-### Department-specific Roles
+### Role Spesifik Departemen
 
-Banyak institusi membuat custom roles untuk kebutuhan spesifik:
+Banyak institusi membuat `role` kustom untuk kebutuhan spesifik:
 
 #### Academic Advisor
 ```
 Capabilities:
-- View student progress across courses
-- Access to completion reports
-- Communication dengan students
-- Limited grade viewing
+- Melihat kemajuan `student` di seluruh `courses`
+- Akses ke laporan penyelesaian
+- Komunikasi dengan `students`
+- Tampilan nilai terbatas
 ```
 
 #### Librarian
 ```
 Capabilities:
-- Access ke resource management
-- Upload educational materials
-- Manage digital library content
-- View usage statistics
+- Akses ke manajemen `resource`
+- Mengunggah materi pendidikan
+- Mengelola konten perpustakaan digital
+- Melihat statistik penggunaan
 ```
 
 #### Parent/Guardian
 ```
 Capabilities:
-- View child's progress
-- Access to grade reports
-- Limited communication dengan teachers
-- No content editing
+- Melihat kemajuan anak
+- Akses ke laporan nilai
+- Komunikasi terbatas dengan `teachers`
+- Tidak ada `editing` konten
 ```
 
 ![Custom Role Creation](img/pengguna/04-define-roles.png)
 
-### Creating Custom Roles
+### Membuat Role Kustom
 
-1. **Navigate ke Role Management**
-   - Site administration → Users → Permissions → Define roles
+1. **Navigasi ke Manajemen Role**
+   - `Site administration` → `Users` → `Permissions` → `Define roles`
    
-2. **Create New Role**
-   - Click "Add a new role"
-   - Choose archetype (base role untuk inherit capabilities)
-   - Set role name dan description
+2. **Buat Role Baru**
+   - Klik "Add a new role"
+   - Pilih `archetype` (`role` dasar untuk mewarisi `capabilities`)
+   - Atur nama dan deskripsi `role`
 
-3. **Configure Capabilities**
-   - Set permissions untuk each capability
-   - Use inheritance atau override
-   - Test dengan different contexts
+3. **Konfigurasi Capabilities**
+   - Atur `permissions` untuk setiap `capability`
+   - Gunakan `inheritance` atau `override`
+   - Uji dengan `contexts` yang berbeda
 
-4. **Assign Role**
-   - Assign role ke users dalam appropriate context
-   - Monitor usage dan adjust permissions
+4. **Tetapkan Role**
+   - Tetapkan `role` ke pengguna dalam `context` yang sesuai
+   - Pantau penggunaan dan sesuaikan `permissions`
 
 ![Role Creation Process](img/pengguna/04-define-roles.png)
 
-## Role Assignment dan Management
+## Penetapan dan Manajemen Role
 
-### Manual Role Assignment
+### Penetapan Role Manual
 
-#### At System Level
-1. Navigate ke **Site administration** → **Users** → **Permissions** → **Assign system roles**
-2. Select role dari available roles
-3. Search dan select users untuk assign
-4. Click "Add" untuk assign role
+#### Pada Tingkat Sistem
+1. Navigasi ke **Site administration** → **Users** → **Permissions** → **Assign system roles**
+2. Pilih `role` dari `role` yang tersedia
+3. Cari dan pilih pengguna untuk ditetapkan
+4. Klik "Add" untuk menetapkan `role`
 
 ![System Role Assignment](img/pengguna/05-assign-system-roles.png)
 
-#### At Course Level
-1. Go to course
-2. Click **Participants** dari course navigation
-3. Click **Enrol users** atau **Assign roles**
-4. Select role dan search users
-5. Confirm assignment
+#### Pada Tingkat Course
+1. Buka `course`
+2. Klik **Participants** dari navigasi `course`
+3. Klik **Enrol users** atau **Assign roles**
+4. Pilih `role` dan cari pengguna
+5. Konfirmasi penetapan
 
 ![Course Role Assignment](img/pengguna/05-assign-system-roles.png)
 
-#### At Category Level
-1. Navigate ke course category
-2. Click **Assign roles** di category settings
-3. Select appropriate role
-4. Assign users dengan specific category permissions
+#### Pada Tingkat Kategori
+1. Navigasi ke kategori `course`
+2. Klik **Assign roles** di pengaturan kategori
+3. Pilih `role` yang sesuai
+4. Tetapkan pengguna dengan `permissions` kategori spesifik
 
-### Bulk User Operations
+### Operasi Pengguna Massal
 
-#### CSV Upload
-1. Prepare CSV file dengan user data dan role assignments
-2. Navigate ke **Site administration** → **Users** → **Upload users**
-3. Map CSV columns ke Moodle fields
-4. Include role assignment dalam upload process
+#### Unggah CSV
+1. Siapkan file CSV dengan data pengguna dan penetapan `role`
+2. Navigasi ke **Site administration** → **Users** → **Upload users**
+3. Petakan kolom CSV ke kolom Moodle
+4. Sertakan penetapan `role` dalam proses unggah
 
-#### Cohort-based Assignment
-1. Create cohorts (groups of users)
-2. Assign roles ke entire cohorts
-3. Use cohort enrollment untuk automatic course access
+#### Penetapan Berbasis Cohort
+1. Buat `cohorts` (grup pengguna)
+2. Tetapkan `roles` ke seluruh `cohorts`
+3. Gunakan pendaftaran `cohort` untuk akses `course` otomatis
 
 ![Bulk Operations](img/pengguna/11-bulk-actions.png)
 
-### Role Override dan Prohibit
+### Override dan Prohibit Role
 
 #### Override
-- Mengubah permission dalam specific context
-- Child context inherit overrides
-- Useful untuk temporary permissions
+- Mengubah `permission` dalam `context` spesifik
+- `Child context` mewarisi `overrides`
+- Berguna untuk `permissions` sementara
 
 #### Prohibit
-- Explicitly deny permission
-- Cannot be overridden di child contexts
-- Use untuk security restrictions
+- Secara eksplisit menolak `permission`
+- Tidak dapat di-`override` di `child contexts`
+- Gunakan untuk batasan keamanan
 
 ![Override/Prohibit Interface](img/pengguna/06-user-permissions.png)
 
-## Enrollment Methods dan Role Assignment
+## Metode Pendaftaran dan Penetapan Role
 
-### Self Enrollment
-- Students enroll themselves dengan enrollment key
-- Automatic role assignment (usually Student)
-- Course-level configuration
+### Pendaftaran Mandiri (Self Enrollment)
+- `Students` mendaftarkan diri mereka sendiri dengan `enrollment key`
+- Penetapan `role` otomatis (biasanya `Student`)
+- Konfigurasi tingkat `course`
 
-### Manual Enrollment
-- Teachers/Managers manually enroll users
-- Can assign different roles during enrollment
-- Full control over who gets access
+### Pendaftaran Manual
+- `Teachers`/`Managers` mendaftarkan pengguna secara manual
+- Dapat menetapkan `role` yang berbeda selama pendaftaran
+- Kontrol penuh atas siapa yang mendapatkan akses
 
-### Cohort Sync
-- Automatic enrollment based pada cohort membership
-- Synchronize role assignments
-- Useful untuk large-scale deployments
+### Sinkronisasi Cohort
+- Pendaftaran otomatis berdasarkan keanggotaan `cohort`
+- Sinkronkan penetapan `role`
+- Berguna untuk penyebaran skala besar
 
-### Database Enrollment
-- External database integration
-- Automatic role assignment based pada database records
-- Enterprise-level user management
+### Pendaftaran Database
+- Integrasi database eksternal
+- Penetapan `role` otomatis berdasarkan catatan database
+- Manajemen pengguna tingkat perusahaan
 
 ![Enrollment Methods](img/pengguna/12-authentication.png)
 
-## Permission System Details
+## Detail Sistem Izin
 
-### Capability Matrix
+### Matriks Capability
 
-Moodle menggunakan capability matrix untuk determine final permissions:
+Moodle menggunakan matriks `capability` untuk menentukan `permissions` akhir:
 
 | Context | Inherit | Allow | Prevent | Prohibit | Final |
-|---------|---------|-------|---------|----------|-------|
+|---|---|---|---|---|---|
 | System  | -       | ✅    | -       | -        | Allow |
 | Course  | ✅      | -     | ❌      | -        | Prevent |
 | Activity| ❌      | -     | -       | ❌       | Prohibit |
 
-### Resolution Rules
-1. **Prohibit** always wins (highest priority)
-2. **Prevent** blocks inherited Allow
-3. **Allow** grants permission
-4. **Inherit** uses parent context permission
+### Aturan Resolusi
+1. **Prohibit** selalu menang (prioritas tertinggi)
+2. **Prevent** memblokir `Allow` yang diwariskan
+3. **Allow** memberikan `permission`
+4. **Inherit** menggunakan `permission` dari `context` induk
 
 ![Permission Resolution](img/pengguna/13-role-matrix.png)
 
-### Checking Permissions
+### Memeriksa Izin
 
-#### For Administrators
-1. Navigate ke **Site administration** → **Users** → **Permissions** → **Check system permissions**
-2. Select user dan context
-3. Review effective permissions
-4. Identify permission sources
+#### Untuk Administrator
+1. Navigasi ke **Site administration** → **Users** → **Permissions** → **Check system permissions**
+2. Pilih pengguna dan `context`
+3. Tinjau `permissions` yang efektif
+4. Identifikasi sumber `permission`
 
-#### Permission Reports
-- User permission reports
-- Role effectiveness analysis
-- Capability auditing
-- Context-specific permissions
+#### Laporan Izin
+- Laporan `permission` pengguna
+- Analisis efektivitas `role`
+- Audit `capability`
+- `Permissions` spesifik `context`
 
 ![Permission Checking Tools](img/pengguna/07-check-permissions.png)
 
-## Best Practices untuk Role Management
+## Praktik Terbaik untuk Manajemen Role
 
-### 1. Role Design Principles
+### 1. Prinsip Desain Role
 
-**Principle of Least Privilege**
-- Grant minimum permissions necessary
-- Regular review dan cleanup
-- Avoid over-privileged accounts
+**Prinsip Hak Istimewa Terendah (Principle of Least Privilege)**
+- Berikan `permissions` minimum yang diperlukan
+- Tinjau dan bersihkan secara teratur
+- Hindari akun dengan hak istimewa berlebih
 
-**Role Clarity**
-- Clear role names dan descriptions
-- Document role purposes
-- Consistent role application
+**Kejelasan Role**
+- Nama dan deskripsi `role` yang jelas
+- Dokumentasikan tujuan `role`
+- Penerapan `role` yang konsisten
 
-**Separation of Duties**
-- Different roles untuk different functions
-- Avoid conflicting responsibilities
-- Clear accountability
+**Pemisahan Tugas (Separation of Duties)**
+- `Role` yang berbeda untuk fungsi yang berbeda
+- Hindari tanggung jawab yang bertentangan
+- Akuntabilitas yang jelas
 
-### 2. Security Considerations
+### 2. Pertimbangan Keamanan
 
-**Administrator Management**
-- Limit administrator accounts
-- Use strong authentication
-- Regular access reviews
-- Activity monitoring
+**Manajemen Administrator**
+- Batasi akun administrator
+- Gunakan otentikasi yang kuat
+- Tinjauan akses secara teratur
+- Pemantauan aktivitas
 
-**Guest Access Control**
-- Disable guest access if not needed
-- Limit guest capabilities
-- Monitor guest activities
-- Secure public content
+**Kontrol Akses Tamu**
+- Nonaktifkan akses tamu jika tidak diperlukan
+- Batasi `capabilities` tamu
+- Pantau aktivitas tamu
+- Amankan konten publik
 
-**Role Assignment Auditing**
-- Regular role assignment reviews
-- Remove unused assignments
-- Monitor privilege escalation
-- Document role changes
+**Audit Penetapan Role**
+- Tinjauan penetapan `role` secara teratur
+- Hapus penetapan yang tidak digunakan
+- Pantau eskalasi hak istimewa
+- Dokumentasikan perubahan `role`
 
-### 3. Organizational Alignment
+### 3. Penyelarasan Organisasi
 
-**Academic Structure**
-- Align roles dengan organizational hierarchy
-- Clear responsibility boundaries
-- Support academic workflows
-- Faculty self-service capabilities
+**Struktur Akademik**
+- Selaraskan `roles` dengan hierarki organisasi
+- Batasan tanggung jawab yang jelas
+- Dukung alur kerja akademik
+- `Capabilities` layanan mandiri fakultas
 
-**Training dan Support**
-- Role-specific training programs
-- Clear documentation
-- Help desk support
-- User guides
+**Pelatihan dan Dukungan**
+- Program pelatihan khusus `role`
+- Dokumentasi yang jelas
+- Dukungan `help desk`
+- Panduan pengguna
 
-### 4. Scalability Planning
+### 4. Perencanaan Skalabilitas
 
-**Large Institution Considerations**
-- Cohort-based management
-- Automated role assignment
-- Delegation of administration
-- Performance optimization
+**Pertimbangan Institusi Besar**
+- Manajemen berbasis `cohort`
+- Penetapan `role` otomatis
+- Delegasi administrasi
+- Optimasi kinerja
 
-**Growth Management**
-- Scalable role structures
-- Automated processes
-- Resource planning
-- Performance monitoring
+**Manajemen Pertumbuhan**
+- Struktur `role` yang dapat diskalakan
+- Proses otomatis
+- Perencanaan sumber daya
+- Pemantauan kinerja
 
-## Common Role Scenarios
+## Skenario Role Umum
 
-### Scenario 1: University Implementation
+### Skenario 1: Implementasi Universitas
 
-**Roles Hierarchy:**
+**Hierarki Role:**
 ```
-System Administrator (1-2 users)
-├── Academic Manager (Deans)
-├── Department Manager (Heads)
-├── Course Creator (Senior Faculty)
-├── Teacher (Faculty)
+System Administrator (1-2 pengguna)
+├── Academic Manager (Dekan)
+├── Department Manager (Ketua)
+├── Course Creator (Fakultas Senior)
+├── Teacher (Fakultas)
 ├── Teaching Assistant (Non-editing Teacher)
 └── Student
 ```
 
-**Custom Roles:**
+**Role Kustom:**
 - Academic Advisor
 - Librarian
 - External Examiner
 - Parent/Guardian Access
 
-### Scenario 2: Corporate Training
+### Skenario 2: Pelatihan Perusahaan
 
-**Roles Structure:**
+**Struktur Role:**
 ```
 Training Administrator
-├── Training Manager (Department Heads)
+├── Training Manager (Kepala Departemen)
 ├── Course Developer (Course Creator)
 ├── Trainer (Teacher)
 ├── Mentor (Non-editing Teacher)
 └── Employee (Student)
 ```
 
-**Custom Roles:**
-- HR Administrator
-- Compliance Officer
-- External Trainer
-- Supervisor Access
+**Role Kustom:**
+- Administrator HR
+- Petugas Kepatuhan
+- Pelatih Eksternal
+- Akses Supervisor
 
-### Scenario 3: Small Educational Institution
+### Skenario 3: Institusi Pendidikan Kecil
 
-**Simplified Structure:**
+**Struktur yang Disederhanakan:**
 ```
-Administrator (Principal/IT)
-├── Teacher (All Faculty)
+Administrator (Kepala Sekolah/TI)
+├── Teacher (Semua Fakultas)
 └── Student
 ```
 
-**Additional Roles:**
-- Parent Access (for younger students)
-- Guest (for prospective students)
+**Role Tambahan:**
+- Akses Orang Tua (untuk siswa yang lebih muda)
+- Tamu (untuk calon siswa)
 
 ![Role Hierarchy Examples](img/pengguna/13-role-matrix.png)
 
-## Monitoring dan Reporting
+## Pemantauan dan Pelaporan
 
-### User Activity Reports
+### Laporan Aktivitas Pengguna
 
-1. **Navigate ke Reports**
-   - Site administration → Reports → Logs
-   - Course-specific reports
-   - User activity tracking
+1. **Navigasi ke Laporan**
+   - `Site administration` → `Reports` → `Logs`
+   - Laporan spesifik `course`
+   - Pelacakan aktivitas pengguna
 
-2. **Role Effectiveness Reports**
-   - Permission usage analysis
-   - Role assignment history
-   - Access pattern monitoring
+2. **Laporan Efektivitas Role**
+   - Analisis penggunaan `permission`
+   - Riwayat penetapan `role`
+   - Pemantauan pola akses
 
 ![Activity Reports](img/pengguna/01-browse-users.png)
 
-### Compliance Monitoring
+### Pemantauan Kepatuhan
 
-**Data Protection Compliance**
-- User consent tracking
-- Data access monitoring
-- Retention policy enforcement
-- Privacy rights management
+**Kepatuhan Perlindungan Data**
+- Pelacakan persetujuan pengguna
+- Pemantauan akses data
+- Penegakan kebijakan retensi
+- Manajemen hak privasi
 
-**Academic Integrity**
-- Access pattern analysis
-- Unusual activity detection
-- Grade change auditing
-- Content access monitoring
+**Integritas Akademik**
+- Analisis pola akses
+- Deteksi aktivitas tidak biasa
+- Audit perubahan nilai
+- Pemantauan akses konten
 
-## Troubleshooting Common Issues
+## Pemecahan Masalah Umum
 
-### Permission Problems
+### Masalah Izin
 
-**Symptoms:**
-- Users cannot access expected content
-- Error messages about insufficient permissions
-- Missing menu items atau functions
+**Gejala:**
+- Pengguna tidak dapat mengakses konten yang diharapkan
+- Pesan kesalahan tentang `permissions` yang tidak mencukupi
+- Item menu atau fungsi yang hilang
 
-**Solutions:**
-1. Check role assignments
-2. Verify capability settings
-3. Look for overrides/prohibits
-4. Test dengan different contexts
+**Solusi:**
+1. Periksa penetapan `role`
+2. Verifikasi pengaturan `capability`
+3. Cari `overrides`/`prohibits`
+4. Uji dengan `contexts` yang berbeda
 
-### Role Assignment Issues
+### Masalah Penetapan Role
 
-**Symptoms:**
-- Users assigned wrong roles
-- Multiple conflicting roles
-- Roles not taking effect
+**Gejala:**
+- Pengguna diberi `role` yang salah
+- Beberapa `role` yang bertentangan
+- `Role` tidak berlaku
 
-**Solutions:**
-1. Review assignment process
-2. Check context hierarchy
-3. Clear cache if needed
-4. Verify enrollment status
+**Solusi:**
+1. Tinjau proses penetapan
+2. Periksa hierarki `context`
+3. Bersihkan `cache` jika perlu
+4. Verifikasi status pendaftaran
 
-### Performance Issues
+### Masalah Kinerja
 
-**Symptoms:**
-- Slow role assignment
-- Long login times
-- System lag dengan many roles
+**Gejala:**
+- Penetapan `role` yang lambat
+- Waktu `login` yang lama
+- Kelambatan sistem dengan banyak `role`
 
-**Solutions:**
-1. Optimize role structure
-2. Use cohort-based assignment
-3. Regular cleanup unused assignments
-4. Database optimization
+**Solusi:**
+1. Optimalkan struktur `role`
+2. Gunakan penetapan berbasis `cohort`
+3. Pembersihan rutin penetapan yang tidak digunakan
+4. Optimasi database
 
-## Migration dan Import
+## Migrasi dan Impor
 
-### Role Migration Between Sites
+### Migrasi Role Antar Situs
 
-1. **Export Role Definitions**
-   - Use Moodle backup/restore
-   - Custom role export tools
-   - Documentation transfer
+1. **Ekspor Definisi Role**
+   - Gunakan `backup`/`restore` Moodle
+   - Alat ekspor `role` kustom
+   - Transfer dokumentasi
 
-2. **Import Process**
-   - Map existing roles
-   - Adjust capabilities
-   - Test assignments
-   - Verify permissions
+2. **Proses Impor**
+   - Petakan `role` yang ada
+   - Sesuaikan `capabilities`
+   - Uji penetapan
+   - Verifikasi `permissions`
 
-### User Import dengan Roles
+### Impor Pengguna dengan Role
 
-1. **CSV Preparation**
-   - Include role information
-   - Map organizational structure
-   - Prepare cohort assignments
+1. **Persiapan CSV**
+   - Sertakan informasi `role`
+   - Petakan struktur organisasi
+   - Siapkan penetapan `cohort`
 
-2. **Import Execution**
-   - Test dengan small batches
-   - Verify role assignments
-   - Monitor untuk errors
-   - Validate permissions
+2. **Eksekusi Impor**
+   - Uji dengan batch kecil
+   - Verifikasi penetapan `role`
+   - Pantau kesalahan
+   - Validasi `permissions`
 
 ![Import/Export Process](img/pengguna/14-csv-template.png)
 
 ## Kesimpulan
 
-Effective role management adalah kunci untuk successful Moodle implementation. Key takeaways:
+Manajemen `role` yang efektif adalah kunci keberhasilan implementasi Moodle. Poin-poin penting:
 
-1. **Understanding Role System**: Pahami capabilities, contexts, dan inheritance
-2. **Security First**: Apply principle of least privilege dan regular auditing
-3. **Organizational Alignment**: Design roles yang match struktur institusi
-4. **Documentation**: Maintain clear documentation untuk semua roles
-5. **Regular Review**: Periodic review dan cleanup role assignments
-6. **Training**: Provide adequate training untuk all user roles
-7. **Monitoring**: Continuous monitoring untuk security dan performance
+1. **Memahami Sistem Role**: Pahami `capabilities`, `contexts`, dan `inheritance`.
+2. **Keamanan Utama**: Terapkan `principle of least privilege` dan audit rutin.
+3. **Penyelarasan Organisasi**: Desain `roles` yang sesuai dengan struktur institusi.
+4. **Dokumentasi**: Pelihara dokumentasi yang jelas untuk semua `roles`.
+5. **Tinjauan Rutin**: Tinjau dan bersihkan penetapan `role` secara berkala.
+6. **Pelatihan**: Berikan pelatihan yang memadai untuk semua `role` pengguna.
+7. **Pemantauan**: Pemantauan berkelanjutan untuk keamanan dan kinerja.
 
-Dengan proper role management, Moodle dapat provide secure, efficient, dan user-friendly learning environment untuk semua stakeholders.
+Dengan manajemen `role` yang tepat, Moodle dapat menyediakan lingkungan belajar yang aman, efisien, dan ramah pengguna untuk semua pemangku kepentingan.
 
 ---
 
-**Key Reminders:**
-- Always test role changes di development environment first
-- Document semua custom roles dan modifications
-- Regular backup sebelum major role system changes
-- Monitor system performance after role modifications
-- Keep role structure as simple as possible while meeting needs
+**Pengingat Utama:**
+- Selalu uji perubahan `role` di lingkungan pengembangan terlebih dahulu.
+- Dokumentasikan semua `role` kustom dan modifikasinya.
+- Lakukan `backup` rutin sebelum perubahan besar pada sistem `role`.
+- Pantau kinerja sistem setelah modifikasi `role`.
+- Jaga agar struktur `role` sesederhana mungkin sambil tetap memenuhi kebutuhan.
 
-**Next:** [Bab 6 - Course Management →](course-management.md)
+**Berikutnya:** [Bab 6 - Course Management →](course-management.md)
