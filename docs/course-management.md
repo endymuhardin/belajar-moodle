@@ -22,6 +22,8 @@ Moodle menawarkan beberapa format `course`:
 
 1. Buka **`Site administration`** → **`Courses`** → **`Add a new course`**.
 
+![Add a new course](img/course/01-add-new-course.png)
+
 ### Mengisi Detail `Course`
 
 **Informasi Umum:**
@@ -35,6 +37,8 @@ Moodle menawarkan beberapa format `course`:
 **Deskripsi:**
 - **`Course summary`**: Deskripsi singkat tentang `course`.
 - **`Course image`**: Gambar yang mewakili `course`.
+
+![Course settings](img/course/02-course-settings.png)
 
 ### Pengaturan `Course`
 
@@ -59,6 +63,8 @@ Aktivitas adalah komponen interaktif dari `course` Anda.
    - **`Glossary`**: Kumpulan istilah dan definisi.
    - **`Lesson`**: Materi pembelajaran interaktif.
    - **`SCORM package`**: Paket konten standar `e-learning`.
+
+![Add an activity or resource](img/course/03-add-activity-or-resource.png)
 
 ### Menambah Sumber Daya
 
@@ -88,6 +94,8 @@ Sumber daya adalah konten yang dapat dilihat atau diunduh oleh siswa.
 3. Klik **`Enrol users`**.
 4. Cari pengguna dan tetapkan `role` (misalnya, `Student`).
 
+![Enrol users](img/course/04-enrol-users.png)
+
 ### Pendaftaran Mandiri (`Self-enrolment`)
 
 1. Buka **`Course administration`** → **`Users`** → **`Enrolment methods`**.
@@ -112,6 +120,8 @@ Sumber daya adalah konten yang dapat dilihat atau diunduh oleh siswa.
    - Mengatur bobot untuk setiap item penilaian.
    - Membuat kategori nilai.
    - Mengatur skala nilai.
+
+![Gradebook setup](img/course/05-gradebook-setup.png)
 
 ### Menilai Tugas
 

@@ -5,7 +5,8 @@ const path = require('path');
 const scripts = [
   './chapter3-installation/installation-screenshots.js',
   './chapter4-administration/admin-screenshots.js',
-  './chapter5-user-management/user-screenshots.js'
+  './chapter5-user-management/user-screenshots.js',
+  './chapter6-course-management/course-screenshots.js'
 ];
 
 console.log('🚀 Starting screenshot generation for all chapters...\n');
@@ -43,6 +44,7 @@ async function runAllScripts() {
   console.log('   - docs/img/instalasi/');
   console.log('   - docs/img/administrasi/');
   console.log('   - docs/img/pengguna/');
+  console.log('   - docs/img/course/');
 }
 
 // Execute
