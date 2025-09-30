@@ -64,7 +64,7 @@ Aktivitas adalah komponen interaktif dari `course` Anda.
    - **`Lesson`**: Materi pembelajaran interaktif.
    - **`SCORM package`**: Paket konten standar `e-learning`.
 
-![Add an activity or resource](img/course/03-add-activity-or-resource.png)
+
 
 ### Menambah Sumber Daya
 
