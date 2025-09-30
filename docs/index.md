@@ -4,56 +4,56 @@
 
 ## Selamat Datang!
 
-Buku ini adalah panduan komprehensif untuk mempelajari **Moodle Learning Management System (LMS)** dari dasar hingga mahir. Dengan pendekatan praktis menggunakan Docker Compose, Anda akan belajar instalasi, konfigurasi, administrasi, dan pengelolaan Moodle untuk berbagai keperluan pendidikan.
+Buku ini adalah panduan komprehensif untuk mempelajari **Moodle Learning Management System (LMS)** dari dasar hingga mahir. Dengan pendekatan praktis menggunakan `Docker Compose`, Anda akan belajar instalasi, konfigurasi, administrasi, dan pengelolaan Moodle untuk berbagai keperluan pendidikan.
 
 ## 🎯 Untuk Siapa Buku Ini?
 
-- **System Administrator** - Deploy dan maintain Moodle di institusi
-- **IT Support** - Troubleshoot dan support pengguna Moodle
+- **`System Administrator`** - `Deploy` dan `maintain` Moodle di institusi
+- **`IT Support`** - Memecahkan masalah dan mendukung pengguna Moodle
 - **Guru/Instruktur** - Maksimalkan fitur Moodle untuk pembelajaran
-- **Developer** - Setup development environment untuk Moodle
-- **Mahasiswa IT** - Pelajari enterprise LMS platform
+- **`Developer`** - `Setup` `environment` pengembangan untuk Moodle
+- **Mahasiswa IT** - Pelajari `platform` LMS perusahaan
 
 ## 📚 Apa yang Akan Anda Pelajari?
 
 ### Fundamental
-- ✅ Instalasi Moodle dengan Docker Compose
-- ✅ Konfigurasi environment di Windows dengan WSL 2
-- ✅ Setup database dan web server
+- ✅ Instalasi Moodle dengan `Docker Compose`
+- ✅ Konfigurasi `environment` di Windows dengan WSL 2
+- ✅ `Setup` `database` dan `web server`
 
-### Administration
-- ✅ Site configuration dan security
-- ✅ User management dan authentication
-- ✅ Backup, restore, dan disaster recovery
-- ✅ Performance tuning dan optimization
+### Administrasi
+- ✅ Konfigurasi situs dan keamanan
+- ✅ Manajemen pengguna dan otentikasi
+- ✅ `Backup`, `restore`, dan pemulihan bencana
+- ✅ Penyesuaian dan optimasi kinerja
 
-### Course Management
-- ✅ Membuat dan mengelola courses
-- ✅ Activities dan resources
-- ✅ Grading dan assessment
-- ✅ Enrollment methods
+### Manajemen `Course`
+- ✅ Membuat dan mengelola `courses`
+- ✅ `Activities` dan `resources`
+- ✅ Penilaian dan `assessment`
+- ✅ Metode pendaftaran
 
-### Advanced Topics
-- ✅ Plugin installation dan management
-- ✅ Theme customization
-- ✅ Integration dengan external systems
-- ✅ Monitoring dan analytics
+### Topik Lanjutan
+- ✅ Instalasi dan manajemen `plugin`
+- ✅ Kustomisasi `theme`
+- ✅ Integrasi dengan sistem eksternal
+- ✅ Pemantauan dan analitik
 
-## 🚀 Quick Start
+## 🚀 Mulai Cepat
 
-### Prerequisites
+### Prasyarat
 - Windows 10/11 dengan minimum 8GB RAM
-- Internet connection untuk download Docker images
-- Basic knowledge tentang command line
+- Koneksi internet untuk mengunduh `Docker images`
+- Pengetahuan dasar tentang `command line`
 
 ### 3 Langkah Mudah
 
-1. **Install Docker Desktop dan WSL 2**
+1. **Instal `Docker Desktop` dan WSL 2**
    ```powershell
    wsl --install
    ```
 
-2. **Clone repository dan setup**
+2. **`Clone` repositori dan `setup`**
    ```bash
    git clone <repository-url>
    cd moodle-docker
@@ -70,134 +70,134 @@ Buku ini adalah panduan komprehensif untuk mempelajari **Moodle Learning Managem
 ## 📖 Struktur Buku
 
 ### Bagian 1: Persiapan
-- [Bab 1: Deskripsi dan Outline](deskripsi-dan-outline.md)
+- [Bab 1: Deskripsi dan Garis Besar](deskripsi-dan-outline.md)
 - [Bab 2: Persiapan Komputer Windows](persiapan-komputer-windows.md)
 
 ### Bagian 2: Instalasi
-- [Bab 3: Setup Moodle dengan Docker Compose](setup-moodle-docker-compose.md)
+- [Bab 3: `Setup` Moodle dengan `Docker Compose`](setup-moodle-docker-compose.md)
 
 ### Bagian 3: Administrasi
 - [Bab 4: Administrasi Moodle](administrasi-moodle.md)
-- [Bab 5: Manajemen Pengguna dan Role](pengguna-dan-role.md)
+- [Bab 5: Manajemen Pengguna dan `Role`](pengguna-dan-role.md)
 
-### Bagian 4: Course Management
-- [Bab 6: Membuat dan Mengelola Course](course-management.md)
+### Bagian 4: Manajemen `Course`
+- [Bab 6: Membuat dan Mengelola `Course`](course-management.md)
 
-### Bagian 5: Maintenance
-- [Bab 7: Backup dan Restore](backup-restore.md)
-- [Bab 8: Troubleshooting](troubleshooting.md)
+### Bagian 5: Pemeliharaan
+- [Bab 7: `Backup` dan `Restore`](backup-restore.md)
+- [Bab 8: Pemecahan Masalah](troubleshooting.md)
 
-### Appendix
+### Lampiran
 - [Referensi dan Dokumentasi](referensi.md)
 
 ## 💡 Fitur Buku Ini
 
 ### Pendekatan Praktis
-- **Step-by-step tutorials** dengan screenshot
-- **Real-world scenarios** dan use cases
-- **Hands-on exercises** di setiap bab
-- **Troubleshooting guide** untuk masalah umum
+- **Tutorial langkah-demi-langkah** dengan `screenshot`
+- **Skenario dunia nyata** dan kasus penggunaan
+- **Latihan langsung** di setiap bab
+- **Panduan pemecahan masalah** untuk masalah umum
 
-### Modern Technology Stack
-- **Docker Compose** untuk easy deployment
-- **WSL 2** untuk Linux environment di Windows
-- **Bitnami Images** untuk production-ready setup
-- **Local volumes** untuk persistent storage
+### `Stack` Teknologi Modern
+- **`Docker Compose`** untuk `deployment` yang mudah
+- **WSL 2** untuk `environment` Linux di Windows
+- **`Bitnami Images`** untuk `setup` yang siap `production`
+- **`Local volumes`** untuk penyimpanan persisten
 
-### Best Practices
-- Security hardening
-- Performance optimization
-- Backup strategies
-- Monitoring dan maintenance
+### Praktik Terbaik
+- Pengerasan keamanan
+- Optimasi kinerja
+- Strategi `backup`
+- Pemantauan dan pemeliharaan
 
-## 🛠️ Technology Stack
+## 🛠️ `Stack` Teknologi
 
-| Component | Technology | Version |
-|-----------|------------|---------|
-| LMS Platform | Moodle | 5.0 |
-| Container | Docker | Latest |
-| Orchestration | Docker Compose | v2 |
-| Database | MariaDB | Latest |
-| Web Server | Apache | 2.4 |
+| Komponen | Teknologi | Versi |
+|---|---|---|
+| `Platform` LMS | Moodle | 5.0 |
+| `Container` | Docker | Terbaru |
+| Orkestrasi | `Docker Compose` | v2 |
+| `Database` | MariaDB | Terbaru |
+| `Web Server` | Apache | 2.4 |
 | OS | Windows + WSL 2 | 10/11 |
 
-## 📝 Conventions
+## 📝 Konvensi
 
-### Command Line
+### `Command Line`
 ```bash
-# Comments start with #
+# Komentar diawali dengan #
 $ user-command
 # root-command
 ```
 
-### Important Notes
+### Catatan Penting
 
-> **📌 Note:** Additional information
+> **📌 Catatan:** Informasi tambahan
 
-> **⚠️ Warning:** Important caution
+> **⚠️ Peringatan:** Peringatan penting
 
-> **💡 Tip:** Helpful hints
+> **💡 Kiat:** Petunjuk bermanfaat
 
-> **🔧 Troubleshooting:** Problem solutions
+> **🔧 Pemecahan Masalah:** Solusi masalah
 
 ## 🤝 Kontribusi
 
-Buku ini adalah open source! Kami welcome:
-- Bug reports dan fixes
-- Improvement suggestions
-- Additional content
-- Translations
+Buku ini adalah `open source`! Kami menyambut:
+- Laporan dan perbaikan `bug`
+- Saran perbaikan
+- Konten tambahan
+- Terjemahan
 
-Silakan buat **Issue** atau **Pull Request** di GitHub repository.
+Silakan buat **`Issue`** atau **`Pull Request`** di repositori GitHub.
 
 ## 📜 Lisensi
 
 Buku ini menggunakan lisensi **Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)**.
 
 Anda bebas untuk:
-- **Share** - copy dan redistribute
-- **Adapt** - remix, transform, dan build upon
+- **Berbagi** - salin dan distribusikan ulang
+- **Adaptasi** - `remix`, ubah, dan bangun di atasnya
 
 Dengan syarat:
-- **Attribution** - memberikan kredit
-- **ShareAlike** - distribute dengan lisensi sama
+- **Atribusi** - memberikan kredit
+- **BerbagiSerupa** - distribusikan dengan lisensi yang sama
 
-## 🙏 Acknowledgments
+## 🙏 Ucapan Terima Kasih
 
-- Moodle Community untuk excellent documentation
-- Bitnami team untuk high-quality Docker images
-- Docker team untuk containerization platform
+- Komunitas Moodle untuk dokumentasi yang luar biasa
+- Tim Bitnami untuk `Docker images` berkualitas tinggi
+- Tim Docker untuk `platform` `containerization`
 - Semua kontributor yang telah membantu
 
-## 📧 Contact & Support
+## 📧 Kontak & Dukungan
 
-- **GitHub Issues:** [Report problems](https://github.com/...)
-- **Discussions:** [Community forum](https://github.com/...)
+- **`GitHub Issues`:** [Laporkan masalah](https://github.com/...)
+- **Diskusi:** [`Forum` komunitas](https://github.com/...)
 - **Email:** support@example.com
 
-## 🎓 Certification
+## 🎓 Sertifikasi
 
 Setelah menyelesaikan buku ini, Anda siap untuk:
-- Moodle Administrator Certification
-- Deploy Moodle di production environment
-- Manage enterprise-level LMS
+- Sertifikasi Administrator Moodle
+- `Deploy` Moodle di `environment` `production`
+- Mengelola LMS tingkat perusahaan
 
 ---
 
 ## Mari Mulai! 🚀
 
-Ready untuk memulai journey pembelajaran Moodle? 
+Siap untuk memulai perjalanan pembelajaran Moodle? 
 
-**[→ Mulai dari Bab 1: Deskripsi dan Outline](deskripsi-dan-outline.md)**
+**[→ Mulai dari Bab 1: Deskripsi dan Garis Besar](deskripsi-dan-outline.md)**
 
-Atau jika sudah siap dengan environment:
+Atau jika sudah siap dengan `environment`:
 
-**[→ Langsung ke Bab 3: Setup Moodle](setup-moodle-docker-compose.md)**
+**[→ Langsung ke Bab 3: `Setup` Moodle](setup-moodle-docker-compose.md)**
 
 ---
 
-*Happy Learning! Semoga buku ini membantu Anda menguasai Moodle dengan cepat dan efektif.*
+*Selamat Belajar! Semoga buku ini membantu Anda menguasai Moodle dengan cepat dan efektif.*
 
-**Version:** 1.0.0  
-**Last Updated:** September 2025  
-**Author:** Moodle Learning Team
+**Versi:** 1.0.0  
+**Terakhir Diperbarui:** September 2025  
+**Penulis:** Tim Pembelajaran Moodle

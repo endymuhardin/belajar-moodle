@@ -1,81 +1,81 @@
-# Bab 3: Setup Moodle dengan Docker Compose
+# Bab 3: `Setup` Moodle dengan `Docker Compose`
 
-Pada bab ini, kita akan melakukan instalasi Moodle menggunakan Docker Compose dengan image dari Bitnami. Pendekatan ini memberikan kemudahan dalam deployment dan maintenance.
+Pada bab ini, kita akan melakukan instalasi Moodle menggunakan `Docker Compose` dengan `image` dari Bitnami. Pendekatan ini memberikan kemudahan dalam `deployment` dan pemeliharaan.
 
-## Pengenalan Docker Compose
+## Pengenalan `Docker Compose`
 
-### Apa itu Docker Compose?
+### Apa itu `Docker Compose`?
 
-Docker Compose adalah tool untuk mendefinisikan dan menjalankan multi-container Docker applications. Dengan file YAML, kita dapat:
-- Konfigurasi multiple services (Moodle, MariaDB)
-- Define networks dan volumes
-- Start/stop semua services dengan satu command
+`Docker Compose` adalah alat untuk mendefinisikan dan menjalankan aplikasi Docker multi-`container`. Dengan `file` YAML, kita dapat:
+- Mengkonfigurasi beberapa `services` (Moodle, MariaDB)
+- Mendefinisikan `networks` dan `volumes`
+- Memulai/menghentikan semua `services` dengan satu `command`
 
-### Mengapa Bitnami Images?
+### Mengapa `Image` Bitnami?
 
-Bitnami menyediakan pre-configured images yang:
-- Production-ready dan secure by default
-- Regular updates dan patches
-- Optimized untuk performance
+Bitnami menyediakan `image` yang sudah dikonfigurasi sebelumnya yang:
+- Siap `production` dan aman secara `default`
+- Pembaruan dan `patch` rutin
+- Dioptimalkan untuk kinerja
 - Dokumentasi lengkap
 
-## Langkah 1: Setup Project Directory
+## Langkah 1: `Setup` Direktori Proyek
 
-### Membuat Struktur Project
+### Membuat Struktur Proyek
 
-1. **Buka WSL/Ubuntu Terminal**
+1. **Buka Terminal WSL/Ubuntu**
 
-2. **Buat directory project:**
+2. **Buat direktori proyek:**
    ```bash
    mkdir ~/moodle-docker
    cd ~/moodle-docker
    ```
 
-3. **Buat struktur folder:**
+3. **Buat struktur `folder`:**
    ```bash
    mkdir -p volumes/mariadb volumes/moodle volumes/moodledata
    ```
 
-   Struktur folder:
+   Struktur `folder`:
    ```
    moodle-docker/
    ├── docker-compose.yml
-   ├── .env (optional)
+   ├── .env (opsional)
    ├── .gitignore
    └── volumes/
-       ├── mariadb/      # Database files
-       ├── moodle/       # Moodle application
-       └── moodledata/   # User uploads, cache
+       ├── mariadb/      # `File` `database`
+       ├── moodle/       # Aplikasi Moodle
+       └── moodledata/   # Unggahan pengguna, `cache`
    ```
 
-## Langkah 2: Membuat Docker Compose Configuration
+## Langkah 2: Membuat Konfigurasi `Docker Compose`
 
-### File docker-compose.yml
+### `File` `docker-compose.yml`
 
-Buat file `docker-compose.yml`:
+Buat `file` `docker-compose.yml`:
 
 ```bash
 nano docker-compose.yml
 ```
 
-Isi dengan configuration berikut:
+Isi dengan konfigurasi berikut:
 
 ```yaml
-# Moodle Docker Compose Configuration
-# Using Bitnami Images
+# Konfigurasi Moodle Docker Compose
+# Menggunakan Image Bitnami
 
 services:
   mariadb:
     image: docker.io/bitnami/mariadb:latest
     environment:
-      # Database Configuration
-      - ALLOW_EMPTY_PASSWORD=yes  # Development only!
+      # Konfigurasi Database
+      - ALLOW_EMPTY_PASSWORD=yes  # Hanya untuk pengembangan!
       - MARIADB_USER=bn_moodle
       - MARIADB_DATABASE=bitnami_moodle
       - MARIADB_CHARACTER_SET=utf8mb4
       - MARIADB_COLLATE=utf8mb4_unicode_ci
     volumes:
-      # Persistent storage for database
+      # Penyimpanan persisten untuk database
       - './volumes/mariadb:/bitnami/mariadb'
     networks:
       - moodle-network
@@ -83,24 +83,24 @@ services:
   moodle:
     image: docker.io/bitnami/moodle:5.0
     ports:
-      # Map container ports to host
+      # Petakan port container ke host
       - '80:8080'
       - '443:8443'
     environment:
-      # Database Connection
+      # Koneksi Database
       - MOODLE_DATABASE_HOST=mariadb
       - MOODLE_DATABASE_PORT_NUMBER=3306
       - MOODLE_DATABASE_USER=bn_moodle
       - MOODLE_DATABASE_NAME=bitnami_moodle
-      - ALLOW_EMPTY_PASSWORD=yes  # Development only!
+      - ALLOW_EMPTY_PASSWORD=yes  # Hanya untuk pengembangan!
       
-      # Moodle Configuration (Optional)
+      # Konfigurasi Moodle (Opsional)
       # - MOODLE_USERNAME=admin
       # - MOODLE_PASSWORD=admin123
       # - MOODLE_EMAIL=admin@example.com
       # - MOODLE_SITE_NAME=My Moodle Site
     volumes:
-      # Persistent storage
+      # Penyimpanan persisten
       - './volumes/moodle:/bitnami/moodle'
       - './volumes/moodledata:/bitnami/moodledata'
     depends_on:
@@ -113,9 +113,9 @@ networks:
     driver: bridge
 ```
 
-### Environment Variables (.env)
+### Variabel `Environment` (.env)
 
-Untuk production, buat file `.env` untuk sensitive data:
+Untuk `production`, buat `file` `.env` untuk data sensitif:
 
 ```bash
 nano .env
@@ -123,25 +123,25 @@ nano .env
 
 Isi dengan:
 ```env
-# Database Configuration
+# Konfigurasi Database
 MARIADB_ROOT_PASSWORD=strong_root_password
 MARIADB_PASSWORD=strong_db_password
 
-# Moodle Admin Configuration  
+# Konfigurasi Admin Moodle  
 MOODLE_USERNAME=admin
 MOODLE_PASSWORD=Admin@123456
 MOODLE_EMAIL=admin@yourdomain.com
 MOODLE_SITE_NAME=Moodle Learning Platform
 ```
 
-Update `docker-compose.yml` untuk use .env:
+Perbarui `docker-compose.yml` untuk menggunakan `.env`:
 ```yaml
 environment:
   - MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}
   - MARIADB_PASSWORD=${MARIADB_PASSWORD}
 ```
 
-### Git Ignore File
+### `File` `Git Ignore`
 
 Buat `.gitignore`:
 
@@ -151,66 +151,66 @@ nano .gitignore
 
 Isi dengan:
 ```gitignore
-# Docker volumes
+# Volume Docker
 volumes/
 volumes/mariadb/
 volumes/moodle/
 volumes/moodledata/
 
-# Environment files
+# File Environment
 .env
 .env.local
 .env.*.local
 
-# Backup files
+# File Cadangan
 *.sql
 *.tar.gz
 *.zip
 backup_*
 
-# IDE files
+# File IDE
 .vscode/
 .idea/
 *.swp
 
-# OS files
+# File OS
 .DS_Store
 Thumbs.db
 ```
 
-## Langkah 3: Mengatasi Permission Issues
+## Langkah 3: Mengatasi Masalah Izin
 
-### Setting Permissions untuk Bitnami
+### Mengatur Izin untuk Bitnami
 
-Bitnami containers run dengan user ID 1001. Set proper permissions:
+`Container` Bitnami berjalan dengan `user ID` 1001. Atur izin yang benar:
 
 ```bash
-# Set permissions untuk volumes
+# Atur izin untuk volume
 chmod -R 777 volumes/
 
-# Alternative: Set ownership (memerlukan sudo)
+# Alternatif: Atur kepemilikan (memerlukan sudo)
 sudo chown -R 1001:1001 volumes/
 ```
 
-> **Note:** Permission 777 hanya untuk development. Untuk production, gunakan proper ownership.
+> **Catatan:** Izin 777 hanya untuk pengembangan. Untuk `production`, gunakan kepemilikan yang benar.
 
 ## Langkah 4: Menjalankan Moodle
 
-### Start Services
+### Memulai `Services`
 
-1. **Pull Docker images:**
+1. **Tarik `image` Docker:**
    ```bash
    docker compose pull
    ```
 
-2. **Start containers:**
+2. **Mulai `container`:**
    ```bash
    docker compose up -d
    ```
 
-   Flag `-d` untuk run in background (detached mode).
+   `Flag` `-d` untuk berjalan di latar belakang (`detached mode`).
 
-3. **Monitor startup process:**
+3. **Pantau proses `startup`:**
    ```bash
    docker compose logs -f moodle
    ```
@@ -223,14 +223,14 @@ sudo chown -R 1001:1001 volumes/
 
    Proses instalasi pertama memakan waktu 5-10 menit.
 
-### Verify Services
+### Verifikasi `Services`
 
-Check container status:
+Periksa status `container`:
 ```bash
 docker compose ps
 ```
 
-Output expected:
+Keluaran yang diharapkan:
 ```
 NAME                IMAGE                         STATUS
 moodle-mariadb-1    bitnami/mariadb:latest       Up 5 minutes
@@ -241,259 +241,259 @@ moodle-moodle-1     bitnami/moodle:5.0          Up 5 minutes
 
 ### Dari WSL/Linux
 
-Test dengan curl:
+Tes dengan `curl`:
 ```bash
 curl -I http://localhost
 ```
 
-### Dari Windows Browser
+### Dari `Browser` Windows
 
-#### Method 1: Localhost
-Buka browser dan akses:
+#### Metode 1: `Localhost`
+Buka `browser` dan akses:
 - HTTP: `http://localhost`
-- HTTPS: `https://localhost` (akan ada SSL warning)
+- HTTPS: `https://localhost` (akan ada peringatan SSL)
 
-#### Method 2: WSL IP Address
+#### Metode 2: Alamat IP WSL
 
-Jika localhost tidak bisa diakses:
+Jika `localhost` tidak bisa diakses:
 
-1. **Check WSL IP:**
+1. **Periksa IP WSL:**
    ```bash
    ip addr show eth0 | grep inet | awk '{print $2}' | cut -d/ -f1
    ```
    
-   Example output: `172.29.130.195`
+   Contoh keluaran: `172.29.130.195`
 
-2. **Akses via IP:**
+2. **Akses melalui IP:**
    - `http://172.29.130.195`
    - `https://172.29.130.195`
 
-Jika berhasil, Anda akan melihat halaman depan Moodle sebelum login:
+Jika berhasil, Anda akan melihat halaman depan Moodle sebelum `login`:
 
 ![Moodle Front Page](img/instalasi/frontpage.png)
 
-### Default Credentials
+### Kredensial `Default`
 
-Login dengan credentials default Bitnami:
-- **Username:** `user`
-- **Password:** `bitnami`
+`Login` dengan kredensial `default` Bitnami:
+- **`Username`:** `user`
+- **`Password`:** `bitnami`
 
 ![Moodle Login Page](img/instalasi/login.png)
 
-> **IMPORTANT:** Segera ganti password default setelah login!
+> **PENTING:** Segera ganti `password` `default` setelah `login`!
 
-## Langkah 6: Initial Configuration
+## Langkah 6: Konfigurasi Awal
 
-### Change Admin Password
+### Ubah `Password` Admin
 
-1. Login dengan default credentials
-2. Click user menu (top right)
-3. Select **Preferences** → **Change password**
-4. Enter new strong password
+1. `Login` dengan kredensial `default`
+2. Klik menu pengguna (kanan atas)
+3. Pilih **Preferences** → **Change password**
+4. Masukkan `password` baru yang kuat
 
-### Site Configuration
+### Konfigurasi Situs
 
-1. Navigate to **Site administration**
+1. Navigasi ke **`Site administration`**
 
 ![Moodle Admin Dashboard](img/instalasi/dashboard.png)
 
-2. Configure:
-   - **Site name**
-   - **Front page settings**
-   - **Location settings** (timezone)
-   - **Language settings**
+2. Konfigurasi:
+   - **`Site name`**
+   - **`Front page settings`**
+   - **`Location settings`** (`timezone`)
+   - **`Language settings`**
 
-### Security Settings
+### Pengaturan Keamanan
 
-1. Go to **Site administration** → **Security**
-2. Configure:
-   - **Site policies**
-   - **HTTP security**
-   - **Notifications**
+1. Buka **`Site administration`** → **`Security`**
+2. Konfigurasi:
+   - **`Site policies`**
+   - **`HTTP security`**
+   - **`Notifications`**
 
-## Langkah 7: Container Management
+## Langkah 7: Manajemen `Container`
 
-### Basic Commands
+### `Command` Dasar
 
-**Start containers:**
+**Mulai `container`:**
 ```bash
 docker compose up -d
 ```
 
-**Stop containers:**
+**Hentikan `container`:**
 ```bash
 docker compose stop
 ```
 
-**Restart containers:**
+**`Restart` `container`:**
 ```bash
 docker compose restart
 ```
 
-**Remove containers (keep data):**
+**Hapus `container` (simpan data):**
 ```bash
 docker compose down
 ```
 
-**Remove everything (including data):**
+**Hapus semuanya (termasuk data):**
 ```bash
 docker compose down -v
 rm -rf volumes/
 ```
 
-### Monitoring
+### Pemantauan
 
-**View logs:**
+**Lihat `log`:**
 ```bash
-# All services
+# Semua services
 docker compose logs
 
-# Specific service
+# Service spesifik
 docker compose logs moodle
 docker compose logs mariadb
 
-# Follow logs (real-time)
+# Ikuti log (real-time)
 docker compose logs -f moodle
 ```
 
-**Check resource usage:**
+**Periksa penggunaan sumber daya:**
 ```bash
 docker stats
 ```
 
-**Enter container shell:**
+**Masuk ke `shell` `container`:**
 ```bash
-# Moodle container
+# Container Moodle
 docker compose exec moodle bash
 
-# MariaDB container  
+# Container MariaDB  
 docker compose exec mariadb bash
 ```
 
-## Troubleshooting
+## Pemecahan Masalah
 
-### Permission Denied Error
+### `Error` Izin Ditolak
 
-**Symptom:**
+**Gejala:**
 ```
 mkdir: cannot create directory '/bitnami/mariadb/data': Permission denied
 ```
 
-**Solution:**
+**Solusi:**
 ```bash
-# Stop containers
+# Hentikan container
 docker compose down
 
-# Fix permissions
+# Perbaiki izin
 chmod -R 777 volumes/
 
-# Or with sudo
+# Atau dengan sudo
 sudo chown -R 1001:1001 volumes/
 
-# Start again
+# Mulai lagi
 docker compose up -d
 ```
 
-### Container Not Starting
+### `Container` Tidak Memulai
 
-**Check logs:**
+**Periksa `log`:**
 ```bash
 docker compose logs mariadb
 docker compose logs moodle
 ```
 
-**Common issues:**
-- Port already in use
-- Insufficient memory
-- Corrupted volumes
+**Masalah umum:**
+- `Port` sudah digunakan
+- Memori tidak cukup
+- `Volume` rusak
 
-### Cannot Access from Browser
+### Tidak Dapat Mengakses dari `Browser`
 
-1. **Check if containers running:**
+1. **Periksa apakah `container` berjalan:**
    ```bash
    docker compose ps
    ```
 
-2. **Check if installation complete:**
+2. **Periksa apakah instalasi selesai:**
    ```bash
    docker compose logs --tail=50 moodle | grep "setup finished"
    ```
 
-3. **Try WSL IP instead of localhost:**
+3. **Coba IP WSL alih-alih `localhost`:**
    ```bash
    ip addr show eth0
    ```
 
-4. **Check Windows Firewall**
+4. **Periksa `Firewall` Windows**
 
-### Reset Installation
+### `Reset` Instalasi
 
-Untuk fresh install:
+Untuk instalasi baru:
 ```bash
-# Stop and remove containers
+# Hentikan dan hapus container
 docker compose down
 
-# Remove all data
+# Hapus semua data
 rm -rf volumes/
 
-# Recreate folders
+# Buat ulang folder
 mkdir -p volumes/mariadb volumes/moodle volumes/moodledata
 chmod -R 777 volumes/
 
-# Start fresh
+# Mulai dari awal
 docker compose up -d
 ```
 
-## Best Practices
+## Praktik Terbaik
 
-### Development Environment
+### `Environment` Pengembangan
 
-1. **Use .env file** untuk configuration
-2. **Regular backups** dengan script automation
-3. **Monitor logs** untuk early problem detection
-4. **Document changes** di README
+1. **Gunakan `file` `.env`** untuk konfigurasi
+2. **`Backup` rutin** dengan otomatisasi `script`
+3. **Pantau `log`** untuk deteksi masalah dini
+4. **Dokumentasikan perubahan** di `README`
 
-### Security
+### Keamanan
 
-1. **Change default passwords immediately**
-2. **Use strong passwords** di production
-3. **Enable HTTPS** dengan proper SSL certificate
-4. **Regular updates** untuk Docker images
-5. **Limit exposed ports** di production
+1. **Segera ganti `password` `default`**
+2. **Gunakan `password` yang kuat** di `production`
+3. **Aktifkan HTTPS** dengan sertifikat SSL yang benar
+4. **Pembaruan rutin** untuk `image` Docker
+5. **Batasi `port` yang diekspos** di `production`
 
-### Performance
+### Kinerja
 
-1. **Allocate sufficient resources** ke Docker
-2. **Use local volumes** untuk better I/O
-3. **Regular maintenance** dan cleanup
-4. **Monitor resource usage**
+1. **Alokasikan sumber daya yang cukup** ke Docker
+2. **Gunakan `local volumes`** untuk I/O yang lebih baik
+3. **Pemeliharaan** dan pembersihan rutin
+4. **Pantau penggunaan sumber daya**
 
 ## Kesimpulan
 
 Anda telah berhasil:
-- ✅ Setup Moodle dengan Docker Compose
-- ✅ Configure persistent storage dengan volumes
-- ✅ Access Moodle dari browser
-- ✅ Understand basic container management
+- ✅ `Setup` Moodle dengan `Docker Compose`
+- ✅ Mengkonfigurasi penyimpanan persisten dengan `volumes`
+- ✅ Mengakses Moodle dari `browser`
+- ✅ Memahami manajemen `container` dasar
 
-Pada bab selanjutnya, kita akan explore:
+Pada bab selanjutnya, kita akan menjelajahi:
 - Administrasi Moodle
-- User management
-- Course creation
-- Advanced configuration
+- Manajemen pengguna
+- Pembuatan `course`
+- Konfigurasi lanjutan
 
 ---
 
-**Quick Reference:**
+**Referensi Cepat:**
 
-| Command | Description |
-|---------|------------|
-| `docker compose up -d` | Start services |
-| `docker compose stop` | Stop services |
-| `docker compose logs -f` | View logs |
-| `docker compose ps` | Check status |
-| `docker compose exec moodle bash` | Enter container |
+| `Command` | Deskripsi |
+|---|---|
+| `docker compose up -d` | Memulai `services` |
+| `docker compose stop` | Menghentikan `services` |
+| `docker compose logs -f` | Melihat `log` |
+| `docker compose ps` | Memeriksa status |
+| `docker compose exec moodle bash` | Masuk ke `container` |
 
 **Selesai!** Moodle sudah siap digunakan. Selanjutnya pelajari cara administrasi sistem.
 
-**Next:** [Bab 4 - Administrasi Moodle →](administrasi-moodle.md)
+**Berikutnya:** [Bab 4 - Administrasi Moodle →](administrasi-moodle.md)

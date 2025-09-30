@@ -1,107 +1,107 @@
-# Bab 1: Deskripsi dan Outline
+# Bab 1: Deskripsi dan Garis Besar
 
 ## Tentang Buku Ini
 
-Buku ini merupakan panduan komprehensif untuk mempelajari Moodle Learning Management System (LMS) dari perspektif instalasi, konfigurasi, administrasi, dan penggunaan untuk berbagai role pengguna. Dengan menggunakan Docker Compose, kita akan membuat environment Moodle yang mudah di-setup dan maintain.
+Buku ini merupakan panduan komprehensif untuk mempelajari Moodle Learning Management System (LMS) dari perspektif instalasi, konfigurasi, administrasi, dan penggunaan untuk berbagai `role` pengguna. Dengan menggunakan `Docker Compose`, kita akan membuat `environment` Moodle yang mudah di-`setup` dan `maintain`.
 
 ## Tujuan Pembelajaran
 
 Setelah menyelesaikan buku ini, pembaca diharapkan mampu:
 
 1. **Instalasi dan Konfigurasi**
-   - Menginstal Moodle menggunakan Docker Compose
-   - Mengkonfigurasi environment development di Windows dengan WSL
-   - Mengelola container Docker untuk Moodle
+   - Menginstal Moodle menggunakan `Docker Compose`
+   - Mengkonfigurasi `environment` pengembangan di Windows dengan WSL
+   - Mengelola `container` Docker untuk Moodle
 
 2. **Administrasi Sistem**
    - Mengelola konfigurasi Moodle
-   - Melakukan backup dan restore
-   - Troubleshooting masalah umum
+   - Melakukan `backup` dan `restore`
+   - Memecahkan masalah umum
 
 3. **Manajemen Pengguna**
-   - Memahami role dan permission di Moodle
-   - Membuat dan mengelola user accounts
-   - Mengatur authentication methods
+   - Memahami `role` dan `permission` di Moodle
+   - Membuat dan mengelola akun pengguna
+   - Mengatur metode otentikasi
 
-4. **Pengelolaan Course**
-   - Membuat dan mengatur course
-   - Mengelola enrollment
-   - Mengatur activities dan resources
+4. **Pengelolaan `Course`**
+   - Membuat dan mengatur `course`
+   - Mengelola pendaftaran
+   - Mengatur `activities` dan `resources`
 
 ## Target Pembaca
 
 Buku ini ditujukan untuk:
 
-- **System Administrator** yang ingin deploy Moodle
-- **IT Support** yang mengelola Moodle di institusi pendidikan
+- **`System Administrator`** yang ingin men-`deploy` Moodle
+- **`IT Support`** yang mengelola Moodle di institusi pendidikan
 - **Instruktur/Guru** yang ingin memahami Moodle lebih dalam
-- **Developer** yang ingin membuat development environment Moodle
-- **Mahasiswa** yang mempelajari e-learning platform
+- **`Developer`** yang ingin membuat `environment` pengembangan Moodle
+- **Mahasiswa** yang mempelajari `platform` `e-learning`
 
 ## Prasyarat
 
 Sebelum memulai, pembaca sebaiknya memiliki:
 
-- Pengetahuan dasar tentang command line (Terminal/CMD)
-- Pemahaman dasar tentang web server dan database
+- Pengetahuan dasar tentang `command line` (Terminal/CMD)
+- Pemahaman dasar tentang `web server` dan `database`
 - Komputer dengan Windows 10/11 (minimum 8GB RAM)
-- Koneksi internet untuk download Docker images
+- Koneksi internet untuk mengunduh `Docker images`
 
 ## Struktur Buku
 
-### **Bagian 1: Persiapan Environment**
+### **Bagian 1: Persiapan `Environment`**
 - **Bab 2:** Persiapan Komputer Windows
   - Instalasi WSL 2
-  - Instalasi Docker Desktop
-  - Konfigurasi environment
+  - Instalasi `Docker Desktop`
+  - Konfigurasi `environment`
 
 ### **Bagian 2: Instalasi Moodle**
-- **Bab 3:** Setup Moodle dengan Docker Compose
-  - Memahami Docker Compose
-  - Konfigurasi container
-  - Running Moodle
+- **Bab 3:** `Setup` Moodle dengan `Docker Compose`
+  - Memahami `Docker Compose`
+  - Konfigurasi `container`
+  - Menjalankan Moodle
 
 ### **Bagian 3: Administrasi Dasar**
 - **Bab 4:** Administrasi Moodle
-  - Site configuration
-  - Security settings
-  - Performance tuning
+  - Konfigurasi situs
+  - Pengaturan keamanan
+  - Penyesuaian kinerja
 
-### **Bagian 4: Pengguna dan Course**
-- **Bab 5:** Manajemen Pengguna dan Role
-  - User roles di Moodle
-  - Permission management
-  - Authentication methods
+### **Bagian 4: Pengguna dan `Course`**
+- **Bab 5:** Manajemen Pengguna dan `Role`
+  - `Role` pengguna di Moodle
+  - Manajemen `permission`
+  - Metode otentikasi
 
-- **Bab 6:** Course Management
-  - Membuat course
-  - Activities dan resources
-  - Grading dan assessment
+- **Bab 6:** Manajemen `Course`
+  - Membuat `course`
+  - `Activities` dan `resources`
+  - Penilaian dan `assessment`
 
-### **Bagian 5: Maintenance**
-- **Bab 7:** Backup dan Restore
-  - Strategi backup
-  - Automated backup
-  - Disaster recovery
+### **Bagian 5: Pemeliharaan**
+- **Bab 7:** `Backup` dan `Restore`
+  - Strategi `backup`
+  - `Backup` otomatis
+  - Pemulihan bencana
 
-- **Bab 8:** Troubleshooting
-  - Common issues
-  - Performance optimization
-  - Debug mode
+- **Bab 8:** Pemecahan Masalah
+  - Masalah umum
+  - Optimasi kinerja
+  - Mode `debug`
 
 ## Metode Pembelajaran
 
 Setiap bab dalam buku ini menggunakan pendekatan:
 
-1. **Teori**: Penjelasan konsep dan best practices
-2. **Praktik**: Step-by-step tutorial dengan screenshot
-3. **Latihan**: Hands-on exercises untuk reinforce learning
-4. **Tips & Tricks**: Practical tips dari real-world experience
-5. **Troubleshooting**: Solusi untuk masalah umum
+1. **Teori**: Penjelasan konsep dan praktik terbaik
+2. **Praktik**: Tutorial langkah-demi-langkah dengan `screenshot`
+3. **Latihan**: Latihan langsung untuk memperkuat pembelajaran
+4. **Kiat & Trik**: Kiat praktis dari pengalaman dunia nyata
+5. **Pemecahan Masalah**: Solusi untuk masalah umum
 
 ## Konvensi yang Digunakan
 
-### Command Line
+### `Command Line`
 ```bash
 # Komentar diawali dengan #
 $ command-untuk-user-biasa
@@ -110,50 +110,50 @@ $ command-untuk-user-biasa
 
 ### Informasi Penting
 
-> **Note:** Informasi tambahan yang perlu diperhatikan
+> **Catatan:** Informasi tambahan yang perlu diperhatikan
 
-> **Warning:** Peringatan untuk menghindari masalah
+> **Peringatan:** Peringatan untuk menghindari masalah
 
-> **Tip:** Tips dan tricks untuk efisiensi
+> **Kiat:** Kiat dan trik untuk efisiensi
 
-### Placeholder
+### `Placeholder`
 - `<your-value>`: Ganti dengan nilai Anda sendiri
-- `[optional]`: Parameter optional
-- `command | alternative`: Pilihan command
+- `[optional]`: Parameter opsional
+- `command | alternative`: Pilihan `command`
 
-## Environment yang Digunakan
+## `Environment` yang Digunakan
 
 Dalam buku ini, kita menggunakan:
 
-- **Operating System**: Windows 10/11 dengan WSL 2
-- **Container Platform**: Docker Desktop
-- **Orchestration**: Docker Compose
-- **Moodle Version**: 5.0 (Bitnami)
-- **Database**: MariaDB (latest)
-- **Web Server**: Apache (bundled dengan Bitnami)
+- **Sistem Operasi**: Windows 10/11 dengan WSL 2
+- **`Platform` `Container`**: `Docker Desktop`
+- **Orkestrasi**: `Docker Compose`
+- **Versi Moodle**: 5.0 (Bitnami)
+- **`Database`**: MariaDB (terbaru)
+- **`Web Server`**: Apache (termasuk dengan Bitnami)
 
-## Repository dan Resources
+## Repositori dan Sumber Daya
 
-- **GitHub Repository**: Berisi semua konfigurasi dan script
-- **Docker Images**: Bitnami official images dari Docker Hub
-- **Documentation**: Links ke official Moodle documentation
+- **Repositori GitHub**: Berisi semua konfigurasi dan `script`
+- **`Docker Images`**: `Images` resmi Bitnami dari `Docker Hub`
+- **Dokumentasi**: Tautan ke dokumentasi resmi Moodle
 
-## Dukungan dan Feedback
+## Dukungan dan Umpan Balik
 
 Jika menemukan kesalahan atau memiliki saran:
-- Buat issue di GitHub repository
-- Kontribusi melalui pull request
-- Diskusi di forum komunitas
+- Buat `issue` di repositori GitHub
+- Kontribusi melalui `pull request`
+- Diskusi di `forum` komunitas
 
 ## Lisensi
 
 Buku ini menggunakan lisensi Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0), yang memungkinkan:
-- Share: copy dan redistribute dalam format apapun
-- Adapt: remix, transform, dan build upon material
-- Dengan syarat attribution dan share-alike
+- **Berbagi**: salin dan distribusikan ulang dalam format apa pun
+- **Adaptasi**: `remix`, ubah, dan bangun di atas materi
+- Dengan syarat atribusi dan berbagi-serupa
 
 ---
 
 **Mari mulai perjalanan pembelajaran Moodle!**
 
-Pada bab selanjutnya, kita akan mempersiapkan komputer Windows Anda untuk menjalankan Moodle dengan Docker Compose.
+Pada bab selanjutnya, kita akan mempersiapkan komputer Windows Anda untuk menjalankan Moodle dengan `Docker Compose`.
