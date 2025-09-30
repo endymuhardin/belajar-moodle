@@ -76,6 +76,12 @@ nav:
     - Manajemen Pengguna dan Role: pengguna-dan-role.md
   - Course Management:
     - Membuat dan Mengelola Course: course-management.md
+  - Courseware Authoring:
+    - Dasar-dasar Pembuatan Konten: courseware-authoring.md
+    - SCORM dan Standar E-Learning: scorm-dan-standar.md
+    - Learning Progress Tracking: learning-progress-tracking.md
+    - Weakness Analysis dan Improvement: weakness-analysis.md
+    - Advanced Courseware Development: advanced-courseware.md
   - Maintenance:
     - Backup dan Restore: backup-restore.md
     - Troubleshooting: troubleshooting.md

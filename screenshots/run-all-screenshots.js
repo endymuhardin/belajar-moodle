@@ -6,7 +6,12 @@ const scripts = [
   './chapter3-installation/installation-screenshots.js',
   './chapter4-administration/admin-screenshots.js',
   './chapter5-user-management/user-screenshots.js',
-  './chapter6-course-management/course-screenshots.js'
+  './chapter6-course-management/course-screenshots.js',
+  './chapter7-courseware/courseware-screenshots.js',
+  './chapter8-scorm/scorm-screenshots.js',
+  './chapter9-progress-tracking/progress-tracking-screenshots.js',
+  './chapter10-weakness-analysis/weakness-analysis-screenshots.js',
+  './chapter11-advanced-courseware/advanced-courseware-screenshots.js'
 ];
 
 console.log('🚀 Starting screenshot generation for all chapters...\n');
@@ -45,6 +50,11 @@ async function runAllScripts() {
   console.log('   - docs/img/administrasi/');
   console.log('   - docs/img/pengguna/');
   console.log('   - docs/img/course/');
+  console.log('   - docs/img/courseware/');
+  console.log('   - docs/img/scorm/');
+  console.log('   - docs/img/progress-tracking/');
+  console.log('   - docs/img/weakness-analysis/');
+  console.log('   - docs/img/advanced-courseware/');
 }
 
 // Execute

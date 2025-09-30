@@ -148,4 +148,4 @@ Manajemen `course` yang efektif adalah inti dari pengalaman belajar di Moodle. D
 
 ---
 
-**Berikutnya:** [Bab 7 - `Backup` dan `Restore` →](backup-restore.md)
+**Berikutnya:** [Bab 7 - Courseware Authoring →](courseware-authoring.md)
