@@ -400,6 +400,7 @@ moodle/course:manageactivities - Manage course activities
 ![Manager Interface](img/pengguna/04-define-roles.png)
 
 **Manager vs Administrator:**
+
 | Aspect | Manager | Administrator |
 |--------|---------|---------------|
 | System settings | ❌ | ✅ |
@@ -514,6 +515,7 @@ moodle/user:viewdetails - View student profiles
 ![Non-editing Teacher Interface](img/pengguna/04-define-roles.png)
 
 **Non-editing Teacher vs Teacher:**
+
 | Capability | Non-editing Teacher | Teacher |
 |------------|-------------------|---------|
 | Create activities | ❌ | ✅ |
