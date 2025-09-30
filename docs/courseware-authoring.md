@@ -78,11 +78,13 @@ Penerapan Bloom's Taxonomy untuk desain aktivitas Moodle:
 ### 1. Prinsip Desain Pembelajaran
 
 **Cognitive Load Theory:**
+
 - Batasi jumlah informasi per halaman
 - Gunakan multimedia untuk memperjelas konsep
 - Sediakan konteks yang jelas
 
 **Multimedia Learning Principles:**
+
 - Kontingen: Gunakan media yang relevan dengan konten
 - Spatial Contiguity: Tempatkan teks dekat dengan visual
 - Temporal Contiguity: Sinkronkan audio dengan visual
@@ -90,11 +92,13 @@ Penerapan Bloom's Taxonomy untuk desain aktivitas Moodle:
 ### 2. Struktur Konten yang Efektif
 
 **Hierarki Konten:**
+
 - Section → Subsection → Activities
 - Konsistensi naming convention
 - Navigasi yang intuitif
 
 **Pacing and Sequencing:**
+
 - Prasyarat antar topik
 - Progressive difficulty
 - Regular checkpoints
@@ -102,12 +106,14 @@ Penerapan Bloom's Taxonomy untuk desain aktivitas Moodle:
 ### 3. Aksesibilitas dan Universal Design
 
 **WCAG Compliance:**
+
 - Alternative text untuk images
 - Caption untuk video
 - Keyboard navigation
 - Color contrast yang memadai
 
 **Multiple Learning Pathways:**
+
 - Berbagai format untuk konten sama
 - Opsi kecepatan belajar
 - Support materials untuk berbagai gaya belajar

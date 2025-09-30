@@ -26,6 +26,7 @@ Learning Progress Tracking adalah salah satu fitur paling powerful di Moodle yan
 ### 1. Activity Completion
 
 **Types of Completion Conditions:**
+
 - **Manual marking**: Instructor tandai sebagai complete
 - **View requirement**: Siswa harus melihat konten
 - **Grade requirement**: Perlu nilai minimum
@@ -46,6 +47,7 @@ Learning Progress Tracking adalah salah satu fitur paling powerful di Moodle yan
 ### 2. Course Completion
 
 **Course Completion Criteria:**
+
 - **Activity completion**: Selesaikan aktivitas tertentu
 - **Grade completion**: Capai nilai akhir tertentu
 - **Duration**: Habiskan waktu minimum
@@ -62,6 +64,7 @@ Learning Progress Tracking adalah salah satu fitur paling powerful di Moodle yan
 ### 3. Gradebook Tracking
 
 **Gradebook Features:**
+
 - **Categories**: Pengelompokan item penilaian
 - **Weights**: Bobot untuk setiap kategori
 - **Calculations**: Formula perhitungan nilai
@@ -82,6 +85,7 @@ Learning Progress Tracking adalah salah satu fitur paling powerful di Moodle yan
 Aktivitas yang hanya tersedia setelah kondisi tertentu terpenuhi.
 
 **Types of Conditions:**
+
 - **Grade condition**: Butuh nilai minimum di aktivitas lain
 - **Activity completion**: Harus selesaikan aktivitas tertentu
 - **Date condition**: Hanya tersedia di tanggal tertentu
@@ -105,6 +109,7 @@ Contoh Conditional Path:
 Pendekatan pembelajaran yang fokus pada penguasaan kompetensi spesifik.
 
 **Moodle Competency Framework:**
+
 - **Competency Frameworks**: Struktur kompetensi
 - **Competencies**: Kemampuan spesifik yang harus dikuasai
 - **Proficiency Scales**: Tingkat penguasaan
@@ -120,12 +125,14 @@ Pendekatan pembelajaran yang fokus pada penguasaan kompetensi spesifik.
 ### 3. Learning Analytics
 
 **Moodle Learning Analytics:**
+
 - **Reports**: Berbagai jenis laporan analitik
 - **Insights**: Rekomendasi otomatis
 - **Models**: Model prediktif
 - **Notifications**: Notifikasi otomatis
 
 **Types of Analytics:**
+
 - **Engagement analytics**: Tingkat partisipasi
 - **Performance analytics**: Prestasi akademik
 - **Progress analytics**: Kemajuan pembelajaran
@@ -136,6 +143,7 @@ Pendekatan pembelajaran yang fokus pada penguasaan kompetensi spesifik.
 ### 1. Progressive Learning Path
 
 **Design Principles:**
+
 - **Logical sequencing**: Urutan pembelajaran yang logis
 - **Mastery learning**: Harus kuasai sebelum lanjut
 - **Scaffolding**: Dukungan bertahap
@@ -166,6 +174,7 @@ Week 3: Advanced Mastery
 ### 2. Personalized Learning Paths
 
 **Adaptive Learning Elements:**
+
 - **Diagnostic assessments**: Identifikasi kebutuhan
 - **Personalized recommendations**: Konten yang disesuaikan
 - **Variable pacing**: Kecepatan belajar personal
@@ -181,12 +190,14 @@ Week 3: Advanced Mastery
 ### 3. Gamification Elements
 
 **Gamification in Tracking:**
+
 - **Points and badges**: Sistem reward
 - **Progress bars**: Visual progress indication
 - **Leaderboards**: Kompetisi sehat
 - **Achievement unlocks**: Milestone recognition
 
 **Moodle Implementation:**
+
 - **Badges**: Digital certificates
 - **Restrict access**: Unlock content
 - **Custom certificates**: Completion rewards
@@ -197,12 +208,14 @@ Week 3: Advanced Mastery
 ### 1. Built-in Moodle Reports
 
 **Course Reports:**
+
 - **Activity report**: Log aktivitas
 - **Course participation**: Partisipasi siswa
 - **Activity completion**: Status penyelesaian
 - **Grade history**: Riwayat nilai
 
 **Student Reports:**
+
 - **User report**: Aktivitas individual
 - **Today's logs**: Log harian
 - **All live logs**: Log real-time
@@ -211,6 +224,7 @@ Week 3: Advanced Mastery
 ### 2. Custom Reports
 
 **Configurable Reports Plugin:**
+
 - **Custom SQL queries**: Query database kustom
 - **Scheduled reports**: Laporan otomatis
 - **Export options**: Various formats
@@ -240,6 +254,7 @@ HAVING activity_count < 5 OR average_grade < 60
 ### 3. External Analytics Tools
 
 **Integration Options:**
+
 - **Google Analytics**: Web analytics
 - **Power BI**: Business intelligence
 - **Tableau**: Data visualization
@@ -250,6 +265,7 @@ HAVING activity_count < 5 OR average_grade < 60
 ### 1. Data Collection Strategy
 
 **What to Track:**
+
 - **Completion rates**: Tingkat penyelesaian
 - **Time metrics**: Waktu pembelajaran
 - **Performance indicators**: Indikator prestasi
@@ -257,6 +273,7 @@ HAVING activity_count < 5 OR average_grade < 60
 - **Behavioral patterns**: Pola perilaku
 
 **Data Collection Methods:**
+
 - **Automatic tracking**: System-generated data
 - **Manual entry**: Instructor input
 - **Self-reporting**: Student input
@@ -265,12 +282,14 @@ HAVING activity_count < 5 OR average_grade < 60
 ### 2. Privacy and Ethics
 
 **Privacy Considerations:**
+
 - **FERPA compliance**: Perlindungan data edukasi
 - **GDPR compliance**: Regulasi data EU
 - **Informed consent**: Persetujuan pengguna
 - **Data retention**: Kebijakan penyimpanan data
 
 **Ethical Use of Data:**
+
 - **Transparent communication**: Jelaskan penggunaan data
 - **Student empowerment**: Berikan akses ke data mereka
 - **Beneficial use**: Gunakan data untuk improvement
@@ -279,12 +298,14 @@ HAVING activity_count < 5 OR average_grade < 60
 ### 3. Actionable Insights
 
 **From Data to Action:**
+
 - **Identify patterns**: Temukan pola perilaku
 - **Early intervention**: Deteksi masalah early
 - **Personalized support**: Bantuan yang disesuaikan
 - **Course improvement**: Perbaikan konten
 
 **Intervention Strategies:**
+
 - **Automated notifications**: Notifikasi otomatis
 - **Personalized messages**: Pesan personal
 - **Resource recommendations**: Rekomendasi sumber daya
@@ -301,6 +322,7 @@ HAVING activity_count < 5 OR average_grade < 60
 - **Success probability**: Probabilitas keberhasilan
 
 **Implementation:**
+
 - **Machine learning**: Algoritma ML
 - **Historical data**: Data historis
 - **Real-time processing**: Proses real-time
@@ -309,12 +331,14 @@ HAVING activity_count < 5 OR average_grade < 60
 ### 2. Real-time Monitoring
 
 **Real-time Dashboards:**
+
 - **Live activity monitoring**: Monitoring aktivitas live
 - **Real-time alerts**: Alert real-time
 - **Interactive visualizations**: Visualisasi interaktif
 - **Mobile access**: Akses mobile
 
 **Use Cases:**
+
 - **Proctoring**: Monitoring during exams
 - **Live sessions**: Real-time engagement
 - **Emergency response**: Response cepat
@@ -323,12 +347,14 @@ HAVING activity_count < 5 OR average_grade < 60
 ### 3. Integration with External Systems
 
 **HRIS Integration:**
+
 - **Employee data**: Data karyawan
 - **Training records**: Record training
 - **Performance data**: Data performa
 - **Compliance tracking**: Tracking compliance
 
 **CRM Integration:**
+
 - **Student information**: Informasi siswa
 - **Communication history**: Riwayat komunikasi
 - **Support tickets**: Ticket support
@@ -361,12 +387,14 @@ HAVING activity_count < 5 OR average_grade < 60
 **Solution:** Early warning system with predictive analytics
 
 **Results:**
+
 - 25% improvement in retention
 - 30% increase in student satisfaction
 - Better resource allocation
 - Improved advisor effectiveness
 
 **Key Features:**
+
 - Predictive risk modeling
 - Automated intervention
 - Student success dashboard
@@ -381,22 +409,26 @@ HAVING activity_count < 5 OR average_grade < 60
 - **Solution:** Check completion settings, user roles, permissions
 
 **Data Inconsistency:**
+
 - **Symptom:** Data tidak akurat
 - **Solution:** Database maintenance, data validation
 
 **Performance Issues:**
+
 - **Symptom:** System lambat
 - **Solution:** Database optimization, caching, server upgrade
 
 ### 2. Technical Solutions
 
 **Database Optimization:**
+
 - **Indexing**: Improve query performance
 - **Caching**: Reduce database load
 - **Archiving**: Move old data to archive
 - **Partitioning**: Split large tables
 
 **System Maintenance:**
+
 - **Regular backups**: Automated backup system
 - **Updates**: Keep system updated
 - **Monitoring**: System health monitoring
@@ -415,6 +447,7 @@ HAVING activity_count < 5 OR average_grade < 60
 ### 2. Blockchain Integration
 
 **Blockchain Credentials:**
+
 - **Verifiable credentials**: Tamper-proof certificates
 - **Micro-credentials**: Small skill certifications
 - **Lifetime learning records**: Permanent learning records
@@ -423,6 +456,7 @@ HAVING activity_count < 5 OR average_grade < 60
 ### 3. Internet of Things (IoT)
 
 **IoT Learning Analytics:**
+
 - **Wearable devices**: Biometric data
 - **Smart classrooms**: Environmental data
 - **VR/AR tracking**: Immersive learning data

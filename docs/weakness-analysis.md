@@ -103,18 +103,21 @@ Weakness Analysis adalah proses identifikasi, evaluasi, dan perbaikan area yang 
 **Common Content Problems:**
 
 **Quality Issues:**
+
 - Outdated information
 - Inaccurate content
 - Poor presentation
 - Lack of interactivity
 
 **Structural Issues:**
+
 - Poor organization
 - Inconsistent flow
 - Missing prerequisites
 - Incomplete coverage
 
 **Accessibility Issues:**
+
 - Lack of alt text
 - Poor color contrast
 - Navigation barriers
@@ -137,18 +140,21 @@ Content Quality Checklist:
 ### 2. Technical Issues
 
 **Performance Issues:**
+
 - Slow loading times
 - System crashes
 - Browser compatibility
 - Mobile responsiveness
 
 **Integration Issues:**
+
 - Single Sign-On (SSO) problems
 - Third-party tool integration
 - Data synchronization
 - API connectivity
 
 **Security Issues:**
+
 - Data privacy concerns
 - Authentication problems
 - Authorization issues
@@ -171,18 +177,21 @@ Technical Health Check:
 ### 3. Pedagogical Issues
 
 **Instructional Design Problems:**
+
 - Poor learning objectives
 - Inappropriate methodologies
 - Lack of engagement
 - Insufficient practice
 
 **Assessment Issues:**
+
 - Invalid assessments
 - Poor feedback mechanisms
 - Grade inflation/deflation
 - Cheating prevention
 
 **Engagement Issues:**
+
 - Low participation rates
 - High dropout rates
 - Poor interaction quality
@@ -205,18 +214,21 @@ Instructional Quality Assessment:
 ### 4. User Experience Issues
 
 **Navigation Problems:**
+
 - Confusing interface
 - Inconsistent layout
 - Broken links
 - Poor search functionality
 
 **Accessibility Problems:**
+
 - Screen reader incompatibility
 - Keyboard navigation issues
 - Color contrast problems
 - Missing captions
 
 **Mobile Experience:**
+
 - Responsive design issues
 - Touch interface problems
 - Offline functionality
@@ -243,24 +255,28 @@ User Experience Checklist:
 **Key Metrics:**
 
 **Completion Metrics:**
+
 - Course completion rates
 - Activity completion rates
 - Time-to-completion
 - Dropout rates
 
 **Performance Metrics:**
+
 - Grade distributions
 - Assessment scores
 - Competency achievement
 - Skill mastery
 
 **Engagement Metrics:**
+
 - Login frequency
 - Time spent in course
 - Interaction rates
 - Social participation
 
 **Technical Metrics:**
+
 - System uptime
 - Page load times
 - Error rates
@@ -285,18 +301,21 @@ Quantitative Data Sources:
 **Qualitative Methods:**
 
 **User Interviews:**
+
 - One-on-one interviews
 - Focus groups
 - Think-aloud protocols
 - Storytelling sessions
 
 **Observational Studies:**
+
 - Usability testing
 - Classroom observations
 - Screen recording analysis
 - Behavioral observation
 
 **Feedback Analysis:**
+
 - Open-ended survey responses
 - Discussion forum analysis
 - Support ticket analysis
@@ -348,18 +367,21 @@ Problem: High dropout rate in Week 3
 **Content Enhancement Strategies:**
 
 **Quality Improvement:**
+
 - Regular content audits
 - Subject matter expert review
 - Student feedback incorporation
 - Industry alignment updates
 
 **Interactive Enhancement:**
+
 - Add multimedia elements
 - Incorporate interactive components
 - Implement gamification
 - Create branching scenarios
 
 **Accessibility Enhancement:**
+
 - WCAG compliance audit
 - Screen reader testing
 - Color contrast optimization
@@ -383,24 +405,28 @@ Content Improvement Process:
 **Performance Optimization:**
 
 **Server-side Optimization:**
+
 - Database optimization
 - Caching implementation
 - Load balancing
 - CDN integration
 
 **Front-end Optimization:**
+
 - Asset compression
 - Image optimization
 - Code minification
 - Lazy loading
 
 **Mobile Optimization:**
+
 - Responsive design
 - Touch-friendly interface
 - Offline functionality
 - App-like experience
 
 **Security Enhancement:**
+
 - Regular security audits
 - Update protocols
 - Backup systems
@@ -411,18 +437,21 @@ Content Improvement Process:
 **Instructional Design Enhancement:**
 
 **Learning Design Optimization:**
+
 - Backward design approach
 - Universal Design for Learning (UDL)
 - Microlearning strategies
 - Personalized learning paths
 
 **Assessment Enhancement:**
+
 - Authentic assessments
 - Formative assessment integration
 - Automated feedback systems
 - Peer assessment strategies
 
 **Engagement Enhancement:**
+
 - Social learning integration
 - Collaborative projects
 - Real-world applications
@@ -446,18 +475,21 @@ Pedagogical Improvement Cycle:
 **UX Enhancement Strategies:**
 
 **Interface Design:**
+
 - User-centered design
 - Intuitive navigation
 - Consistent layout
 - Clear visual hierarchy
 
 **Accessibility Enhancement:**
+
 - Screen reader optimization
 - Keyboard navigation
 - Color accessibility
 - Cognitive load management
 
 **Personalization:**
+
 - Adaptive interfaces
 - Customizable dashboards
 - Personalized recommendations
@@ -470,17 +502,20 @@ Pedagogical Improvement Cycle:
 **Project Management Approach:**
 
 **Phased Implementation:**
+
 - Phase 1: Quick wins (low effort, high impact)
 - Phase 2: Medium-term improvements
 - Phase 3: Strategic transformation
 
 **Resource Allocation:**
+
 - Human resources
 - Technology resources
 - Financial resources
 - Time resources
 
 **Risk Management:**
+
 - Risk identification
 - Impact assessment
 - Mitigation strategies
@@ -504,18 +539,21 @@ Improvement Initiative:
 **Change Management Strategies:**
 
 **Communication Strategy:**
+
 - Clear communication plan
 - Stakeholder engagement
 - Regular updates
 - Feedback mechanisms
 
 **Training and Support:**
+
 - Instructor training
 - Student orientation
 - Technical support
 - Ongoing professional development
 
 **Resistance Management:**
+
 - Identify potential resistance
 - Address concerns proactively
 - Involve stakeholders in change
@@ -526,18 +564,21 @@ Improvement Initiative:
 **Performance Monitoring:**
 
 **Key Performance Indicators (KPIs):**
+
 - Learning effectiveness metrics
 - User satisfaction metrics
 - System performance metrics
 - Business impact metrics
 
 **Monitoring Tools:**
+
 - Learning analytics dashboards
 - Real-time monitoring systems
 - Automated alerts
 - Regular reporting
 
 **Evaluation Methods:**
+
 - Pre-post comparisons
 - Control group studies
 - A/B testing
@@ -608,12 +649,14 @@ Act: Standardize successful changes
 ### 1. Data-Driven Decision Making
 
 **Principles:**
+
 - Collect comprehensive data
 - Use multiple data sources
 - Analyze trends and patterns
 - Make evidence-based decisions
 
 **Implementation:**
+
 - Establish data collection protocols
 - Create dashboards for visualization
 - Train staff on data analysis
@@ -622,12 +665,14 @@ Act: Standardize successful changes
 ### 2. Stakeholder Engagement
 
 **Engagement Strategies:**
+
 - Involve all stakeholders in analysis
 - Communicate findings transparently
 - Collaborate on solution development
 - Share success stories
 
 **Stakeholder Groups:**
+
 - Students and learners
 - Instructors and facilitators
 - Administrators and managers
@@ -637,12 +682,14 @@ Act: Standardize successful changes
 ### 3. Continuous Improvement Culture
 
 **Building Improvement Culture:**
+
 - Encourage experimentation
 - Celebrate learning from failure
 - Recognize improvement efforts
 - Provide professional development
 
 **Sustainability Strategies:**
+
 - Document processes and procedures
 - Create communities of practice
 - Establish mentorship programs
@@ -653,18 +700,21 @@ Act: Standardize successful changes
 ### 1. Analysis Tools
 
 **Analytics Tools:**
+
 - Moodle built-in analytics
 - Google Analytics
 - Tableau/Power BI
 - Custom dashboards
 
 **Survey Tools:**
+
 - Google Forms
 - SurveyMonkey
 - Qualtrics
 - Moodle Questionnaire
 
 **Usability Testing:**
+
 - Hotjar
 - Crazy Egg
 - UserTesting.com
@@ -673,12 +723,14 @@ Act: Standardize successful changes
 ### 2. Project Management Tools
 
 **Planning Tools:**
+
 - Trello
 - Asana
 - Monday.com
 - Microsoft Project
 
 **Collaboration Tools:**
+
 - Microsoft Teams
 - Slack
 - Google Workspace
@@ -687,12 +739,14 @@ Act: Standardize successful changes
 ### 3. Learning Resources
 
 **Professional Development:**
+
 - Online courses (Coursera, edX)
 - Webinars and workshops
 - Conferences and events
 - Professional communities
 
 **Documentation:**
+
 - Moodle documentation
 - Instructional design resources
 - Case studies and best practices
