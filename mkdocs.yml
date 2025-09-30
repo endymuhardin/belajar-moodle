@@ -72,6 +72,7 @@ nav:
     - Setup Moodle dengan Docker Compose: setup-moodle-docker-compose.md
   - Administrasi:
     - Administrasi Moodle: administrasi-moodle.md
+  - Role dan Pengguna:
     - Manajemen Pengguna dan Role: pengguna-dan-role.md
   - Course Management:
     - Membuat dan Mengelola Course: course-management.md
