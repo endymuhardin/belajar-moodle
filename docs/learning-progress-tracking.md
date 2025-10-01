@@ -42,7 +42,7 @@ Learning Progress Tracking adalah salah satu fitur paling powerful di Moodle yan
    - **Require grade**: Set nilai minimum
    - **Expect completed on**: Set deadline
 
-![Activity completion setup](img/progress-tracking/01-activity-completion.png)
+![Activity completion setup](img/progress-tracking/02-activity-completion.png)
 
 ### 2. Course Completion
 
@@ -316,6 +316,7 @@ HAVING activity_count < 5 OR average_grade < 60
 ### 1. Predictive Analytics
 
 **Predictive Models:**
+
 - **At-risk prediction**: Identifikasi siswa berisiko
 - **Performance prediction**: Prediksi prestasi
 - **Dropout prediction**: Prediksi putus sekolah
@@ -439,6 +440,7 @@ HAVING activity_count < 5 OR average_grade < 60
 ### 1. AI and Machine Learning
 
 **AI-Powered Analytics:**
+
 - **Personalized learning paths**: Adaptive learning
 - **Intelligent tutoring**: Smart tutoring systems
 - **Automated content generation**: AI content creation
