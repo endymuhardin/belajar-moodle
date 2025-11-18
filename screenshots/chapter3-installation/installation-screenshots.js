@@ -4,8 +4,8 @@ const fs = require('fs');
 
 // Configuration
 const MOODLE_URL = 'http://localhost:80';
-const ADMIN_USERNAME = 'user';
-const ADMIN_PASSWORD = 'bitnami';
+const ADMIN_USERNAME = 'admin';
+const ADMIN_PASSWORD = 'admin123';
 const SCREENSHOTS_DIR = path.join(__dirname, '../../docs/img/instalasi');
 
 // Ensure screenshots directory exists
@@ -145,17 +145,18 @@ async function takeScreenshots() {
         <body>
           <div class="terminal">
             <pre><span class="prompt">$</span> <span class="command">docker compose up -d</span></pre>
-            <pre class="output">Creating network "moodle_default" with the default driver</pre>
-            <pre class="output">Creating volume "moodle_mariadb_data" with default driver</pre>
-            <pre class="output">Creating volume "moodle_moodle_data" with default driver</pre>
-            <pre class="output">Creating volume "moodle_moodledata_data" with default driver</pre>
-            <pre class="success">Creating moodle_mariadb_1 ... done</pre>
-            <pre class="success">Creating moodle_moodle_1  ... done</pre>
+            <pre class="output">[+] Running 5/5</pre>
+            <pre class="output">✔ Network moodle_default           Created</pre>
+            <pre class="output">✔ Volume "moodle_postgresdata"     Created</pre>
+            <pre class="output">✔ Volume "moodle_moodledata"       Created</pre>
+            <pre class="output">✔ Volume "moodle_moodlehtml"       Created</pre>
+            <pre class="success">✔ Container moodle-postgres-1      Started</pre>
+            <pre class="success">✔ Container moodle-moodle-1        Started</pre>
             <pre></pre>
             <pre><span class="prompt">$</span> <span class="command">docker compose ps</span></pre>
-            <pre class="output">NAME                IMAGE                    STATUS          PORTS</pre>
-            <pre class="output">moodle_mariadb_1    mariadb:10.11           Up 2 minutes    3306/tcp</pre>
-            <pre class="output">moodle_moodle_1     bitnami/moodle:4.4      Up 2 minutes    0.0.0.0:8080->8080/tcp</pre>
+            <pre class="output">NAME                IMAGE                         STATUS          PORTS</pre>
+            <pre class="output">moodle-postgres-1   postgres:17-alpine           Up 3 minutes    5432/tcp</pre>
+            <pre class="output">moodle-moodle-1     erseco/alpine-moodle:v5.1.0  Up 3 minutes    0.0.0.0:80->8080/tcp, 0.0.0.0:443->8443/tcp</pre>
           </div>
         </body>
       </html>

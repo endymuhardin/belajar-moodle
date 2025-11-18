@@ -33,37 +33,30 @@ cd moodle
 
 ### 3. Setup File docker-compose.yml
 File `docker-compose.yml` sudah dikonfigurasi dengan:
-- **Moodle**: Versi 5.0 dengan Bitnami image
-- **MariaDB**: Database server untuk Moodle
-- **Local Volumes**: Data disimpan di folder `./volumes/` untuk kemudahan backup
-  - `./volumes/mariadb` - Database files
-  - `./volumes/moodle` - Moodle application files
-  - `./volumes/moodledata` - Moodle data files (uploads, cache, etc)
+- **Moodle**: Versi 5.1.0 dengan erseco/alpine-moodle image
+- **PostgreSQL**: Database server untuk Moodle (PostgreSQL 17 Alpine)
+- **Docker Managed Volumes**: Data disimpan oleh Docker (lebih portable)
+  - `postgresdata` - PostgreSQL database files
+  - `moodlehtml` - Moodle application files
+  - `moodledata` - Moodle data files (uploads, cache, etc)
 
 ### 4. Konfigurasi Environment (Opsional)
 Buat file `.env` untuk custom configuration:
 ```bash
-# Database Configuration
-MARIADB_USER=bn_moodle
-MARIADB_DATABASE=bitnami_moodle
-MARIADB_ROOT_PASSWORD=rootpassword
-MOODLE_DATABASE_PASSWORD=moodlepassword
+# Database Configuration (PostgreSQL)
+POSTGRES_PASSWORD=strongpassword
+POSTGRES_USER=moodle
+POSTGRES_DB=moodle
 
 # Moodle Configuration
 MOODLE_USERNAME=admin
 MOODLE_PASSWORD=adminpassword
-MOODLE_EMAIL=admin@example.com
-MOODLE_SITE_NAME=Moodle Learning Platform
 ```
 
 ## Cara Menjalankan Aplikasi
 
 ### 1. Start Container
 ```bash
-# Buat folder volumes dengan permission yang tepat (hanya perlu sekali)
-mkdir -p volumes/mariadb volumes/moodle volumes/moodledata
-chmod -R 777 volumes/
-
 # Start semua services
 docker compose up -d
 
@@ -74,20 +67,7 @@ docker compose up
 docker compose ps
 ```
 
-**Catatan**: Jika terjadi error permission denied, jalankan:
-```bash
-# Stop container jika sedang berjalan
-docker compose down
-
-# Set permission untuk Bitnami containers
-chmod -R 777 volumes/
-
-# Atau jika memiliki akses sudo
-sudo chown -R 1001:1001 volumes/
-
-# Start ulang container
-docker compose up -d
-```
+**Catatan**: Dengan Docker managed volumes, tidak perlu membuat folder manual atau mengatur permission.
 
 ### 2. Akses Moodle
 
@@ -106,8 +86,8 @@ Jika `localhost` tidak bisa diakses dari Windows, gunakan IP address WSL:
    - Atau: `https://172.29.130.195` (akan ada warning SSL certificate)
 
 #### Default Credentials
-- Username: `user`
-- Password: `bitnami`
+- Username: `admin`
+- Password: `admin123`
 
 **PENTING**: Segera ganti password default setelah login pertama!
 
@@ -121,10 +101,13 @@ docker compose logs -f moodle
 docker compose logs -f mariadb
 
 # Masuk ke container Moodle
-docker compose exec moodle bash
+docker compose exec moodle sh
 
-# Masuk ke container MariaDB
-docker compose exec mariadb bash
+# Masuk ke container PostgreSQL
+docker compose exec postgres sh
+
+# Atau akses PostgreSQL psql
+docker compose exec postgres psql -U moodle -d moodle
 ```
 
 ### 4. Stop dan Restart Container
@@ -177,40 +160,48 @@ docker compose restart
 
 #### Backup Database
 ```bash
-# Backup database MariaDB
-docker compose exec mariadb mysqldump -u root -p bitnami_moodle > backup_$(date +%Y%m%d).sql
+# Backup database PostgreSQL
+docker compose exec postgres pg_dump -U moodle moodle > backup_$(date +%Y%m%d).sql
 
-# Atau backup langsung dari folder local
-tar czf mariadb_backup_$(date +%Y%m%d).tar.gz ./volumes/mariadb
+# Atau dengan kompresi
+docker compose exec postgres pg_dump -U moodle moodle | gzip > backup_$(date +%Y%m%d).sql.gz
 ```
 
-#### Backup Moodle Data
+#### Backup Moodle Data (Docker Volumes)
 ```bash
-# Backup semua volumes sekaligus
-tar czf moodle_full_backup_$(date +%Y%m%d).tar.gz ./volumes/
+# Backup volume moodledata
+docker run --rm \
+  -v moodle-moodledata:/data \
+  -v $(pwd):/backup \
+  alpine tar czf /backup/moodledata_$(date +%Y%m%d).tar.gz -C /data .
 
-# Atau backup per folder
-tar czf moodle_backup_$(date +%Y%m%d).tar.gz ./volumes/moodle
-tar czf moodledata_backup_$(date +%Y%m%d).tar.gz ./volumes/moodledata
+# Backup volume moodlehtml
+docker run --rm \
+  -v moodle-moodlehtml:/data \
+  -v $(pwd):/backup \
+  alpine tar czf /backup/moodlehtml_$(date +%Y%m%d).tar.gz -C /data .
+
+# Backup volume PostgreSQL
+docker run --rm \
+  -v moodle-postgresdata:/data \
+  -v $(pwd):/backup \
+  alpine tar czf /backup/postgresdata_$(date +%Y%m%d).tar.gz -C /data .
 ```
 
 #### Restore dari Backup
 ```bash
-# Restore database
-docker compose exec -T mariadb mysql -u root -p bitnami_moodle < backup_20240101.sql
+# Restore database PostgreSQL
+cat backup_20240101.sql | docker compose exec -T postgres psql -U moodle -d moodle
 
-# Restore volumes dari backup tar
-tar xzf moodle_full_backup_20240101.tar.gz
+# Atau dari file terkompresi
+gunzip < backup_20240101.sql.gz | docker compose exec -T postgres psql -U moodle -d moodle
 
-# Atau restore specific folder
-tar xzf moodledata_backup_20240101.tar.gz
+# Restore volume
+docker run --rm \
+  -v moodle-moodledata:/data \
+  -v $(pwd):/backup \
+  alpine sh -c "cd /data && tar xzf /backup/moodledata_20240101.tar.gz"
 ```
-
-#### Backup Manual
-Karena menggunakan local volumes, Anda juga bisa:
-1. Stop container: `docker compose stop`
-2. Copy folder `./volumes/` ke tempat backup
-3. Start container: `docker compose start`
 
 ## Tips & Troubleshooting
 
@@ -263,44 +254,41 @@ docker compose up -d
 docker stats
 ```
 
-### Permission Issues
-Jika mengalami error "Permission denied":
+### Volume Issues
+Jika mengalami masalah dengan volumes:
 ```bash
-# Option 1: Set permission 777 (development only)
-chmod -R 777 volumes/
+# Lihat daftar volumes
+docker volume ls
 
-# Option 2: Set ownership untuk Bitnami user (lebih secure)
-sudo chown -R 1001:1001 volumes/
+# Hapus volumes (HATI-HATI: akan menghapus semua data!)
+docker compose down
+docker volume rm moodle-postgresdata moodle-moodledata moodle-moodlehtml
 
-# Option 3: Hapus volumes dan buat ulang dengan permission
-docker compose down -v
-rm -rf volumes/
-mkdir -p volumes/mariadb volumes/moodle volumes/moodledata
-chmod -R 777 volumes/
+# Start ulang dengan volumes baru
 docker compose up -d
-```
-
-### Performance Tuning
-```bash
-# Increase PHP memory limit
-docker compose exec moodle bash
-echo "php_value memory_limit 512M" >> /opt/bitnami/moodle/.htaccess
-
-# Restart container
-docker compose restart moodle
 ```
 
 ### Update Moodle Version
 1. Edit `docker-compose.yml`:
    ```yaml
    moodle:
-     image: docker.io/bitnami/moodle:5.1  # Ganti ke versi baru
+     image: erseco/alpine-moodle:v5.2.0  # Ganti ke versi baru
    ```
 2. Pull image baru dan restart:
    ```bash
    docker compose pull
    docker compose up -d
    ```
+
+### Resource Monitoring
+```bash
+# Monitor resource usage
+docker stats
+
+# Lihat logs untuk troubleshooting
+docker compose logs -f moodle
+docker compose logs -f postgres
+```
 
 ## Membuat Screenshot Dokumentasi dengan Playwright
 
@@ -436,8 +424,8 @@ Jika mendapat error `ERR_CONNECTION_REFUSED`:
 Jika screenshot login gagal:
 1. Pastikan credentials di script sesuai dengan setup Moodle
 2. Default credentials:
-   - Username: `user`
-   - Password: `bitnami`
+   - Username: `admin`
+   - Password: `admin123`
 3. Edit file script jika menggunakan credentials berbeda
 
 #### Error: Element Not Found
@@ -452,8 +440,8 @@ Edit bagian configuration di setiap script:
 ```javascript
 // Configuration
 const MOODLE_URL = 'http://localhost:80';
-const ADMIN_USERNAME = 'user';         // Ganti dengan username Anda
-const ADMIN_PASSWORD = 'bitnami';      // Ganti dengan password Anda
+const ADMIN_USERNAME = 'admin';        // Ganti dengan username Anda
+const ADMIN_PASSWORD = 'admin123';     // Ganti dengan password Anda
 ```
 
 #### Menambah Screenshot Baru
@@ -479,8 +467,9 @@ const context = await browser.newContext({
 ## Sumber dan Dokumentasi
 
 ### Docker Image
-- [Bitnami Moodle Docker Hub](https://hub.docker.com/r/bitnami/moodle)
-- [Bitnami Moodle GitHub](https://github.com/bitnami/containers/tree/main/bitnami/moodle)
+- [erseco/alpine-moodle Docker Hub](https://hub.docker.com/r/erseco/alpine-moodle)
+- [erseco/alpine-moodle GitHub](https://github.com/erseco/alpine-moodle)
+- [PostgreSQL Docker Hub](https://hub.docker.com/_/postgres)
 
 ### Moodle Documentation
 - [Moodle Official Documentation](https://docs.moodle.org)

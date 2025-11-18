@@ -1,32 +1,27 @@
-# Copyright Broadcom, Inc. All Rights Reserved.
-# SPDX-License-Identifier: APACHE-2.0
-
 services:
-  mariadb:
-    image: docker.io/bitnami/mariadb:latest
+  postgres:
+    image: postgres:17-alpine
+    restart: unless-stopped
     environment:
-      # ALLOW_EMPTY_PASSWORD is recommended only for development.
-      - ALLOW_EMPTY_PASSWORD=yes
-      - MARIADB_USER=bn_moodle
-      - MARIADB_DATABASE=bitnami_moodle
-      - MARIADB_CHARACTER_SET=utf8mb4
-      - MARIADB_COLLATE=utf8mb4_unicode_ci
+      - POSTGRES_PASSWORD=moodle
+      - POSTGRES_USER=moodle
+      - POSTGRES_DB=moodle
     volumes:
-      - './volumes/mariadb:/bitnami/mariadb'
+      - postgresdata:/var/lib/postgresql/data
   moodle:
-    image: docker.io/bitnami/moodle:5.0
+    image: erseco/alpine-moodle:v5.1.0
     ports:
       - '80:8080'
       - '443:8443'
     environment:
-      - MOODLE_DATABASE_HOST=mariadb
-      - MOODLE_DATABASE_PORT_NUMBER=3306
-      - MOODLE_DATABASE_USER=bn_moodle
-      - MOODLE_DATABASE_NAME=bitnami_moodle
-      # ALLOW_EMPTY_PASSWORD is recommended only for development.
-      - ALLOW_EMPTY_PASSWORD=yes
+      MOODLE_USERNAME: admin
+      MOODLE_PASSWORD: admin123
     volumes:
-      - './volumes/moodle:/bitnami/moodle'
-      - './volumes/moodledata:/bitnami/moodledata'
+      - moodledata:/var/www/moodledata
+      - moodlehtml:/var/www/html
     depends_on:
-      - mariadb
+      - postgres
+volumes:
+  moodledata: null
+  moodlehtml: null
+  postgresdata: null
