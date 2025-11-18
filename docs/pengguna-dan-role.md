@@ -311,6 +311,7 @@ Moodle menggunakan sistem role-based access control (RBAC) yang fleksibel untuk 
 Role di Moodle adalah kumpulan `permissions` (izin) yang menentukan apa yang bisa dan tidak bisa dilakukan oleh seorang pengguna di dalam sistem. Setiap pengguna dapat memiliki berbagai `role` tergantung pada `context` (lingkup) di mana mereka berada.
 
 **Konsep Kunci:**
+
 - **Role**: Kumpulan `capabilities` (kemampuan).
 - **Context**: Lingkup di mana `role` diterapkan (`System`, `Category`, `Course`, `Activity`).
 - **Capabilities**: Izin spesifik (seperti membuat kursus, menilai siswa).
@@ -339,6 +340,7 @@ Role di Moodle adalah kumpulan `permissions` (izin) yang menentukan apa yang bis
 **Tujuan**: Kontrol penuh terhadap sistem Moodle
 
 **Kemampuan Utama:**
+
 - Akses ke `Site Administration`
 - Instal dan kelola `plugins`
 - Buat dan hapus pengguna
@@ -348,6 +350,7 @@ Role di Moodle adalah kumpulan `permissions` (izin) yang menentukan apa yang bis
 - Kelola pengaturan keamanan
 
 **Contoh Penggunaan Umum:**
+
 - Administrator TI
 - Manajer Sistem
 - Pimpinan Dukungan Teknis
@@ -364,6 +367,7 @@ moodle/restore:restoresection - Restore courses
 ![Administrator Capabilities](img/pengguna/04-define-roles.png)
 
 **Praktik Terbaik:**
+
 - Batasi jumlah `Administrator` (maksimal 2-3 orang)
 - Gunakan otentikasi yang kuat (disarankan 2FA)
 - Audit aktivitas administrator secara rutin
@@ -375,6 +379,7 @@ moodle/restore:restoresection - Restore courses
 **Tujuan**: Mengelola `courses` dan pengguna tanpa akses ke konfigurasi sistem
 
 **Kemampuan Utama:**
+
 - Membuat dan mengelola `courses` dalam kategori yang ditetapkan
 - Mendaftarkan dan membatalkan pendaftaran pengguna
 - Akses ke laporan `course`
@@ -383,6 +388,7 @@ moodle/restore:restoresection - Restore courses
 - Melihat laporan penyelesaian `course`
 
 **Contoh Penggunaan Umum:**
+
 - Manajer Akademik
 - Dekan atau Ketua Jurusan
 - Manajer Pelatihan
@@ -416,6 +422,7 @@ moodle/course:manageactivities - Manage course activities
 **Tujuan**: Membuat `courses` baru dan mengelola `courses` yang mereka buat
 
 **Kemampuan Utama:**
+
 - Membuat `courses` baru
 - Mengelola `courses` yang mereka buat
 - Mengatur pengaturan awal `course`
@@ -423,6 +430,7 @@ moodle/course:manageactivities - Manage course activities
 - Akses ke templat `course`
 
 **Contoh Penggunaan Umum:**
+
 - Guru Senior
 - Pengembang Kurikulum
 - Desainer Instruksional
@@ -451,6 +459,7 @@ moodle/course:visibility - Change course visibility
 **Tujuan**: Kontrol penuh di dalam `course` untuk pengajaran dan penilaian
 
 **Kemampuan Utama:**
+
 - Mengedit konten `course`
 - Membuat dan mengelola `activities`
 - Menilai `students`
@@ -460,6 +469,7 @@ moodle/course:visibility - Change course visibility
 - Mencadangkan dan memulihkan `course`
 
 **Contoh Penggunaan Umum:**
+
 - Instruktur Utama
 - Guru Mata Pelajaran
 - Pemilik `Course`
@@ -478,6 +488,7 @@ moodle/course:update - Update course settings
 ![Teacher Interface](img/pengguna/04-define-roles.png)
 
 **Tanggung Jawab Teacher:**
+
 - **Pembuatan Konten**: Mengembangkan materi pembelajaran
 - **Penilaian**: Membuat dan menilai `assignments`/`quizzes`
 - **Komunikasi**: Berinteraksi dengan `students`
@@ -490,6 +501,7 @@ moodle/course:update - Update course settings
 **Tujuan**: Dukungan pengajaran tanpa hak `editing`
 
 **Kemampuan Utama:**
+
 - Melihat semua konten `course`
 - Menilai `students` (`assignments` yang sudah ada)
 - Berpartisipasi dalam `activities`
@@ -498,6 +510,7 @@ moodle/course:update - Update course settings
 - Mengunduh konten `course`
 
 **Contoh Penggunaan Umum:**
+
 - Asisten Pengajar
 - Dosen Tamu
 - Penilai
@@ -531,6 +544,7 @@ moodle/user:viewdetails - View student profiles
 **Tujuan**: Belajar dan berpartisipasi dalam aktivitas `course`
 
 **Kemampuan Utama:**
+
 - Melihat konten `course`
 - Mengirim `assignments`
 - Mengerjakan `quizzes`
@@ -540,6 +554,7 @@ moodle/user:viewdetails - View student profiles
 - Berpartisipasi dalam aktivitas grup
 
 **Contoh Penggunaan Umum:**
+
 - Pelajar
 - Peserta Pelatihan
 - Peserta `Course`
@@ -557,6 +572,7 @@ moodle/grade:view - View own grades
 ![Student Interface](img/pengguna/04-define-roles.png)
 
 **Pengalaman Student:**
+
 - **Akses Course**: Menavigasi konten `course`
 - **Partisipasi Aktivitas**: Menyelesaikan `assignments` dan `quizzes`
 - **Komunikasi**: Diskusi `forum`, pesan
@@ -569,6 +585,7 @@ moodle/grade:view - View own grades
 **Tujuan**: Akses terbatas untuk pratinjau konten
 
 **Kemampuan Utama:**
+
 - Melihat konten `course` (hanya baca)
 - Menjelajahi area publik
 - Tidak ada kemampuan pengiriman
@@ -576,6 +593,7 @@ moodle/grade:view - View own grades
 - Partisipasi `forum` terbatas
 
 **Contoh Penggunaan Umum:**
+
 - Pratinjau `Course`
 - Akses Konten Publik
 - Akun Demonstrasi
@@ -584,6 +602,7 @@ moodle/grade:view - View own grades
 ![Guest Access](img/pengguna/04-define-roles.png)
 
 **Batasan Guest:**
+
 - Tidak dapat mengirim `assignments`
 - Tidak dapat mengerjakan `quizzes` yang dinilai
 - Tidak dapat mengakses `gradebook`
@@ -596,6 +615,7 @@ moodle/grade:view - View own grades
 **Tujuan**: Hak istimewa dasar untuk pengguna yang sudah `login`
 
 **Kemampuan Utama:**
+
 - Menjelajahi katalog `course`
 - Melihat profil publik
 - Mengakses konten halaman depan
@@ -861,6 +881,7 @@ System Administrator (1-2 pengguna)
 ```
 
 **Role Kustom:**
+
 - Academic Advisor
 - Librarian
 - External Examiner
@@ -879,6 +900,7 @@ Training Administrator
 ```
 
 **Role Kustom:**
+
 - Administrator HR
 - Petugas Kepatuhan
 - Pelatih Eksternal
@@ -894,6 +916,7 @@ Administrator (Kepala Sekolah/TI)
 ```
 
 **Role Tambahan:**
+
 - Akses Orang Tua (untuk siswa yang lebih muda)
 - Tamu (untuk calon siswa)
 
@@ -934,6 +957,7 @@ Administrator (Kepala Sekolah/TI)
 ### Masalah Izin
 
 **Gejala:**
+
 - Pengguna tidak dapat mengakses konten yang diharapkan
 - Pesan kesalahan tentang `permissions` yang tidak mencukupi
 - Item menu atau fungsi yang hilang
@@ -947,6 +971,7 @@ Administrator (Kepala Sekolah/TI)
 ### Masalah Penetapan Role
 
 **Gejala:**
+
 - Pengguna diberi `role` yang salah
 - Beberapa `role` yang bertentangan
 - `Role` tidak berlaku
@@ -960,6 +985,7 @@ Administrator (Kepala Sekolah/TI)
 ### Masalah Kinerja
 
 **Gejala:**
+
 - Penetapan `role` yang lambat
 - Waktu `login` yang lama
 - Kelambatan sistem dengan banyak `role`
@@ -1017,6 +1043,7 @@ Dengan manajemen `role` yang tepat, Moodle dapat menyediakan lingkungan belajar 
 ---
 
 **Pengingat Utama:**
+
 - Selalu uji perubahan `role` di lingkungan pengembangan terlebih dahulu.
 - Dokumentasikan semua `role` kustom dan modifikasinya.
 - Lakukan `backup` rutin sebelum perubahan besar pada sistem `role`.

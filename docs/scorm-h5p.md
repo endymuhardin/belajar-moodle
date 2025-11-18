@@ -13,6 +13,7 @@ Bab ini membahas berbagai standar e-learning yang didukung Moodle: SCORM, CMI5, 
 | **xAPI/TinCan** | ❌ No | ✅ Yes | High |
 
 **Rekomendasi:**
+
 - **Pemula**: Mulai dengan SCORM 1.2 atau H5P (tidak perlu LRS)
 - **Intermediate**: Gunakan SCORM 2004 untuk fitur sequencing
 - **Advanced**: CMI5 + LRS untuk tracking yang sangat detail
@@ -26,12 +27,14 @@ Bab ini membahas berbagai standar e-learning yang didukung Moodle: SCORM, CMI5, 
 **SCORM** adalah seperangkat standar teknis untuk e-learning yang dikembangkan oleh ADL (Advanced Distributed Learning).
 
 **✅ Keuntungan SCORM untuk Moodle:**
+
 - **Built-in support**: Langsung didukung Moodle tanpa plugin tambahan
 - **No LRS needed**: Tracking langsung disimpan di Moodle database
 - **Wide adoption**: Format paling umum, banyak authoring tools
 - **Simple deployment**: Upload ZIP, langsung jalan
 
 **SCORM memastikan bahwa:**
+
 - Konten dapat dioperasikan di berbagai LMS
 - Progress pembelajaran dapat dilacak
 - Data dapat dikomunikasikan antara konten dan LMS
@@ -261,6 +264,7 @@ Berbeda dengan SCORM, CMI5 **tidak bisa berjalan tanpa LRS**. Ini karena CMI5 me
 - **Cross-Platform**: Tidak terbatas pada web browser
 
 **Trade-offs:**
+
 - ❌ Perlu LRS (setup lebih kompleks)
 - ❌ Plugin tambahan untuk Moodle
 - ❌ Learning curve lebih tinggi
@@ -825,6 +829,7 @@ Jika tidak ingin self-host, gunakan hosted LRS:
 ```
 
 **Keuntungan Hosted:**
+
 - ✅ Tidak perlu kelola infrastructure
 - ✅ Backup otomatis
 - ✅ Support 24/7
@@ -832,6 +837,7 @@ Jika tidak ingin self-host, gunakan hosted LRS:
 - ✅ Compliance (GDPR, dll)
 
 **Kerugian:**
+
 - ❌ Biaya bulanan/tahunan
 - ❌ Data di server eksternal
 - ❌ Vendor lock-in

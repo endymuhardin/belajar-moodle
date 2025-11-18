@@ -43,11 +43,18 @@ Penerapan Bloom's Taxonomy untuk desain aktivitas Moodle:
 ### 1. Konten Statis (Resources)
 
 **File-based Resources:**
-- PDF documents, Presentations, Video files
-- Audio recordings, Images, Infographics
-- Spreadsheets, Templates
+
+- PDF documents
+- Presentations
+- Video files
+- Audio recordings
+- Images
+- Infographics
+- Spreadsheets
+- Templates
 
 **Web-based Resources:**
+
 - Pages (halaman HTML di dalam Moodle)
 - URL links ke sumber eksternal
 - Books (konten multi-halaman terstruktur)
@@ -56,18 +63,21 @@ Penerapan Bloom's Taxonomy untuk desain aktivitas Moodle:
 ### 2. Konten Interaktif (Activities)
 
 **Assessment Activities:**
+
 - Quiz (berbagai tipe pertanyaan)
 - Assignment (tugas dengan pengumpulan file)
 - Workshop (penilaian sejawat)
 - Lesson (pembelajaran bercabang)
 
 **Collaborative Activities:**
+
 - Forum (diskusi terstruktur)
 - Wiki (kolaborasi dokumen)
 - Database (koleksi konten bersama)
 - Glossary (kamus istilah)
 
 **Interactive Content:**
+
 - SCORM packages
 - H5P interactive content
 - External tools (LTI)
@@ -147,16 +157,19 @@ Course Structure Best Practices:
 ### 2. Menggunakan Moodle Features secara Optimal
 
 **Completion Tracking:**
+
 - Activity completion conditions
 - Course completion criteria
 - Progress indicators
 
 **Conditional Activities:**
+
 - Prerequisites setup
 - Availability based on grades
 - Date restrictions
 
 **Grade Management:**
+
 - Categories and weights
 - Grading scales
 - Grade calculations
@@ -164,6 +177,7 @@ Course Structure Best Practices:
 ### 3. Media Integration
 
 **Best Practices for Media:**
+
 - Compress images untuk loading cepat
 - Use streaming untuk video besar
 - Provide alternatives untuk media
@@ -174,12 +188,14 @@ Course Structure Best Practices:
 ### 1. Authoring Tools
 
 **Professional Authoring Tools:**
+
 - Articulate Storyline 360
 - Adobe Captivate
 - iSpring Suite
 - Lectora Inspire
 
 **Open Source/Free Tools:**
+
 - H5P (terintegrasi dengan Moodle)
 - LibreOffice Impress
 - OpenOffice
@@ -188,12 +204,14 @@ Course Structure Best Practices:
 ### 2. Content Creation Tools
 
 **Graphics and Design:**
+
 - Canva (online graphic design)
 - GIMP (image editing)
 - Inkscape (vector graphics)
 - PowerPoint presentations
 
 **Video and Audio:**
+
 - OBS Studio (screen recording)
 - Audacity (audio editing)
 - Shotcut (video editing)
@@ -202,6 +220,7 @@ Course Structure Best Practices:
 ### 3. Assessment Tools
 
 **Quiz Creation:**
+
 - Moodle Quiz tool
 - Question banks
 - Import/export formats
@@ -212,18 +231,21 @@ Course Structure Best Practices:
 ### 1. Testing Checklist
 
 **Content Quality:**
+
 - ✅ Spelling and grammar check
 - ✅ Fact checking
 - ✅ Consistency in formatting
 - ✅ Broken links check
 
 **Technical Quality:**
+
 - ✅ Cross-browser compatibility
 - ✅ Mobile responsiveness
 - ✅ Loading time optimization
 - ✅ Accessibility compliance
 
 **Learning Effectiveness:**
+
 - ✅ Clear learning objectives
 - ✅ Appropriate difficulty level
 - ✅ Engaging interactions
@@ -232,6 +254,7 @@ Course Structure Best Practices:
 ### 2. User Testing
 
 **Testing Methods:**
+
 - User acceptance testing (UAT)
 - Pilot testing dengan sample students
 - Peer review oleh sesama instructor
@@ -242,12 +265,14 @@ Course Structure Best Practices:
 ### 1. Tantangan Umum
 
 **Technical Challenges:**
+
 - File size limitations
 - Browser compatibility issues
 - Mobile responsiveness
 - Accessibility compliance
 
 **Pedagogical Challenges:**
+
 - Maintaining student engagement
 - Providing meaningful feedback
 - Assessing complex skills
@@ -256,12 +281,14 @@ Course Structure Best Practices:
 ### 2. Solusi dan Workarounds
 
 **Technical Solutions:**
+
 - Use external hosting untuk file besar
 - Implement progressive enhancement
 - Use responsive design principles
 - Follow WCAG guidelines
 
 **Pedagogical Solutions:**
+
 - Mix of synchronous/asynchronous activities
 - Automated feedback systems
 - Rubric-based assessment

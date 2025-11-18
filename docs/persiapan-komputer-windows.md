@@ -295,6 +295,7 @@ Komputer Windows Anda sekarang siap untuk menjalankan Moodle dengan `Docker Comp
 ---
 
 **Kiat Kinerja:**
+
 - Alokasikan minimum 4GB RAM untuk WSL
 - Gunakan SSD untuk kinerja I/O yang lebih baik
 - Tutup aplikasi yang tidak perlu saat menjalankan Docker

@@ -27,6 +27,7 @@ Moodle menawarkan beberapa format `course`:
 ### Mengisi Detail `Course`
 
 **Informasi Umum:**
+
 - **`Course full name`**: Nama lengkap `course`.
 - **`Course short name`**: Nama pendek untuk navigasi.
 - **`Course category`**: Kategori di mana `course` akan ditempatkan.
@@ -35,6 +36,7 @@ Moodle menawarkan beberapa format `course`:
 - **`Course end date`**: Tanggal akhir `course` (opsional).
 
 **Deskripsi:**
+
 - **`Course summary`**: Deskripsi singkat tentang `course`.
 - **`Course image`**: Gambar yang mewakili `course`.
 

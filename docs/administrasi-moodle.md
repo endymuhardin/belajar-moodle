@@ -93,6 +93,7 @@ Paket bahasa yang disarankan:
 ![Authentication Methods](img/administrasi/04-authentication-methods.png)
 
 **Pengaturan yang Disarankan:**
+
 - Aktifkan **Email-based self-registration** untuk `course` publik
 - Aktifkan **Manual accounts** untuk kontrol penuh admin
 - Nonaktifkan yang tidak perlu untuk keamanan
@@ -592,6 +593,7 @@ Keep: 7 cadangan (1 minggu)
 ### 3. `Plugin` Populer
 
 **`Plugin` yang Disarankan:**
+
 - **BigBlueButton**: Konferensi video
 - **H5P**: Konten interaktif
 - **Plagiarism detection**: Alat anti-plagiarisme
@@ -705,6 +707,7 @@ docker compose exec moodle php admin/cli/maintenance.php --disable
 ### 1. Masalah Kinerja
 
 **Gejala:**
+
 - Pemuatan halaman lambat
 - Beban `server` tinggi
 - `Timeout` `database`
@@ -718,6 +721,7 @@ docker compose exec moodle php admin/cli/maintenance.php --disable
 ### 2. Masalah `Login`
 
 **Gejala:**
+
 - Tidak bisa `login`
 - Sesi cepat berakhir
 - `Loop` pengalihan
@@ -731,6 +735,7 @@ docker compose exec moodle php admin/cli/maintenance.php --disable
 ### 3. Masalah Unggah
 
 **Gejala:**
+
 - Tidak bisa mengunggah `file`
 - Kesalahan ukuran `file`
 - Izin ditolak
@@ -809,6 +814,7 @@ Dengan mengikuti praktik terbaik di atas, sistem Moodle Anda akan berjalan optim
 ---
 
 **Kiat Administrasi:**
+
 - Dokumentasikan semua konfigurasi yang dilakukan
 - Pantau kinerja sistem secara berkala
 - Cadangkan sebelum melakukan perubahan besar

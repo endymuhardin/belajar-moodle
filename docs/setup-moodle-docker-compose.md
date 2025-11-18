@@ -18,15 +18,18 @@ Pada bab ini, kita akan melakukan instalasi Moodle menggunakan `Docker Compose` 
 Bitnami, yang sebelumnya menjadi pilihan populer untuk Docker images aplikasi, telah mengalami perubahan signifikan:
 
 **Perubahan Platform:**
+
 - Bitnami melakukan transisi dari images berbasis **Debian Linux** ke **Photon Linux** (OS yang dioptimalkan untuk cloud dan security-hardened)
 - Images lama berbasis Debian dipindahkan ke "Bitnami Legacy" registry
 - Fokus baru pada "Bitnami Secure Images" (BSI) dengan fitur security yang lebih ketat
 
 **Kepemilikan:**
+
 - Bitnami sekarang dimiliki oleh **Broadcom Inc.** (melalui akuisisi VMware)
 - Perubahan kepemilikan ini mempengaruhi arah pengembangan dan prioritas produk
 
 **Status Images Moodle:**
+
 - Bitnami Moodle masih tersedia dan aktif di-maintain
 - Namun proses transisi ke Photon Linux dan perubahan struktur menyebabkan kompleksitas tambahan
 - Ada ketidakpastian jangka panjang terkait dukungan untuk aplikasi tertentu
@@ -123,12 +126,14 @@ volumes:
 ### Penjelasan Konfigurasi
 
 **Service PostgreSQL:**
+
 - `postgres:17-alpine`: Image PostgreSQL versi 17 berbasis Alpine Linux (ringan)
 - `restart: unless-stopped`: Container akan restart otomatis kecuali dihentikan manual
 - Environment variables: Konfigurasi database, user, dan password
 - Volume: Data PostgreSQL disimpan di Docker managed volume `postgresdata`
 
 **Service Moodle:**
+
 - `erseco/alpine-moodle:v5.1.0`: Image Moodle 5.1.0 berbasis Alpine Linux
 - Ports: HTTP (80→8080) dan HTTPS (443→8443)
 - Environment: Kredensial admin default (harus diganti di production!)
@@ -138,6 +143,7 @@ volumes:
 - `depends_on`: Memastikan PostgreSQL start sebelum Moodle
 
 **Docker Managed Volumes:**
+
 - Data disimpan di lokasi yang dikelola Docker (biasanya `/var/lib/docker/volumes/`)
 - Lebih portable dan mudah di-backup menggunakan perintah Docker
 
@@ -583,6 +589,7 @@ Anda telah berhasil:
 - ✅ Memahami manajemen `container`, backup, dan restore
 
 **Keuntungan Setup Ini:**
+
 - Image lebih ringan dan cepat (~450MB vs ~800MB)
 - PostgreSQL lebih performant untuk Moodle
 - Tidak ada vendor lock-in
@@ -611,6 +618,7 @@ Pada bab selanjutnya, kita akan menjelajahi:
 | `docker stats` | Monitor resource usage |
 
 **Kredensial Default:**
+
 - Username: `admin`
 - Password: `admin123`
 - Database: PostgreSQL di port 5432 (internal)

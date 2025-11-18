@@ -18,18 +18,21 @@ Troubleshooting adalah keterampilan penting dalam manajemen Moodle untuk mengide
 ### Types of Issues
 
 **Technical Issues:**
+
 - Server performance
 - Database connectivity
 - File permissions
 - Network problems
 
 **Functional Issues:**
+
 - Feature not working
 - Configuration errors
 - Integration problems
 - User interface issues
 
 **Performance Issues:**
+
 - Slow page loads
 - High resource usage
 - Scalability problems
@@ -42,6 +45,7 @@ Troubleshooting adalah keterampilan penting dalam manajemen Moodle untuk mengide
 #### Masalah: Moodle Tidak Terinstall
 
 **Symptoms:**
+
 - White screen after installation
 - Database connection errors
 - Permission denied errors
@@ -69,6 +73,7 @@ tail -f /var/log/php/error.log
 #### Masalah: Docker Environment Issues
 
 **Symptoms:**
+
 - Containers not starting
 - Port conflicts
 - Volume mount issues
@@ -103,6 +108,7 @@ chmod -R 777 volumes/
 #### Masalah: Slow Page Loading
 
 **Symptoms:**
+
 - Pages take long to load
 - High server load
 - Database queries slow
@@ -137,6 +143,7 @@ php admin/cli/mysql.php --engine=InnoDB
 #### Masalah: High Resource Usage
 
 **Symptoms:**
+
 - Server becoming unresponsive
 - Memory exhaustion
 - High CPU usage
@@ -170,6 +177,7 @@ rm -rf /var/www/moodledata/cache/
 #### Masalah: Login Problems
 
 **Symptoms:**
+
 - Cannot login with valid credentials
 - Password reset not working
 - Session timeout issues
@@ -198,6 +206,7 @@ mysql -u root -p -e "SELECT * FROM mdl_config_plugins WHERE plugin='manual';"
 #### Masalah: Permission Issues
 
 **Symptoms:**
+
 - Access denied errors
 - Cannot upload files
 - Cannot create courses
@@ -228,6 +237,7 @@ chown www-data:www-data /var/www/moodle/moodledata/
 #### Masalah: Database Connection Errors
 
 **Symptoms:**
+
 - Database connection failed
 - Too many connections
 - Database server not responding
@@ -260,6 +270,7 @@ mysqlcheck -u root -p --optimize --all-databases
 #### Masalah: Database Corruption
 
 **Symptoms:**
+
 - Tables marked as crashed
 - Data inconsistency
 - Query errors
@@ -289,6 +300,7 @@ mysql -u root -p moodle -e "REPAIR TABLE mdl%;"
 #### Masalah: Cannot Upload Files
 
 **Symptoms:**
+
 - Upload fails
 - File size limit reached
 - File type not allowed
@@ -321,6 +333,7 @@ chown www-data:www-data /var/www/moodledata/filedir/
 #### Masalah: Missing Files
 
 **Symptoms:**
+
 - Images not showing
 - Files cannot be downloaded
 - Broken links
@@ -360,6 +373,7 @@ $CFG->debugvalidators = 1;          // HTML validation
 ```
 
 **Debug Levels:**
+
 - `DEBUG_MINIMAL`: Show fatal errors only
 - `DEBUG_NORMAL`: Show errors, warnings, and notices
 - `DEBUG_ALL`: Show all reasonable debugging information
@@ -500,6 +514,7 @@ php admin/cli/course_stats.php
 ### 3. Documentation and Procedures
 
 **Troubleshooting Checklist:**
+
 - Issue identification
 - Information gathering
 - Hypothesis testing
@@ -508,6 +523,7 @@ php admin/cli/course_stats.php
 - Documentation
 
 **Escalation Procedures:**
+
 - Define when to escalate
 - Identify escalation points
 - Establish communication channels
@@ -525,6 +541,7 @@ php admin/cli/course_stats.php
 5. **Verify**: Confirm system functionality
 
 **Communication Plan:**
+
 - **Internal**: IT team, management
 - **External**: Users, vendors, stakeholders
 - **Methods**: Email, phone, chat, announcements
@@ -539,6 +556,7 @@ php admin/cli/course_stats.php
 5. **Learn**: Document and improve
 
 **Common Security Issues:**
+
 - Brute force attacks
 - SQL injection attempts
 - File inclusion vulnerabilities
@@ -549,12 +567,14 @@ php admin/cli/course_stats.php
 ### 1. Official Resources
 
 **Moodle Documentation:**
+
 - [Moodle Docs](https://docs.moodle.org)
 - [Moodle Forums](https://moodle.org)
 - [Moodle Tracker](https://tracker.moodle.org)
 - [Moodle Community](https://moodle.net)
 
 **Technical Documentation:**
+
 - Installation guides
 - Configuration documentation
 - Security advisories
@@ -563,12 +583,14 @@ php admin/cli/course_stats.php
 ### 2. Community Support
 
 **Moodle Community:**
+
 - Official forums
 - Stack Overflow
 - Reddit communities
 - LinkedIn groups
 
 **Professional Support:**
+
 - Moodle Partners
 - Certified service providers
 - Independent consultants
@@ -577,12 +599,14 @@ php admin/cli/course_stats.php
 ### 3. Tools and Utilities
 
 **Diagnostic Tools:**
+
 - Moodle CLI tools
 - Database management tools
 - Performance monitoring tools
 - Security scanning tools
 
 **Utilities:**
+
 - File management tools
 - Log analysis tools
 - Network monitoring tools

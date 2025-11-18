@@ -933,6 +933,7 @@ Next iteration improvements:
 **Berikutnya:** [Bab 12 - Learning Progress & Assessment →](learning-progress-tracking.md)
 
 **Resources:**
+
 - [CMI5 Specification](https://github.com/AICC/CMI-5_Spec_Current)
 - [xAPI Registry](https://registry.tincanapi.com/)
 - [Moodle Gradebook Documentation](https://docs.moodle.org/en/Gradebook)

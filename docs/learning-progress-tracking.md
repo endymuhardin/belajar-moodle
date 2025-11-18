@@ -249,12 +249,14 @@ Week 3: Advanced Mastery
 Moodle menyediakan berbagai report built-in tanpa perlu plugin tambahan:
 
 **Course Reports:**
+
 - **Activity report**: Aktivitas per student
 - **Course participation**: Partisipasi course
 - **Activity completion**: Status completion
 - **Course completion**: Overall course progress
 
 **Admin Reports:**
+
 - **Logs**: System logs
 - **Live logs**: Real-time activity
 - **Statistics**: Usage statistics
@@ -304,6 +306,7 @@ HAVING activity_count < 5 OR average_grade < 60
 - **Custom dashboards**: Real-time monitoring (untuk large-scale deployments)
 
 **Kapan Perlu External Tools:**
+
 - Enterprise deployment (>10,000 users)
 - Cross-platform analytics (multiple LMS systems)
 - Executive dashboards untuk C-level
@@ -421,12 +424,14 @@ HAVING activity_count < 5 OR average_grade < 60
 **Solution:** Implementasi comprehensive tracking system
 
 **Results:**
+
 - 95% completion rate (dari 60%)
 - 40% reduction in training time
 - Real-time compliance reporting
 - Automated certificate generation
 
 **Key Features:**
+
 - Automated enrollment
 - Progress dashboards
 - Manager notifications
@@ -457,6 +462,7 @@ HAVING activity_count < 5 OR average_grade < 60
 ### 1. Common Issues
 
 **Tracking Not Working:**
+
 - **Symptom:** Progress tidak tercatat
 - **Solution:** Check completion settings, user roles, permissions
 

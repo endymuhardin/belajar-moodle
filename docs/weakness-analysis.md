@@ -28,24 +28,28 @@ Weakness Analysis adalah proses identifikasi, evaluasi, dan perbaikan area yang 
 **SWOT Components:**
 
 **Strengths (Kekuatan):**
+
 - Konten berkualitas tinggi
 - Instructor expertise
 - Infrastructure yang baik
 - Student engagement tinggi
 
 **Weaknesses (Kelemahan):**
+
 - Drop-off rates tinggi
 - Technical issues
 - Content gaps
 - Poor user experience
 
 **Opportunities (Peluang):**
+
 - New technologies
 - Market expansion
 - Partnership opportunities
 - New learning methods
 
 **Threats (Ancaman):**
+
 - Competition
 - Technology changes
 - Regulatory changes
@@ -62,6 +66,7 @@ Weakness Analysis adalah proses identifikasi, evaluasi, dan perbaikan area yang 
 5. **Solution Development**: Pengembangan solusi
 
 **Types of Gaps:**
+
 - **Knowledge Gap**: Kurangnya pengetahuan
 - **Skill Gap**: Kurangnya keterampilan
 - **Performance Gap**: Perbedaan performa
@@ -349,6 +354,7 @@ Problem: High dropout rate in Week 3
 ```
 
 **Fishbone Diagram:**
+
 - **People**: Instructor training, student preparation
 - **Process**: Course design, assessment methods
 - **Technology**: Platform issues, tool selection
@@ -356,6 +362,7 @@ Problem: High dropout rate in Week 3
 - **Environment**: Learning context, support systems
 
 **Pareto Analysis:**
+
 - Identify vital few vs. trivial many
 - Focus on high-impact issues
 - Prioritize improvement efforts
@@ -603,18 +610,21 @@ Act: Standardize successful changes
 **Solution:** Comprehensive weakness analysis and redesign
 
 **Analysis Findings:**
+
 - Content was too theoretical
 - Poor user experience on mobile
 - Lack of interactivity
 - Insufficient support
 
 **Improvements Implemented:**
+
 - Microlearning approach
 - Mobile-first design
 - Interactive simulations
 - Peer learning communities
 
 **Results:**
+
 - 85% increase in completion rates
 - 92% improvement in engagement
 - 40% reduction in support tickets
@@ -627,18 +637,21 @@ Act: Standardize successful changes
 **Solution:** Data-driven improvement program
 
 **Analysis Findings:**
+
 - Poor course design
 - Inadequate student support
 - Technical issues
 - Lack of community
 
 **Improvements Implemented:**
+
 - Instructional design review process
 - Enhanced student support services
 - Technical infrastructure upgrade
 - Community building initiatives
 
 **Results:**
+
 - 30% reduction in dropout rates
 - 25% improvement in student satisfaction
 - Improved retention rates

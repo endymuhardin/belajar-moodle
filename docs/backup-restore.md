@@ -7,12 +7,14 @@ Backup dan restore adalah operasi krusial dalam manajemen Moodle untuk memastika
 ### Mengapa Backup Penting?
 
 **Data Protection:**
+
 - **Course content**: Konten pembelajaran yang berharga
 - **User data**: Data pengguna dan progress
 - **Assessment data**: Hasil penilaian dan grade
 - **System configuration**: Konfigurasi sistem
 
 **Business Continuity:**
+
 - **Disaster recovery**: Pemulihan setelah bencana
 - **System migration**: Migrasi sistem
 - **Compliance requirements**: Kepatuhan regulasi
@@ -21,17 +23,20 @@ Backup dan restore adalah operasi krusial dalam manajemen Moodle untuk memastika
 ### Jenis-jenis Backup di Moodle
 
 **1. Complete Backup:**
+
 - Seluruh sistem Moodle
 - Database dan file
 - Konfigurasi lengkap
 
 **2. Course Backup:**
+
 - Individual course data
 - User enrollments
 - Grade book data
 - Activities dan resources
 
 **3. Automated Backup:**
+
 - Scheduled backups
 - Incremental backups
 - Cloud storage integration
@@ -41,18 +46,21 @@ Backup dan restore adalah operasi krusial dalam manajemen Moodle untuk memastika
 ### 1. Backup Planning
 
 **Backup Schedule:**
+
 - **Daily backups**: Database penting
 - **Weekly backups**: Course data
 - **Monthly backups**: Complete system
 - **On-demand backups**: Sebelum perubahan besar
 
 **Retention Policy:**
+
 - **Daily**: Retain 7-30 days
 - **Weekly**: Retain 4-12 weeks
 - **Monthly**: Retain 6-12 months
 - **Yearly**: Retain 3-7 years
 
 **Storage Strategy:**
+
 - **Local storage**: Quick access
 - **Off-site storage**: Disaster recovery
 - **Cloud storage**: Scalability
@@ -395,18 +403,21 @@ echo "Backup monitoring completed successfully"
 ### 1. Security Considerations
 
 **Data Encryption:**
+
 - Encrypt backup files at rest
 - Use secure transfer protocols
 - Implement access controls
 - Regular security audits
 
 **Access Control:**
+
 - Role-based access to backups
 - Secure storage locations
 - Audit trail for backup access
 - Regular access reviews
 
 **Network Security:**
+
 - Secure backup network traffic
 - Isolate backup storage
 - Monitor backup transfers
@@ -415,18 +426,21 @@ echo "Backup monitoring completed successfully"
 ### 2. Performance Optimization
 
 **Backup Performance:**
+
 - Use incremental backups
 - Optimize backup schedules
 - Utilize compression
 - Parallel processing
 
 **Storage Optimization:**
+
 - Implement deduplication
 - Use efficient compression
 - Optimize storage hierarchy
 - Regular cleanup
 
 **Network Optimization:**
+
 - Schedule off-peak backups
 - Use bandwidth throttling
 - Implement delta transfers
@@ -435,12 +449,14 @@ echo "Backup monitoring completed successfully"
 ### 3. Documentation and Training
 
 **Documentation Requirements:**
+
 - Backup procedures
 - Restore procedures
 - Disaster recovery plan
 - Contact information
 
 **Training Requirements:**
+
 - Regular training sessions
 - Hands-on practice
 - Update training materials
@@ -451,16 +467,19 @@ echo "Backup monitoring completed successfully"
 ### 1. Common Backup Issues
 
 **Failed Backups:**
+
 - **Symptom**: Backup process fails
 - **Cause**: Insufficient space, permissions, network issues
 - **Solution**: Check logs, free space, verify permissions
 
 **Corrupted Backups:**
+
 - **Symptom**: Backup files cannot be restored
 - **Cause**: Incomplete transfers, storage issues
 - **Solution**: Verify integrity, create new backup
 
 **Large Backup Sizes:**
+
 - **Symptom**: Backup files too large
 - **Cause**: Accumulated data, unnecessary files
 - **Solution**: Clean up, implement incremental backups
@@ -468,16 +487,19 @@ echo "Backup monitoring completed successfully"
 ### 2. Common Restore Issues
 
 **Database Connection Errors:**
+
 - **Symptom**: Cannot connect to database
 - **Cause**: Wrong credentials, database not running
 - **Solution**: Verify credentials, start database
 
 **File Permission Issues:**
+
 - **Symptom**: Permission denied errors
 - **Cause**: Wrong file ownership, permissions
 - **Solution**: Set correct permissions, ownership
 
 **Configuration Mismatch:**
+
 - **Symptom**: System not working after restore
 - **Cause**: Different environment, missing settings
 - **Solution**: Update configuration, verify settings
@@ -487,12 +509,14 @@ echo "Backup monitoring completed successfully"
 ### 1. High Availability Setup
 
 **Load Balancing:**
+
 - Multiple application servers
 - Database clustering
 - File synchronization
 - Session management
 
 **Failover Systems:**
+
 - Active-passive setup
 - Heartbeat monitoring
 - Automatic failover
@@ -501,12 +525,14 @@ echo "Backup monitoring completed successfully"
 ### 2. Cloud Integration
 
 **Cloud Storage Options:**
+
 - AWS S3 integration
 - Azure Blob Storage
 - Google Cloud Storage
 - Multi-cloud strategies
 
 **Cloud Backup Services:**
+
 - Backup as a Service (BaaS)
 - Disaster Recovery as a Service (DRaaS)
 - Hybrid cloud solutions
@@ -515,12 +541,14 @@ echo "Backup monitoring completed successfully"
 ### 3. Compliance and Legal
 
 **Compliance Requirements:**
+
 - GDPR compliance
 - Data protection regulations
 - Industry standards
 - Audit requirements
 
 **Legal Considerations:**
+
 - Data retention policies
 - Privacy requirements
 - Cross-border data transfer
