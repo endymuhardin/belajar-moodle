@@ -2,12 +2,36 @@
 
 Bab ini membahas berbagai standar e-learning yang didukung Moodle: SCORM, CMI5, dan H5P. Anda akan mempelajari teori, implementasi praktis, dan best practices untuk konten pembelajaran interaktif menggunakan standar industri.
 
+## 🎯 Quick Reference: LRS Requirements
+
+| Standard | Built-in Moodle | Needs LRS | Complexity |
+|----------|----------------|-----------|------------|
+| **SCORM 1.2** | ✅ Yes | ❌ No | Low |
+| **SCORM 2004** | ✅ Yes | ❌ No | Low |
+| **H5P** | ✅ Yes | ❌ No | Low |
+| **CMI5** | ❌ No | ✅ Yes | High |
+| **xAPI/TinCan** | ❌ No | ✅ Yes | High |
+
+**Rekomendasi:**
+- **Pemula**: Mulai dengan SCORM 1.2 atau H5P (tidak perlu LRS)
+- **Intermediate**: Gunakan SCORM 2004 untuk fitur sequencing
+- **Advanced**: CMI5 + LRS untuk tracking yang sangat detail
+
+---
+
 ## PART A: SCORM (Sharable Content Object Reference Model)
 
 ### Pengenalan SCORM
 
-**SCORM** adalah seperangkat standar teknis untuk e-learning yang dikembangkan oleh ADL (Advanced Distributed Learning). SCORM memastikan bahwa:
+**SCORM** adalah seperangkat standar teknis untuk e-learning yang dikembangkan oleh ADL (Advanced Distributed Learning).
 
+**✅ Keuntungan SCORM untuk Moodle:**
+- **Built-in support**: Langsung didukung Moodle tanpa plugin tambahan
+- **No LRS needed**: Tracking langsung disimpan di Moodle database
+- **Wide adoption**: Format paling umum, banyak authoring tools
+- **Simple deployment**: Upload ZIP, langsung jalan
+
+**SCORM memastikan bahwa:**
 - Konten dapat dioperasikan di berbagai LMS
 - Progress pembelajaran dapat dilacak
 - Data dapat dikomunikasikan antara konten dan LMS
@@ -223,6 +247,10 @@ Anda dapat membuat contoh SCORM package untuk testing:
 
 CMI5 adalah generasi terbaru dari standar e-learning yang menggantikan SCORM. Dikembangkan oleh AICC (Aviation Industry Computer-Based Training Committee) dan sekarang dikelola oleh ADL (Advanced Distributed Learning).
 
+**⚠️ PENTING: CMI5 memerlukan LRS (Learning Record Store)**
+
+Berbeda dengan SCORM, CMI5 **tidak bisa berjalan tanpa LRS**. Ini karena CMI5 menggunakan xAPI untuk tracking, yang memerlukan tempat penyimpanan statements (LRS).
+
 **Keuntungan CMI5 vs SCORM:**
 
 - **Modern Architecture**: Menggunakan xAPI (Experience API) untuk tracking yang lebih kaya
@@ -231,6 +259,13 @@ CMI5 adalah generasi terbaru dari standar e-learning yang menggantikan SCORM. Di
 - **Flexible Deployment**: Mendukung berbagai deployment scenarios
 - **Better Security**: Improved authentication dan data security
 - **Cross-Platform**: Tidak terbatas pada web browser
+
+**Trade-offs:**
+- ❌ Perlu LRS (setup lebih kompleks)
+- ❌ Plugin tambahan untuk Moodle
+- ❌ Learning curve lebih tinggi
+- ✅ Tracking data jauh lebih kaya
+- ✅ Future-proof standard
 
 ### Komponen CMI5
 
@@ -391,54 +426,415 @@ tincan.sendStatement(completedStmt);
 
 ### LRS (Learning Record Store)
 
-CMI5 requires an LRS to store xAPI statements:
+CMI5 memerlukan LRS untuk menyimpan xAPI statements:
 
-**Popular LRS Options:**
+**Pilihan LRS yang Aktif Dimaintain:**
 
-1. **Learning Locker** (Open Source)
-   - Self-hosted
-   - Full xAPI support
-   - Analytics dashboard
+1. **Trax LRS** (Open Source - **Recommended**)
+   - Self-hosted, Docker support
+   - xAPI 1.0.3 compliant
+   - Aktif dimaintain
+   - Laravel-based, mudah di-deploy
 
-2. **Veracity Learning LRS** (Commercial)
+2. **Ralph** (Open Source)
+   - Modern Python-based LRS
+   - Dikembangkan Kementerian Pendidikan Perancis
+   - Cloud-native, Kubernetes ready
+   - Aktif development
+
+3. **Veracity Learning LRS** (Commercial)
    - Cloud-hosted
    - Enterprise features
-   - Compliance reporting
+   - Support 24/7
 
-3. **Yet Analytics Watershed** (Commercial)
+4. **Yet Analytics Watershed** (Commercial)
    - Advanced analytics
    - Multi-tenant
    - Integration tools
 
-**Setup Learning Locker (Docker):**
+> **⚠️ Catatan**: Learning Locker sudah tidak dimaintain sejak 2020. Gunakan Trax LRS atau Ralph untuk deployment baru.
+
+### Panduan Lengkap Setup LRS (Trax LRS)
+
+#### Langkah 1: Install Trax LRS dengan Docker
+
+**1. Buat docker-compose.yml untuk Trax LRS:**
+
 ```yaml
-version: '3'
+version: '3.8'
 services:
-  mongo:
-    image: mongo:4.4
+  mysql:
+    image: mysql:8.0
     restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpassword
+      - MYSQL_DATABASE=traxlrs
+      - MYSQL_USER=traxlrs
+      - MYSQL_PASSWORD=traxlrspassword
     volumes:
-      - mongo-data:/data/db
+      - mysql-data:/var/lib/mysql
+    networks:
+      - lrs-network
 
-  redis:
-    image: redis:6-alpine
-    restart: unless-stopped
-
-  learning-locker:
-    image: learninglocker/learninglocker:latest
+  trax-lrs:
+    image: traxlrs/traxlrs-apache:latest
     restart: unless-stopped
     depends_on:
-      - mongo
-      - redis
+      - mysql
     environment:
-      - MONGODB_PATH=mongodb://mongo:27017/learninglocker_v2
-      - REDIS_HOST=redis
+      - APP_ENV=production
+      - APP_DEBUG=false
+      - APP_URL=http://localhost:8080
+      - DB_CONNECTION=mysql
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_DATABASE=traxlrs
+      - DB_USERNAME=traxlrs
+      - DB_PASSWORD=traxlrspassword
+      - TRAX_XP_STORE=on
+      - TRAX_GATEWAY_ENABLED=off
     ports:
-      - "8080:8080"
+      - "8080:80"
+    volumes:
+      - trax-storage:/var/www/html/storage
+    networks:
+      - lrs-network
+
+networks:
+  lrs-network:
+    driver: bridge
 
 volumes:
-  mongo-data:
+  mysql-data:
+  trax-storage:
 ```
+
+**2. Jalankan Trax LRS:**
+
+```bash
+# Buat direktori
+mkdir ~/trax-lrs
+cd ~/trax-lrs
+
+# Simpan docker-compose.yml
+nano docker-compose.yml
+# (paste config di atas)
+
+# Jalankan containers
+docker compose up -d
+
+# Cek status
+docker compose ps
+
+# Lihat logs
+docker compose logs -f trax-lrs
+```
+
+**3. Tunggu inisialisasi (30-60 detik)**
+
+```bash
+# Cek apakah LRS sudah ready
+curl http://localhost:8080/trax/api/gateway/xapi
+
+# Output yang diharapkan: 401 Unauthorized (normal, karena belum auth)
+```
+
+#### Langkah 2: Konfigurasi Trax LRS & Dapatkan Credentials
+
+**1. Akses Trax LRS Admin UI:**
+
+```
+Buka browser: http://localhost:8080/trax
+```
+
+**2. Login sebagai Admin:**
+
+```
+Default credentials:
+- Email: admin@traxlrs.com
+- Password: ChangeMe!
+```
+
+**3. Buat Basic Store:**
+
+```
+Menu: Basic Stores → Create
+
+Store Settings:
+- Name: Moodle CMI5 Store
+- Description: LRS untuk Moodle CMI5 content
+- Click "Create"
+```
+
+**4. Buat Access Token untuk Moodle:**
+
+```
+Menu: Access Tokens → Create
+
+Token Settings:
+- Store: Pilih "Moodle CMI5 Store"
+- Consumer: Moodle
+- Authority: https://your-moodle.com
+- Permissions: xAPI All Permissions
+- Click "Create"
+
+Simpan credentials yang di-generate:
+✅ Basic HTTP: dXNlcjpwYXNz... (base64 encoded)
+✅ Username: generated-username
+✅ Password: generated-password
+```
+
+#### Langkah 3: Konfigurasi Moodle CMI5 Plugin
+
+**1. Install CMI5 Plugin di Moodle:**
+
+```bash
+# SSH ke Moodle container
+docker compose exec moodle sh
+
+# Download plugin
+cd /var/www/html/mod
+wget https://moodle.org/plugins/download.php/xxxxx/mod_cmi5launch.zip
+unzip mod_cmi5launch.zip
+rm mod_cmi5launch.zip
+
+# Set permissions
+chown -R www-data:www-data cmi5launch
+chmod -R 755 cmi5launch
+```
+
+**2. Selesaikan Instalasi via Moodle:**
+
+```
+Site administration → Notifications
+- Klik "Upgrade Moodle database now"
+- Tunggu sampai instalasi selesai
+```
+
+**3. Konfigurasi CMI5 Plugin:**
+
+```
+Site administration → Plugins → Activity modules → CMI5 Launch
+
+LRS Settings:
+- LRS Endpoint: http://localhost:8080/trax/api/gateway/xapi/
+- LRS Key: generated-username (dari Trax LRS)
+- LRS Secret: generated-password (dari Trax LRS)
+- LRS Auth Method: Basic Auth
+
+Additional Settings:
+- Enable cmi5 AU registration: Yes
+- Enable progress tracking: Yes
+- Debug mode: Yes (untuk testing)
+
+Klik "Save changes"
+```
+
+#### Langkah 4: Test Koneksi LRS
+
+**1. Test dari Moodle:**
+
+```
+Site administration → Plugins → Activity modules → CMI5 Launch → Test Connection
+
+Hasil yang diharapkan: ✅ Connection successful
+```
+
+**2. Test Manual dengan curl:**
+
+```bash
+# Test authentication
+curl -X GET http://localhost:8080/trax/api/gateway/xapi/statements \
+  -u "generated-username:generated-password" \
+  -H "X-Experience-API-Version: 1.0.3"
+
+# Expected: {"statements":[], "more":""}
+```
+
+**3. Buat Test CMI5 Package:**
+
+Buat simple test package untuk memverifikasi tracking berfungsi.
+
+#### Langkah 5: Deploy CMI5 Content
+
+**1. Upload CMI5 Package ke Moodle:**
+
+```
+Course → Turn editing on → Add activity → CMI5 Launch
+
+Settings:
+- Activity name: Test CMI5 Lesson
+- Package: Upload file .zip Anda
+- Launch method: New window
+- LRS settings: Use default (dari plugin config)
+
+Save and display
+```
+
+**2. Test sebagai Student:**
+
+```
+1. Enroll sebagai student
+2. Klik CMI5 activity
+3. Selesaikan lesson
+4. Cek apakah data tercatat di LRS
+```
+
+**3. Verifikasi di Trax LRS:**
+
+```
+Trax LRS UI → Data → Statements
+
+Anda akan melihat:
+- Initialized statement
+- Launched statement
+- Progressed statements
+- Completed statement
+- Passed/Failed statement (jika ada quiz)
+```
+
+#### Langkah 6: Troubleshooting LRS
+
+**Masalah Umum:**
+
+**1. Connection Refused**
+
+```bash
+# Cek apakah containers berjalan
+docker compose ps
+
+# Cek Trax LRS logs
+docker compose logs trax-lrs
+
+# Restart containers
+docker compose restart
+```
+
+**2. Authentication Failed**
+
+```bash
+# Verifikasi credentials di Moodle sesuai dengan Trax LRS
+# Buat ulang access token jika diperlukan
+
+Trax LRS UI → Access Tokens → Delete old → Create new
+```
+
+**3. Statements Tidak Muncul**
+
+```bash
+# Aktifkan debug mode di Moodle CMI5 plugin
+Site administration → Plugins → CMI5 Launch → Debug: ON
+
+# Cek Moodle logs
+Site administration → Reports → Logs
+Filter by: CMI5 activity
+
+# Cek MySQL langsung untuk statements
+docker compose exec mysql sh
+mysql -u traxlrs -ptraxlrspassword traxlrs
+SELECT * FROM xapi_statements ORDER BY created_at DESC LIMIT 5;
+```
+
+**4. CORS Issues (jika akses dari domain berbeda)**
+
+```yaml
+# Tambahkan ke trax-lrs environment di docker-compose.yml
+environment:
+  - APP_ENV=production
+  - APP_CORS_ALLOWED_ORIGINS=https://your-moodle.com
+```
+
+#### Langkah 7: Pertimbangan Production
+
+**Security:**
+
+```yaml
+# Gunakan password yang kuat
+environment:
+  - MYSQL_ROOT_PASSWORD: [Generate 32-char random]
+  - MYSQL_PASSWORD: [Generate 32-char random]
+  - APP_KEY: [Generate dengan: php artisan key:generate]
+
+# Gunakan HTTPS di production
+  - APP_URL: https://lrs.yourdomain.com
+
+# Batasi CORS
+  - APP_CORS_ALLOWED_ORIGINS: https://moodle.yourdomain.com
+```
+
+**Performance:**
+
+```yaml
+# Tingkatkan MySQL resources
+mysql:
+  deploy:
+    resources:
+      limits:
+        memory: 2G
+        cpus: '2'
+      reservations:
+        memory: 1G
+        cpus: '1'
+```
+
+**Backup:**
+
+```bash
+# Backup MySQL database
+docker compose exec mysql sh -c \
+  'mysqldump -u root -p$MYSQL_ROOT_PASSWORD traxlrs' \
+  > backup-lrs-$(date +%Y%m%d).sql
+
+# Backup volumes
+docker run --rm \
+  -v trax-lrs_mysql-data:/data \
+  -v $(pwd):/backup \
+  alpine tar czf /backup/mysql-data-$(date +%Y%m%d).tar.gz -C /data .
+```
+
+### Alternative: Hosted LRS Solutions
+
+Jika tidak ingin self-host, gunakan hosted LRS:
+
+**1. Veracity Learning LRS**
+- URL: https://www.veracitylrs.com/
+- Pricing: From $500/year
+- Features: Managed hosting, support, compliance
+
+**2. Yet Analytics Watershed**
+- URL: https://www.yetanalytics.com/
+- Pricing: Enterprise (contact sales)
+- Features: Advanced analytics, multi-tenant
+
+**3. Learning Pool LRS**
+- URL: https://learningpool.com/
+- Pricing: Custom
+- Features: Integration support, training
+
+**Setup untuk Hosted LRS:**
+
+```
+1. Daftar akun di penyedia LRS pilihan Anda
+2. Dapatkan API credentials (endpoint, key, secret)
+3. Konfigurasi di Moodle:
+   - LRS Endpoint: https://cloud.lrs.io/xapi/
+   - LRS Key: provided-key
+   - LRS Secret: provided-secret
+4. Test koneksi
+5. Deploy content
+```
+
+**Keuntungan Hosted:**
+- ✅ Tidak perlu kelola infrastructure
+- ✅ Backup otomatis
+- ✅ Support 24/7
+- ✅ Skalabilitas tinggi
+- ✅ Compliance (GDPR, dll)
+
+**Kerugian:**
+- ❌ Biaya bulanan/tahunan
+- ❌ Data di server eksternal
+- ❌ Vendor lock-in
 
 ## PART C: H5P (HTML5 Package)
 
