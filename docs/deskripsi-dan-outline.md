@@ -9,24 +9,24 @@ Buku ini merupakan panduan komprehensif untuk mempelajari Moodle Learning Manage
 Setelah menyelesaikan buku ini, pembaca diharapkan mampu:
 
 1. **Instalasi dan Konfigurasi**
-   - Menginstal Moodle menggunakan `Docker Compose`
-   - Mengkonfigurasi `environment` pengembangan di Windows dengan WSL
-   - Mengelola `container` Docker untuk Moodle
+    - Menginstal Moodle menggunakan `Docker Compose`
+    - Mengkonfigurasi `environment` pengembangan di Windows dengan WSL
+    - Mengelola `container` Docker untuk Moodle
 
 2. **Administrasi Sistem**
-   - Mengelola konfigurasi Moodle
-   - Melakukan `backup` dan `restore`
-   - Memecahkan masalah umum
+    - Mengelola konfigurasi Moodle
+    - Melakukan `backup` dan `restore`
+    - Memecahkan masalah umum
 
 3. **Manajemen Pengguna**
-   - Memahami `role` dan `permission` di Moodle
-   - Membuat dan mengelola akun pengguna
-   - Mengatur metode otentikasi
+    - Memahami `role` dan `permission` di Moodle
+    - Membuat dan mengelola akun pengguna
+    - Mengatur metode otentikasi
 
 4. **Pengelolaan `Course`**
-   - Membuat dan mengatur `course`
-   - Mengelola pendaftaran
-   - Mengatur `activities` dan `resources`
+    - Membuat dan mengatur `course`
+    - Mengelola pendaftaran
+    - Mengatur `activities` dan `resources`
 
 ## Target Pembaca
 

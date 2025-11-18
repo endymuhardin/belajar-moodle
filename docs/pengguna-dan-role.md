@@ -9,12 +9,12 @@ Moodle menggunakan sistem role-based access control (RBAC) yang fleksibel untuk 
 #### Metode 1: Pembuatan Pengguna Manual
 
 1. **Login sebagai Administrator**
-   - Akses Moodle dengan akun administrator.
-   - Navigasi ke `Site Administration`.
+    - Akses Moodle dengan akun administrator.
+    - Navigasi ke `Site Administration`.
 
 2. **Akses Manajemen Pengguna**
-   - Buka: **Site administration** → **Users** → **Add a new user**.
-   - Atau akses URL langsung: `/user/editadvanced.php?id=-1`.
+    - Buka: **Site administration** → **Users** → **Add a new user**.
+    - Atau akses URL langsung: `/user/editadvanced.php?id=-1`.
 
 3. **Isi Kolom yang Diperlukan**
 
@@ -35,14 +35,14 @@ Moodle menggunakan sistem role-based access control (RBAC) yang fleksibel untuk 
    - **Description**: Bio atau informasi opsional.
 
 4. **Pengaturan Opsional**
-   - **Force password change**: Wajibkan pengguna untuk mengubah password saat login pertama.
-   - **Generate password and notify user**: Sistem membuat password dan mengirimkannya ke email pengguna.
-   - **User picture**: Unggah foto profil.
-   - **Interests**: Tag untuk minat pengguna.
+    - **Force password change**: Wajibkan pengguna untuk mengubah password saat login pertama.
+    - **Generate password and notify user**: Sistem membuat password dan mengirimkannya ke email pengguna.
+    - **User picture**: Unggah foto profil.
+    - **Interests**: Tag untuk minat pengguna.
 
 5. **Buat Pengguna**
-   - Klik tombol "Create user".
-   - Pengguna akan langsung aktif dan dapat login.
+    - Klik tombol "Create user".
+    - Pengguna akan langsung aktif dan dapat login.
 
 ![Manual User Creation Form](img/pengguna/02-add-new-user.png)
 
@@ -77,31 +77,31 @@ Moodle menggunakan sistem role-based access control (RBAC) yang fleksibel untuk 
    - role1 (peran dalam course1)
 
 2. **Proses Unggah**
-   - Navigasi ke: **Site administration** → **Users** → **Upload users**
-   - Pilih file CSV
-   - Pilih `delimiter` (koma, titik koma, atau tab)
-   - Konfigurasi `encoding` (disarankan UTF-8)
+    - Navigasi ke: **Site administration** → **Users** → **Upload users**
+    - Pilih file CSV
+    - Pilih `delimiter` (koma, titik koma, atau tab)
+    - Konfigurasi `encoding` (disarankan UTF-8)
 
 3. **Pratinjau dan Pengaturan**
-   - Tinjau kolom yang terdeteksi
-   - Petakan kolom CSV ke kolom Moodle
-   - Atur jenis unggah:
+    - Tinjau kolom yang terdeteksi
+    - Petakan kolom CSV ke kolom Moodle
+    - Atur jenis unggah:
      - **Add new only**: Lewati pengguna yang sudah ada
      - **Add new and update existing**: Perbarui jika nama pengguna sudah ada
      - **Update existing only**: Hanya perbarui pengguna yang sudah ada
 
 4. **Pengaturan Pembuatan Pengguna**
-   - **New user password**:
+    - **New user password**:
      - Kolom yang diperlukan dalam file
      - Buat password jika perlu
      - Hasilkan dan kirim password melalui email
-   - **Force password change**: Saat login pertama
-   - **Email new users**: Kirim email selamat datang
+    - **Force password change**: Saat login pertama
+    - **Email new users**: Kirim email selamat datang
 
 5. **Lakukan Unggah**
-   - Tinjau ringkasan
-   - Klik "Upload users"
-   - Periksa hasil untuk kesalahan atau peringatan
+    - Tinjau ringkasan
+    - Klik "Upload users"
+    - Periksa hasil untuk kesalahan atau peringatan
 
 ![CSV Upload Interface](img/pengguna/03-bulk-upload.png)
 
@@ -127,40 +127,40 @@ Moodle menggunakan sistem role-based access control (RBAC) yang fleksibel untuk 
 #### Metode 1: Menangguhkan Akun Pengguna
 
 1. **Navigasi ke Daftar Pengguna**
-   - **Site administration** → **Users** → **Browse list of users**
-   - Cari pengguna yang akan ditangguhkan.
+    - **Site administration** → **Users** → **Browse list of users**
+    - Cari pengguna yang akan ditangguhkan.
 
 2. **Edit Profil Pengguna**
-   - Klik ikon edit (roda gigi/pensil) pada baris pengguna.
-   - Atau klik nama pengguna lalu "Edit profile".
+    - Klik ikon edit (roda gigi/pensil) pada baris pengguna.
+    - Atau klik nama pengguna lalu "Edit profile".
 
 3. **Tangguhkan Akun**
-   - Ubah **Authentication method** menjadi "No login".
-   - Ini mencegah pengguna untuk login tanpa menghapus data mereka.
-   - `Courses`, `grades`, dan konten pengguna tetap tersimpan.
+    - Ubah **Authentication method** menjadi "No login".
+    - Ini mencegah pengguna untuk login tanpa menghapus data mereka.
+    - `Courses`, `grades`, dan konten pengguna tetap tersimpan.
 
 4. **Alternatif: Kunci Akun**
-   - Di profil pengguna, atur **Suspended** menjadi "Yes".
-   - Pengguna tidak bisa login tapi akun tetap aktif.
-   - Berguna untuk penangguhan sementara.
+    - Di profil pengguna, atur **Suspended** menjadi "Yes".
+    - Pengguna tidak bisa login tapi akun tetap aktif.
+    - Berguna untuk penangguhan sementara.
 
 ![Suspend User Interface](img/pengguna/01-browse-users.png)
 
 #### Metode 2: Aksi Pengguna Massal
 
 1. **Pilih Beberapa Pengguna**
-   - Buka **Site administration** → **Users** → **Bulk user actions**
-   - Cari dan pilih pengguna untuk ditangguhkan.
-   - Tambahkan ke pilihan.
+    - Buka **Site administration** → **Users** → **Bulk user actions**
+    - Cari dan pilih pengguna untuk ditangguhkan.
+    - Tambahkan ke pilihan.
 
 2. **Pilih Aksi**
-   - Pilih "Force password change".
-   - Atau "Delete" untuk penghapusan permanen.
-   - Atau "Add to cohort" untuk manajemen grup.
+    - Pilih "Force password change".
+    - Atau "Delete" untuk penghapusan permanen.
+    - Atau "Add to cohort" untuk manajemen grup.
 
 3. **Konfirmasi Aksi**
-   - Tinjau pengguna yang dipilih.
-   - Konfirmasi penangguhan.
+    - Tinjau pengguna yang dipilih.
+    - Konfirmasi penangguhan.
 
 #### Metode 3: Penangguhan Otomatis
 
@@ -173,46 +173,46 @@ Moodle menggunakan sistem role-based access control (RBAC) yang fleksibel untuk 
 **Kedaluwarsa Pendaftaran Kursus:**
 1. Atur durasi pendaftaran di pengaturan kursus
 2. Konfigurasi tindakan saat pendaftaran berakhir:
-   - Biarkan pengguna terdaftar tetapi ditangguhkan
-   - Batalkan pendaftaran pengguna dari kursus
-   - Beri tahu pengguna sebelum kedaluwarsa
+    - Biarkan pengguna terdaftar tetapi ditangguhkan
+    - Batalkan pendaftaran pengguna dari kursus
+    - Beri tahu pengguna sebelum kedaluwarsa
 
 ### Mengaktifkan Kembali Pengguna (Reactivate)
 
 #### Mengaktifkan Kembali Akun yang Ditangguhkan
 
 1. **Temukan Pengguna yang Ditangguhkan**
-   - **Site administration** → **Users** → **Browse list of users**
-   - Filter berdasarkan metode otentikasi "No login"
-   - Atau cari berdasarkan nama pengguna/email
+    - **Site administration** → **Users** → **Browse list of users**
+    - Filter berdasarkan metode otentikasi "No login"
+    - Atau cari berdasarkan nama pengguna/email
 
 2. **Edit Profil Pengguna**
-   - Klik ikon edit untuk pengguna
-   - Akses pengaturan profil pengguna
+    - Klik ikon edit untuk pengguna
+    - Akses pengaturan profil pengguna
 
 3. **Pulihkan Akses**
-   - Ubah **Authentication method** kembali ke "Manual accounts"
-   - Atau metode otentikasi asli (LDAP, OAuth2, dll.)
-   - Jika bendera `suspended` digunakan, atur **Suspended** ke "No"
+    - Ubah **Authentication method** kembali ke "Manual accounts"
+    - Atau metode otentikasi asli (LDAP, OAuth2, dll.)
+    - Jika bendera `suspended` digunakan, atur **Suspended** ke "No"
 
 4. **Setel Ulang Kata Sandi (Opsional)**
-   - Buat kata sandi baru
-   - Paksa perubahan kata sandi saat login berikutnya
-   - Kirim email pengaturan ulang kata sandi
+    - Buat kata sandi baru
+    - Paksa perubahan kata sandi saat login berikutnya
+    - Kirim email pengaturan ulang kata sandi
 
 5. **Verifikasi Pengaktifan Kembali**
-   - Periksa apakah pengguna dapat login
-   - Verifikasi pendaftaran kursus masih aktif
-   - Konfirmasi penetapan peran masih utuh
+    - Periksa apakah pengguna dapat login
+    - Verifikasi pendaftaran kursus masih aktif
+    - Konfirmasi penetapan peran masih utuh
 
 ![Reactivate User Process](img/pengguna/15-user-edit-form.png)
 
 #### Pengaktifan Kembali Massal
 
 1. **Menggunakan Aksi Massal**
-   - Pilih beberapa pengguna yang ditangguhkan
-   - Terapkan perubahan metode otentikasi
-   - Kirim email notifikasi
+    - Pilih beberapa pengguna yang ditangguhkan
+    - Terapkan perubahan metode otentikasi
+    - Kirim email notifikasi
 
 2. **Metode Pembaruan CSV**
    ```csv
@@ -220,47 +220,47 @@ Moodle menggunakan sistem role-based access control (RBAC) yang fleksibel untuk 
    john.doe,manual
    jane.smith,manual
    ```
-   - Unggah dengan "Update existing only"
-   - Mengubah metode otentikasi untuk pengguna yang dipilih
+    - Unggah dengan "Update existing only"
+    - Mengubah metode otentikasi untuk pengguna yang dipilih
 
 #### Tugas Pasca-Pengaktifan Kembali
 
 1. **Tinjau Izin Pengguna**
-   - Periksa penetapan peran
-   - Verifikasi pendaftaran kursus
-   - Perbarui keanggotaan grup jika perlu
+    - Periksa penetapan peran
+    - Verifikasi pendaftaran kursus
+    - Perbarui keanggotaan grup jika perlu
 
 2. **Komunikasi**
-   - Kirim email selamat datang kembali
-   - Berikan instruksi login yang diperbarui
-   - Bagikan setiap perubahan sistem
+    - Kirim email selamat datang kembali
+    - Berikan instruksi login yang diperbarui
+    - Bagikan setiap perubahan sistem
 
 3. **Pemantauan**
-   - Lacak keberhasilan login
-   - Pantau untuk masalah
-   - Berikan dukungan jika perlu
+    - Lacak keberhasilan login
+    - Pantau untuk masalah
+    - Berikan dukungan jika perlu
 
 ### Praktik Terbaik Manajemen Akun Pengguna
 
 #### Pertimbangan Keamanan
 
 1. **Kebijakan Kata Sandi**
-   - Terapkan kata sandi yang kuat (minimal 8 karakter, kombinasi huruf besar-kecil, angka, simbol)
-   - Wajibkan perubahan kata sandi secara berkala
-   - Cegah penggunaan kembali kata sandi
-   - Kunci akun setelah beberapa kali gagal mencoba
+    - Terapkan kata sandi yang kuat (minimal 8 karakter, kombinasi huruf besar-kecil, angka, simbol)
+    - Wajibkan perubahan kata sandi secara berkala
+    - Cegah penggunaan kembali kata sandi
+    - Kunci akun setelah beberapa kali gagal mencoba
 
 2. **Pemantauan Akun**
-   - Audit rutin akun admin
-   - Pantau pola login yang tidak biasa
-   - Lacak perubahan izin
-   - Tinjau akun yang tidak aktif
+    - Audit rutin akun admin
+    - Pantau pola login yang tidak biasa
+    - Lacak perubahan izin
+    - Tinjau akun yang tidak aktif
 
 3. **Perlindungan Data**
-   - Terapkan kebijakan retensi data
-   - Pembersihan rutin akun lama
-   - Penyimpanan data pengguna yang aman
-   - Langkah-langkah kepatuhan GDPR
+    - Terapkan kebijakan retensi data
+    - Pembersihan rutin akun lama
+    - Penyimpanan data pengguna yang aman
+    - Langkah-langkah kepatuhan GDPR
 
 #### Alur Kerja Administratif
 
@@ -664,21 +664,21 @@ Capabilities:
 ### Membuat Role Kustom
 
 1. **Navigasi ke Manajemen Role**
-   - `Site administration` → `Users` → `Permissions` → `Define roles`
-   
+    - `Site administration` → `Users` → `Permissions` → `Define roles`
+    
 2. **Buat Role Baru**
-   - Klik "Add a new role"
-   - Pilih `archetype` (`role` dasar untuk mewarisi `capabilities`)
-   - Atur nama dan deskripsi `role`
+    - Klik "Add a new role"
+    - Pilih `archetype` (`role` dasar untuk mewarisi `capabilities`)
+    - Atur nama dan deskripsi `role`
 
 3. **Konfigurasi Capabilities**
-   - Atur `permissions` untuk setiap `capability`
-   - Gunakan `inheritance` atau `override`
-   - Uji dengan `contexts` yang berbeda
+    - Atur `permissions` untuk setiap `capability`
+    - Gunakan `inheritance` atau `override`
+    - Uji dengan `contexts` yang berbeda
 
 4. **Tetapkan Role**
-   - Tetapkan `role` ke pengguna dalam `context` yang sesuai
-   - Pantau penggunaan dan sesuaikan `permissions`
+    - Tetapkan `role` ke pengguna dalam `context` yang sesuai
+    - Pantau penggunaan dan sesuaikan `permissions`
 
 ![Role Creation Process](img/pengguna/04-define-roles.png)
 
@@ -927,14 +927,14 @@ Administrator (Kepala Sekolah/TI)
 ### Laporan Aktivitas Pengguna
 
 1. **Navigasi ke Laporan**
-   - `Site administration` → `Reports` → `Logs`
-   - Laporan spesifik `course`
-   - Pelacakan aktivitas pengguna
+    - `Site administration` → `Reports` → `Logs`
+    - Laporan spesifik `course`
+    - Pelacakan aktivitas pengguna
 
 2. **Laporan Efektivitas Role**
-   - Analisis penggunaan `permission`
-   - Riwayat penetapan `role`
-   - Pemantauan pola akses
+    - Analisis penggunaan `permission`
+    - Riwayat penetapan `role`
+    - Pemantauan pola akses
 
 ![Activity Reports](img/pengguna/01-browse-users.png)
 
@@ -1001,28 +1001,28 @@ Administrator (Kepala Sekolah/TI)
 ### Migrasi Role Antar Situs
 
 1. **Ekspor Definisi Role**
-   - Gunakan `backup`/`restore` Moodle
-   - Alat ekspor `role` kustom
-   - Transfer dokumentasi
+    - Gunakan `backup`/`restore` Moodle
+    - Alat ekspor `role` kustom
+    - Transfer dokumentasi
 
 2. **Proses Impor**
-   - Petakan `role` yang ada
-   - Sesuaikan `capabilities`
-   - Uji penetapan
-   - Verifikasi `permissions`
+    - Petakan `role` yang ada
+    - Sesuaikan `capabilities`
+    - Uji penetapan
+    - Verifikasi `permissions`
 
 ### Impor Pengguna dengan Role
 
 1. **Persiapan CSV**
-   - Sertakan informasi `role`
-   - Petakan struktur organisasi
-   - Siapkan penetapan `cohort`
+    - Sertakan informasi `role`
+    - Petakan struktur organisasi
+    - Siapkan penetapan `cohort`
 
 2. **Eksekusi Impor**
-   - Uji dengan batch kecil
-   - Verifikasi penetapan `role`
-   - Pantau kesalahan
-   - Validasi `permissions`
+    - Uji dengan batch kecil
+    - Verifikasi penetapan `role`
+    - Pantau kesalahan
+    - Validasi `permissions`
 
 ![Import/Export Process](img/pengguna/14-csv-template.png)
 

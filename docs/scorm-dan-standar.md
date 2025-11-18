@@ -18,9 +18,9 @@ SCORM (Sharable Content Object Reference Model) adalah standar industri untuk e-
 1. **SCORM 1.1** (Versi pertama, jarang digunakan)
 2. **SCORM 1.2** (Masih banyak digunakan, kompatibilitas luas)
 3. **SCORM 2004** (Versi terbaru, fitur lebih lengkap)
-   - 2nd Edition (2004)
-   - 3rd Edition (2006)
-   - 4th Edition (2009)
+    - 2nd Edition (2004)
+    - 3rd Edition (2006)
+    - 4th Edition (2009)
 
 ### Komponen SCORM
 
@@ -53,9 +53,9 @@ SCORM (Sharable Content Object Reference Model) adalah standar industri untuk e-
 2. Klik **Add an activity or resource**
 3. Pilih **SCORM package**
 4. Isi detail:
-   - **Name**: Nama aktivitas SCORM
-   - **Description**: Deskripsi konten
-   - **Package**: Upload file .zip SCORM
+    - **Name**: Nama aktivitas SCORM
+    - **Description**: Deskripsi konten
+    - **Package**: Upload file .zip SCORM
 
 ![SCORM package upload](img/scorm/01-scorm-upload.png)
 

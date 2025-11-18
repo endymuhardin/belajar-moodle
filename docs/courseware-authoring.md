@@ -136,22 +136,22 @@ Penerapan Bloom's Taxonomy untuk desain aktivitas Moodle:
 Course Structure Best Practices:
 
 1. Course Overview
-   - Welcome message
-   - Learning objectives
-   - Course schedule
-   - Grading policy
+    - Welcome message
+    - Learning objectives
+    - Course schedule
+    - Grading policy
 
 2. Weekly/Topic Structure
-   - Learning objectives per section
-   - Core content (readings, videos)
-   - Interactive activities
-   - Assessment components
-   - Summary and reflection
+    - Learning objectives per section
+    - Core content (readings, videos)
+    - Interactive activities
+    - Assessment components
+    - Summary and reflection
 
 3. Resource Organization
-   - Consistent naming
-   - Logical grouping
-   - Easy navigation
+    - Consistent naming
+    - Logical grouping
+    - Easy navigation
 ```
 
 ### 2. Menggunakan Moodle Features secara Optimal

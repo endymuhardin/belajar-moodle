@@ -59,12 +59,12 @@ Aktivitas adalah komponen interaktif dari `course` Anda.
 2. Aktifkan **`Edit mode`**.
 3. Klik **`Add an activity or resource`**.
 4. Pilih aktivitas yang diinginkan:
-   - **`Assignment`**: Tugas yang dapat dinilai.
-   - **`Quiz`**: Kuis dengan berbagai jenis pertanyaan.
-   - **`Forum`**: `Forum` diskusi.
-   - **`Glossary`**: Kumpulan istilah dan definisi.
-   - **`Lesson`**: Materi pembelajaran interaktif.
-   - **`SCORM package`**: Paket konten standar `e-learning`.
+    - **`Assignment`**: Tugas yang dapat dinilai.
+    - **`Quiz`**: Kuis dengan berbagai jenis pertanyaan.
+    - **`Forum`**: `Forum` diskusi.
+    - **`Glossary`**: Kumpulan istilah dan definisi.
+    - **`Lesson`**: Materi pembelajaran interaktif.
+    - **`SCORM package`**: Paket konten standar `e-learning`.
 
 
 
@@ -75,11 +75,11 @@ Sumber daya adalah konten yang dapat dilihat atau diunduh oleh siswa.
 1. Aktifkan **`Edit mode`**.
 2. Klik **`Add an activity or resource`**.
 3. Pilih sumber daya yang diinginkan:
-   - **`File`**: Unggah `file` (PDF, Word, dll.).
-   - **`URL`**: Tautan ke situs web eksternal.
-   - **`Page`**: Halaman web yang dibuat di dalam Moodle.
-   - **`Book`**: Kumpulan halaman yang terstruktur.
-   - **`Folder`**: `Folder` yang berisi beberapa `file`.
+    - **`File`**: Unggah `file` (PDF, Word, dll.).
+    - **`URL`**: Tautan ke situs web eksternal.
+    - **`Page`**: Halaman web yang dibuat di dalam Moodle.
+    - **`Book`**: Kumpulan halaman yang terstruktur.
+    - **`Folder`**: `Folder` yang berisi beberapa `file`.
 
 ### Mengatur Konten
 
@@ -119,9 +119,9 @@ Sumber daya adalah konten yang dapat dilihat atau diunduh oleh siswa.
 1. Buka `course`.
 2. Klik **`Grades`** di menu navigasi `course`.
 3. Di **`Gradebook setup`**, Anda dapat:
-   - Mengatur bobot untuk setiap item penilaian.
-   - Membuat kategori nilai.
-   - Mengatur skala nilai.
+    - Mengatur bobot untuk setiap item penilaian.
+    - Membuat kategori nilai.
+    - Mengatur skala nilai.
 
 ![Gradebook setup](img/course/05-gradebook-setup.png)
 

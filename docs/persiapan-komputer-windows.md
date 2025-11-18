@@ -32,14 +32,14 @@ Pada bab ini, kita akan mempersiapkan komputer Windows Anda untuk menjalankan Mo
 Jika Virtualisasi belum aktif:
 
 1. **`Restart` komputer** dan masuk BIOS/UEFI
-   - Dell: Tekan F2 atau F12
-   - HP: Tekan F10 atau Esc
-   - Lenovo: Tekan F1 atau F2
-   - ASUS: Tekan F2 atau Delete
+    - Dell: Tekan F2 atau F12
+    - HP: Tekan F10 atau Esc
+    - Lenovo: Tekan F1 atau F2
+    - ASUS: Tekan F2 atau Delete
 
 2. Cari pengaturan **Virtualization Technology** (VT-x/AMD-V)
-   - Biasanya di: `Advanced` → `CPU Configuration`
-   - Atau: `Security` → `Virtualization`
+    - Biasanya di: `Advanced` → `CPU Configuration`
+    - Atau: `Security` → `Virtualization`
 
 3. **Aktifkan** `Virtualization Technology`
 4. **Simpan dan Keluar** (biasanya F10)
@@ -51,8 +51,8 @@ Windows Subsystem for Linux (WSL) memungkinkan kita menjalankan `environment` Li
 ### Instal WSL 2
 
 1. **Buka `PowerShell` sebagai `Administrator`**
-   - Klik kanan `Start Menu`
-   - Pilih "Windows PowerShell (Admin)"
+    - Klik kanan `Start Menu`
+    - Pilih "Windows PowerShell (Admin)"
 
 2. **Instal WSL dengan `command` berikut:**
    ```powershell
@@ -73,7 +73,7 @@ Windows Subsystem for Linux (WSL) memungkinkan kita menjalankan `environment` Li
 1. Setelah `restart`, Ubuntu akan otomatis terbuka
 2. Tunggu proses instalasi selesai (beberapa menit)
 3. Buat **`username`** dan **`password`** untuk Ubuntu
-   
+    
    > **Catatan:** `Password` tidak akan terlihat saat diketik (normal untuk Linux)
 
 ### Verifikasi Instalasi WSL
@@ -108,8 +108,8 @@ wsl --update
 
 1. **Klik dua kali** `Docker Desktop Installer.exe`
 2. Pada halaman konfigurasi, pastikan opsi berikut **dicentang**:
-   - ✅ Gunakan WSL 2 alih-alih Hyper-V
-   - ✅ Tambahkan pintasan ke `desktop`
+    - ✅ Gunakan WSL 2 alih-alih Hyper-V
+    - ✅ Tambahkan pintasan ke `desktop`
 
 3. Klik **Ok** untuk memulai instalasi
 4. Tunggu proses instalasi (5-10 menit)
@@ -120,26 +120,26 @@ wsl --update
 Setelah `restart`:
 
 1. **`Docker Desktop` akan dimulai otomatis**
-   - Jika tidak, cari "Docker Desktop" di `Start Menu`
+    - Jika tidak, cari "Docker Desktop" di `Start Menu`
 
 2. **Setujui `Docker Subscription Service Agreement`**
 
 3. **Lewati tutorial** (kita akan belajar langsung dengan praktik)
 
 4. **Verifikasi `Backend` WSL 2**:
-   - Klik ikon Docker di `system tray`
-   - Pilih **Settings** (⚙️)
-   - Di `tab` **General**, pastikan:
+    - Klik ikon Docker di `system tray`
+    - Pilih **Settings** (⚙️)
+    - Di `tab` **General**, pastikan:
      - ✅ `Use the WSL 2 based engine`
-   - Klik **Apply & restart**
+    - Klik **Apply & restart**
 
 ### Konfigurasi `Resources`
 
 1. Di Pengaturan `Docker Desktop`
 2. Pilih **Resources** → **WSL Integration**
 3. Pastikan:
-   - ✅ Aktifkan integrasi dengan `distro` WSL `default` saya
-   - ✅ Ubuntu (atau `distro` yang Anda instal)
+    - ✅ Aktifkan integrasi dengan `distro` WSL `default` saya
+    - ✅ Ubuntu (atau `distro` yang Anda instal)
 4. Klik **Apply & restart**
 
 ![Docker WSL Integration](img/persiapan/docker-wsl-integration.png)
@@ -162,8 +162,8 @@ Docker Compose version v2.x.x
 ### Tes Docker dari WSL
 
 1. Buka Ubuntu/WSL:
-   - Dari `Start Menu`, cari "Ubuntu"
-   - Atau dari `PowerShell`, ketik: `wsl`
+    - Dari `Start Menu`, cari "Ubuntu"
+    - Atau dari `PowerShell`, ketik: `wsl`
 
 2. Tes `command` Docker:
    ```bash
@@ -200,8 +200,8 @@ Buat `file` tes untuk verifikasi:
    ```
 
 4. Tes akses:
-   - Dari WSL: `curl http://localhost:8080`
-   - Dari `browser` Windows: `http://localhost:8080`
+    - Dari WSL: `curl http://localhost:8080`
+    - Dari `browser` Windows: `http://localhost:8080`
 
 5. Hentikan dan bersihkan:
    ```bash
@@ -223,9 +223,9 @@ Buat `file` tes untuk verifikasi:
 1. Unduh dari [code.visualstudio.com](https://code.visualstudio.com)
 2. Instal dengan pengaturan `default`
 3. Instal ekstensi:
-   - Docker
-   - `Remote - WSL`
-   - YAML
+    - Docker
+    - `Remote - WSL`
+    - YAML
 
 ### `Windows Terminal` (Disarankan)
 

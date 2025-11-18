@@ -21,10 +21,10 @@ Setelah berhasil menginstal Moodle, langkah selanjutnya adalah melakukan konfigu
 #### Pengaturan Umum
 1. Navigasi ke **Site administration** → **General** → **Basic settings**
 2. Konfigurasi pengaturan utama:
-   - **Site name**: Nama situs yang akan muncul di `title bar`
-   - **Site description**: Deskripsi singkat tentang situs
-   - **Front page summary**: Teks yang muncul di halaman depan
-   - **Maximum upload file size**: Ukuran maksimum `file` yang bisa diunggah
+    - **Site name**: Nama situs yang akan muncul di `title bar`
+    - **Site description**: Deskripsi singkat tentang situs
+    - **Front page summary**: Teks yang muncul di halaman depan
+    - **Maximum upload file size**: Ukuran maksimum `file` yang bisa diunggah
 
 ![Basic Settings](img/administrasi/02-basic-settings.png)
 
@@ -39,10 +39,10 @@ Maximum upload file size: 50MB (atau sesuai kebutuhan)
 #### Pengaturan Halaman Depan
 1. Buka **Site administration** → **Front page** → **Front page settings**
 2. Konfigurasi:
-   - **Front page**: Pilih `layout` halaman depan
-   - **Include a topic section**: Aktifkan jika ingin `section` konten
-   - **News items to show**: Jumlah berita yang ditampilkan
-   - **Course summary**: Tampilkan ringkasan `course`
+    - **Front page**: Pilih `layout` halaman depan
+    - **Include a topic section**: Aktifkan jika ingin `section` konten
+    - **News items to show**: Jumlah berita yang ditampilkan
+    - **Course summary**: Tampilkan ringkasan `course`
 
 ![Front Page Settings](img/administrasi/02-basic-settings.png)
 
@@ -51,9 +51,9 @@ Maximum upload file size: 50MB (atau sesuai kebutuhan)
 #### Bahasa Default
 1. Navigasi ke **Site administration** → **Language** → **Language settings**
 2. Atur:
-   - **Default language**: Bahasa default sistem (ID untuk Indonesia)
-   - **Display language menu**: Tampilkan menu pemilihan bahasa
-   - **Cache language menu**: `Cache` menu bahasa untuk performa
+    - **Default language**: Bahasa default sistem (ID untuk Indonesia)
+    - **Display language menu**: Tampilkan menu pemilihan bahasa
+    - **Cache language menu**: `Cache` menu bahasa untuk performa
 
 ![Language Settings](img/administrasi/03-language-settings.png)
 
@@ -72,9 +72,9 @@ Paket bahasa yang disarankan:
 
 1. Navigasi ke **Site administration** → **Location** → **Location settings**
 2. Konfigurasi:
-   - **Default timezone**: Asia/Jakarta untuk Indonesia
-   - **Force timezone**: Paksa semua pengguna menggunakan `timezone` ini
-   - **Default country**: Indonesia
+    - **Default timezone**: Asia/Jakarta untuk Indonesia
+    - **Force timezone**: Paksa semua pengguna menggunakan `timezone` ini
+    - **Default country**: Indonesia
 
 ![Location Settings](img/administrasi/03-language-settings.png)
 
@@ -85,10 +85,10 @@ Paket bahasa yang disarankan:
 #### Mengelola Otentikasi
 1. Buka **Site administration** → **Plugins** → **Authentication** → **Manage authentication**
 2. Metode yang tersedia:
-   - **Email-based self-registration**: Pengguna mendaftar sendiri melalui email
-   - **Manual accounts**: Admin membuat akun secara manual
-   - **LDAP server**: Integrasi dengan LDAP
-   - **External database**: Database eksternal
+    - **Email-based self-registration**: Pengguna mendaftar sendiri melalui email
+    - **Manual accounts**: Admin membuat akun secara manual
+    - **LDAP server**: Integrasi dengan LDAP
+    - **External database**: Database eksternal
 
 ![Authentication Methods](img/administrasi/04-authentication-methods.png)
 
@@ -101,9 +101,9 @@ Paket bahasa yang disarankan:
 #### Pengaturan `Email-based Self-registration`
 1. Klik **Settings** pada `Email-based self-registration`
 2. Konfigurasi:
-   - **Require email confirmation**: Ya, untuk verifikasi email
-   - **Default role**: `Student` (`role` default untuk pengguna baru)
-   - **Auth instructions**: Instruksi untuk pengguna
+    - **Require email confirmation**: Ya, untuk verifikasi email
+    - **Default role**: `Student` (`role` default untuk pengguna baru)
+    - **Auth instructions**: Instruksi untuk pengguna
 
 ![Email Registration Settings](img/administrasi/04-authentication-methods.png)
 
@@ -111,10 +111,10 @@ Paket bahasa yang disarankan:
 
 1. Navigasi ke **Site administration** → **Users** → **Permissions** → **User policies**
 2. Pengaturan penting:
-   - **Guest login button**: Tampilkan tombol `login` tamu
-   - **Alternate login URL**: URL `login` alternatif
-   - **Forgotten password URL**: URL `reset password`
-   - **Maximum time to edit posts**: Waktu maksimal untuk mengedit `post`
+    - **Guest login button**: Tampilkan tombol `login` tamu
+    - **Alternate login URL**: URL `login` alternatif
+    - **Forgotten password URL**: URL `reset password`
+    - **Maximum time to edit posts**: Waktu maksimal untuk mengedit `post`
 
 ![User Policies](img/administrasi/05-security-settings.png)
 
@@ -122,9 +122,9 @@ Paket bahasa yang disarankan:
 
 1. Buka **Site administration** → **Users** → **Permissions** → **Global roles**
 2. Atur `role` default:
-   - **Default role for all users**: `Authenticated user`
-   - **Guest role**: `Guest`
-   - **Default frontpage role**: `Frontpage`
+    - **Default role for all users**: `Authenticated user`
+    - **Guest role**: `Guest`
+    - **Default frontpage role**: `Frontpage`
 
 ## Keamanan Situs
 
@@ -133,10 +133,10 @@ Paket bahasa yang disarankan:
 #### Kebijakan Keamanan Situs
 1. Navigasi ke **Site administration** → **Security** → **Site security settings**
 2. Pengaturan penting:
-   - **Open to Google**: Izinkan `indexing` Google
-   - **Force users to login**: Paksa `login` untuk akses konten
-   - **Force users to login for profiles**: Paksa `login` untuk lihat profil
-   - **Protect usernames**: Sembunyikan `username` dari publik
+    - **Open to Google**: Izinkan `indexing` Google
+    - **Force users to login**: Paksa `login` untuk akses konten
+    - **Force users to login for profiles**: Paksa `login` untuk lihat profil
+    - **Protect usernames**: Sembunyikan `username` dari publik
 
 ![Site Security Settings](img/administrasi/05-security-settings.png)
 
@@ -152,9 +152,9 @@ Maximum session time: 8 jam
 #### Keamanan HTTP
 1. Buka **Site administration** → **Security** → **HTTP security**
 2. Konfigurasi:
-   - **Use HTTPS for logins**: Ya, untuk `login` aman
-   - **Cookie secure**: Aktifkan jika menggunakan HTTPS
-   - **Cookie same site**: `Lax` untuk kompatibilitas
+    - **Use HTTPS for logins**: Ya, untuk `login` aman
+    - **Cookie secure**: Aktifkan jika menggunakan HTTPS
+    - **Cookie same site**: `Lax` untuk kompatibilitas
 
 ![HTTP Security Settings](img/administrasi/05-security-settings.png)
 
@@ -162,8 +162,8 @@ Maximum session time: 8 jam
 
 1. Navigasi ke **Site administration** → **Security** → **IP blocker**
 2. Tambah rentang IP yang diblokir:
-   - Format: `192.168.1.0/24` untuk memblokir `subnet`
-   - Format: `192.168.1.100` untuk memblokir IP spesifik
+    - Format: `192.168.1.0/24` untuk memblokir `subnet`
+    - Format: `192.168.1.100` untuk memblokir IP spesifik
 3. Tambah rentang IP yang diizinkan jika diperlukan
 
 ![IP Blocker](img/administrasi/05-security-settings.png)
@@ -188,9 +188,9 @@ Notifikasi keamanan umum:
 #### Memilih Tema
 1. Navigasi ke **Site administration** → **Appearance** → **Themes** → **Theme selector**
 2. Pilih `theme` untuk berbagai jenis perangkat:
-   - **Default theme**: `Theme` utama untuk `desktop`
-   - **Mobile theme**: `Theme` untuk perangkat `mobile`
-   - **Tablet theme**: `Theme` untuk `tablet`
+    - **Default theme**: `Theme` utama untuk `desktop`
+    - **Mobile theme**: `Theme` untuk perangkat `mobile`
+    - **Tablet theme**: `Theme` untuk `tablet`
 
 Tema populer:
 - **Boost**: `Theme` responsif modern (disarankan)
@@ -202,9 +202,9 @@ Tema populer:
 #### Pengaturan Tema
 1. Buka **Site administration** → **Appearance** → **Themes** → **Boost** (atau `theme` yang dipilih)
 2. Kustomisasi:
-   - **Preset**: `Preset` skema warna
-   - **Brand color**: Warna utama `brand`
-   - **Advanced settings**: CSS Kustom
+    - **Preset**: `Preset` skema warna
+    - **Brand color**: Warna utama `brand`
+    - **Advanced settings**: CSS Kustom
 
 ![Theme Settings](img/administrasi/06-theme-selector.png)
 
@@ -393,11 +393,11 @@ Setelah instalasi, kunjungi **Site administration** → **Notifications** untuk 
 #### Kustomisasi Dasar
 1. Navigasi ke halaman pengaturan `theme`
 2. Opsi kustomisasi umum:
-   - **Logo**: Unggah logo institusi
-   - **Favicon**: Ikon kecil untuk `tab` `browser`
-   - **Colors**: Warna primer, sekunder, aksen
-   - **Fonts**: Pengaturan tipografi
-   - **Layout**: Posisi `sidebar`, pengaturan lebar
+    - **Logo**: Unggah logo institusi
+    - **Favicon**: Ikon kecil untuk `tab` `browser`
+    - **Colors**: Warna primer, sekunder, aksen
+    - **Fonts**: Pengaturan tipografi
+    - **Layout**: Posisi `sidebar`, pengaturan lebar
 
 #### Kustomisasi Lanjutan
 
@@ -503,9 +503,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 1. Navigasi ke **Site administration** → **Appearance** → **Navigation**
 2. Konfigurasi:
-   - **Default home page**: Halaman `default` setelah `login`
-   - **Include categories in nav**: Sertakan kategori `course` di navigasi
-   - **Sort my courses**: Urutan `course` di navigasi
+    - **Default home page**: Halaman `default` setelah `login`
+    - **Include categories in nav**: Sertakan kategori `course` di navigasi
+    - **Sort my courses**: Urutan `course` di navigasi
 
 ![Navigation Settings](img/administrasi/01-site-administration-main.png)
 
@@ -513,9 +513,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 1. Buka **Site administration** → **Appearance** → **Additional HTML**
 2. Tambahkan HTML/CSS/JavaScript kustom:
-   - **Within HEAD**: Kode di dalam `tag` `head`
-   - **When BODY is opened**: Kode setelah `tag` `body` pembuka
-   - **Before BODY is closed**: Kode sebelum `tag` `body` penutup
+    - **Within HEAD**: Kode di dalam `tag` `head`
+    - **When BODY is opened**: Kode setelah `tag` `body` pembuka
+    - **Before BODY is closed**: Kode sebelum `tag` `body` penutup
 
 ![Additional HTML Settings](img/administrasi/01-site-administration-main.png)
 
@@ -525,10 +525,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 1. Navigasi ke **Site administration** → **Courses** → **Course default settings**
 2. Konfigurasi `default` untuk `course` baru:
-   - **Course format**: Format `course` `default` (`Topics`, `Weekly`, dll)
-   - **Maximum upload size**: Ukuran unggah per `course`
-   - **Show gradebook to students**: Tampilkan `gradebook` ke `students`
-   - **Show activity completion**: Tampilkan pelacakan penyelesaian aktivitas
+    - **Course format**: Format `course` `default` (`Topics`, `Weekly`, dll)
+    - **Maximum upload size**: Ukuran unggah per `course`
+    - **Show gradebook to students**: Tampilkan `gradebook` ke `students`
+    - **Show activity completion**: Tampilkan pelacakan penyelesaian aktivitas
 
 ![Course Default Settings](img/administrasi/08-course-defaults.png)
 
@@ -546,10 +546,10 @@ document.addEventListener('DOMContentLoaded', function() {
 #### Cadangan Otomatis
 1. Navigasi ke **Site administration** → **Courses** → **Backups** → **Automated backup setup**
 2. Konfigurasi:
-   - **Active**: Aktifkan pencadangan otomatis
-   - **Days of week**: Hari untuk pencadangan otomatis
-   - **Execution time**: Waktu eksekusi pencadangan
-   - **Save to**: Lokasi penyimpanan cadangan
+    - **Active**: Aktifkan pencadangan otomatis
+    - **Days of week**: Hari untuk pencadangan otomatis
+    - **Execution time**: Waktu eksekusi pencadangan
+    - **Save to**: Lokasi penyimpanan cadangan
 
 ![Automated Backup Setup](img/administrasi/09-backup-settings.png)
 
@@ -584,7 +584,7 @@ Keep: 7 cadangan (1 minggu)
 #### Instalasi `Plugin` Manual
 1. Unduh `plugin` dari sumbernya
 2. Ekstrak ke direktori yang sesuai:
-   - `/path/to/moodle/[plugintype]/[pluginname]`
+    - `/path/to/moodle/[plugintype]/[pluginname]`
 3. Kunjungi **Site administration** → **Notifications**
 4. Selesaikan proses instalasi
 
@@ -606,10 +606,10 @@ Keep: 7 cadangan (1 minggu)
 
 1. Navigasi ke **Site administration** → **Server** → **System information**
 2. Tinjau:
-   - **Moodle version**: Versi Moodle yang digunakan
-   - **Database**: Informasi `database`
-   - **PHP version**: Versi PHP
-   - **Web server**: Informasi `web server`
+    - **Moodle version**: Versi Moodle yang digunakan
+    - **Database**: Informasi `database`
+    - **PHP version**: Versi PHP
+    - **Web server**: Informasi `web server`
 
 ![System Information](img/administrasi/11-system-information.png)
 
@@ -644,9 +644,9 @@ Pengaturan PHP penting untuk Moodle:
 #### Konfigurasi `Cache` Umum
 1. Buka **Site administration** → **Plugins** → **Caching** → **Configuration**
 2. Konfigurasi `cache stores`:
-   - **File**: `Cache` `file` `default`
-   - **Session**: `Cache` sesi
-   - **Static**: `Cache` statis untuk performa
+    - **File**: `Cache` `file` `default`
+    - **Session**: `Cache` sesi
+    - **Static**: `Cache` statis untuk performa
 
 ![Cache Configuration](img/administrasi/11-system-information.png)
 
@@ -659,17 +659,17 @@ Pengaturan PHP penting untuk Moodle:
 
 1. Buka **Site administration** → **Server** → **Tasks** → **Database transfer**
 2. Pemeliharaan rutin:
-   - Periksa pertumbuhan ukuran `database`
-   - Jalankan optimasi `database`
-   - Pantau `query` yang lambat
+    - Periksa pertumbuhan ukuran `database`
+    - Jalankan optimasi `database`
+    - Pantau `query` yang lambat
 
 ### 3. Manajemen `File`
 
 1. Navigasi ke **Site administration** → **Server** → **File management**
 2. Tinjau:
-   - **File storage**: Total penggunaan penyimpanan `file`
-   - **Temp files**: Pembersihan `file` sementara
-   - **Backup files**: Manajemen `file` cadangan
+    - **File storage**: Total penggunaan penyimpanan `file`
+    - **Temp files**: Pembersihan `file` sementara
+    - **Backup files**: Manajemen `file` cadangan
 
 ![File Management](img/administrasi/15-reports.png)
 
@@ -679,9 +679,9 @@ Pengaturan PHP penting untuk Moodle:
 
 1. Buka **Site administration** → **Server** → **Maintenance mode**
 2. Aktifkan untuk pemeliharaan:
-   - **Enable maintenance mode**: `Yes`
-   - **Maintenance message**: Pesan untuk pengguna
-   - **Additional information**: Info tambahan
+    - **Enable maintenance mode**: `Yes`
+    - **Maintenance message**: Pesan untuk pengguna
+    - **Additional information**: Info tambahan
 
 ![Maintenance Mode](img/administrasi/13-maintenance-mode.png)
 
@@ -751,53 +751,53 @@ docker compose exec moodle php admin/cli/maintenance.php --disable
 ### 1. Praktik Terbaik Keamanan
 
 1. **Pembaruan Rutin**
-   - Perbarui Moodle secara berkala
-   - Perbarui `plugin`
-   - Pantau notifikasi keamanan
+    - Perbarui Moodle secara berkala
+    - Perbarui `plugin`
+    - Pantau notifikasi keamanan
 
 2. **Otentikasi Kuat**
-   - Terapkan `password` yang kuat
-   - Aktifkan otentikasi dua faktor
-   - Audit rutin akun pengguna
+    - Terapkan `password` yang kuat
+    - Aktifkan otentikasi dua faktor
+    - Audit rutin akun pengguna
 
 3. **Kontrol Akses**
-   - Prinsip hak istimewa terendah
-   - Tinjau `role` pengguna secara teratur
-   - Pantau aktivitas admin
+    - Prinsip hak istimewa terendah
+    - Tinjau `role` pengguna secara teratur
+    - Pantau aktivitas admin
 
 ### 2. Praktik Terbaik Kinerja
 
 1. **Strategi `Caching`**
-   - Aktifkan `caching` yang sesuai
-   - Gunakan `cache stores` eksternal
-   - Pantau kinerja `cache`
+    - Aktifkan `caching` yang sesuai
+    - Gunakan `cache stores` eksternal
+    - Pantau kinerja `cache`
 
 2. **Optimasi `Database`**
-   - Pemeliharaan `database` rutin
-   - Pantau kinerja `query`
-   - Optimalkan konfigurasi `database`
+    - Pemeliharaan `database` rutin
+    - Pantau kinerja `query`
+    - Optimalkan konfigurasi `database`
 
 3. **Manajemen `File`**
-   - Pembersihan rutin `file` sementara
-   - Pantau penggunaan `disk`
-   - Terapkan kebijakan retensi `file`
+    - Pembersihan rutin `file` sementara
+    - Pantau penggunaan `disk`
+    - Terapkan kebijakan retensi `file`
 
 ### 3. Praktik Terbaik Pencadangan
 
 1. **Pencadangan Rutin**
-   - Pencadangan otomatis harian
-   - Pencadangan sistem penuh mingguan
-   - Uji prosedur pemulihan
+    - Pencadangan otomatis harian
+    - Pencadangan sistem penuh mingguan
+    - Uji prosedur pemulihan
 
 2. **Beberapa Lokasi Cadangan**
-   - Penyimpanan cadangan lokal
-   - Penyimpanan cadangan jarak jauh
-   - Solusi pencadangan `cloud`
+    - Penyimpanan cadangan lokal
+    - Penyimpanan cadangan jarak jauh
+    - Solusi pencadangan `cloud`
 
 3. **Verifikasi Cadangan**
-   - Pengujian pemulihan rutin
-   - Verifikasi integritas cadangan
-   - Dokumentasikan prosedur pemulihan
+    - Pengujian pemulihan rutin
+    - Verifikasi integritas cadangan
+    - Dokumentasikan prosedur pemulihan
 
 ## Kesimpulan
 

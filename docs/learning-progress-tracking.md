@@ -58,10 +58,10 @@ Learning Progress Tracking adalah salah satu fitur paling powerful di Moodle yan
 1. Buka **Course administration** → **Edit settings**
 2. Aktifkan **Enable completion tracking**
 3. Untuk setiap aktivitas, atur completion conditions:
-   - **Completion tracking**: Pilih jenis tracking
-   - **Require view**: Centang jika perlu dilihat
-   - **Require grade**: Set nilai minimum
-   - **Expect completed on**: Set deadline
+    - **Completion tracking**: Pilih jenis tracking
+    - **Require view**: Centang jika perlu dilihat
+    - **Require grade**: Set nilai minimum
+    - **Expect completed on**: Set deadline
 
 ![Activity completion setup](img/progress-tracking/02-activity-completion.png)
 
@@ -78,9 +78,9 @@ Learning Progress Tracking adalah salah satu fitur paling powerful di Moodle yan
 
 1. **Course administration** → **Course completion**
 2. Atur kriteria penyelesaian:
-   - **Condition type**: Pilih kriteria
-   - **Aggregation**: Cara menghitung completion
-   - **Bulk activity completion**: Atur untuk semua aktivitas
+    - **Condition type**: Pilih kriteria
+    - **Aggregation**: Cara menghitung completion
+    - **Bulk activity completion**: Atur untuk semua aktivitas
 
 ### 3. Gradebook Tracking
 

@@ -472,10 +472,10 @@ Teacher:
 1. Go to Attendance activity
 2. Select session
 3. Mark attendance:
-   - Present (P)
-   - Absent (A)
-   - Late (L)
-   - Excused (E)
+    - Present (P)
+    - Absent (A)
+    - Late (L)
+    - Excused (E)
 4. Add remarks if needed
 5. Save
 ```
@@ -497,9 +497,9 @@ Students:
 1. Click "Module 1 - HTML Fundamentals"
 2. Launch window opens
 3. Complete lessons in sequence:
-   - Lesson 1: HTML Basics
-   - Lesson 2: Tags & Elements
-   - Quiz 1: Module Assessment
+    - Lesson 1: HTML Basics
+    - Lesson 2: Tags & Elements
+    - Quiz 1: Module Assessment
 4. Progress tracked automatically via xAPI
 5. Grade recorded in Moodle gradebook
 ```
@@ -567,9 +567,9 @@ Teacher:
 4. Review work
 5. Grade (0-100)
 6. Provide feedback:
-   - Written comments
-   - Annotated PDF
-   - Rubric (if configured)
+    - Written comments
+    - Annotated PDF
+    - Rubric (if configured)
 7. Save changes
 8. Release grades
 ```
@@ -668,16 +668,16 @@ Quiz → Edit quiz → Add → a new question
 
 Question types:
 1. Multiple choice (30 questions, 2 points each)
-   - HTML basics
-   - CSS properties
-   - Responsive design
-   - JavaScript fundamentals
+    - HTML basics
+    - CSS properties
+    - Responsive design
+    - JavaScript fundamentals
 
 2. True/False (10 questions, 1 point each)
 
 3. Short answer (5 questions, 6 points each)
-   - Code snippets
-   - Best practices
+    - Code snippets
+    - Best practices
 
 Total: 100 points
 ```
@@ -698,18 +698,18 @@ Quiz settings → Extra restrictions
 ```
 Options:
 1. Zoom integration
-   - Install mod_zoom plugin
-   - Create Zoom meeting
-   - Monitor students during exam
+    - Install mod_zoom plugin
+    - Create Zoom meeting
+    - Monitor students during exam
 
 2. ProctorU/Examity integration
-   - Third-party proctoring service
-   - Students verify identity
-   - AI + human proctoring
+    - Third-party proctoring service
+    - Students verify identity
+    - AI + human proctoring
 
 3. In-person proctoring
-   - Computer lab
-   - Supervised exam session
+    - Computer lab
+    - Supervised exam session
 ```
 
 ### Step 3: Grading & Results
@@ -732,15 +732,15 @@ Review grades:
 Create rubric:
 1. Assignment → Advanced grading → Rubric
 2. Define criteria:
-   - Code quality (0-25 points)
-   - Design & layout (0-25 points)
-   - Functionality (0-25 points)
-   - Documentation (0-25 points)
+    - Code quality (0-25 points)
+    - Design & layout (0-25 points)
+    - Functionality (0-25 points)
+    - Documentation (0-25 points)
 3. Save rubric
 4. Use rubric for grading:
-   - Select levels for each criterion
-   - Auto-calculate total
-   - Provide feedback
+    - Select levels for each criterion
+    - Auto-calculate total
+    - Provide feedback
 ```
 
 ### Step 4: Final Course Results
@@ -751,15 +751,15 @@ Course → Grades → Setup → Gradebook setup
 
 Categories:
 1. Participation (15%)
-   - Attendance: 5%
-   - Forum posts: 10%
+    - Attendance: 5%
+    - Forum posts: 10%
 
 2. Assignments (35%)
-   - Project 1: 15%
-   - Project 2: 20%
+    - Project 1: 15%
+    - Project 2: 20%
 
 3. CMI5 Modules (25%)
-   - Module 1-4: 25%
+    - Module 1-4: 25%
 
 4. Final Exam (25%)
 
@@ -795,11 +795,11 @@ Site administration → Plugins → Install plugins → Certificate
 Create certificate:
 1. Add activity → Certificate
 2. Design template:
-   - Student name
-   - Course name
-   - Grade achieved
-   - Completion date
-   - Instructor signature
+    - Student name
+    - Course name
+    - Grade achieved
+    - Completion date
+    - Instructor signature
 3. Availability: After course completion
 ```
 

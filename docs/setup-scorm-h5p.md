@@ -151,18 +151,18 @@ Anda dapat membuat berbagai jenis konten H5P:
 ### Masalah Umum
 
 1. **Plugin tidak muncul di activity chooser**
-   - Pastikan plugin sudah diaktifkan di Site administration > Plugins > Activity modules
-   - Refresh halaman kursus setelah mengaktifkan plugin
+    - Pastikan plugin sudah diaktifkan di Site administration > Plugins > Activity modules
+    - Refresh halaman kursus setelah mengaktifkan plugin
 
 2. **Tidak bisa mengupload SCORM package**
-   - Pastikan file berformat .zip
-   - Periksa ukuran file (maksimal upload size)
-   - Pastikan file berisi `imsmanifest.xml`
+    - Pastikan file berformat .zip
+    - Periksa ukuran file (maksimal upload size)
+    - Pastikan file berisi `imsmanifest.xml`
 
 3. **H5P content tidak berfungsi**
-   - Pastikan H5P plugin terinstal dengan benar
-   - Periksa pengaturan H5P di Site administration
-   - Coba gunakan H5P content type yang berbeda
+    - Pastikan H5P plugin terinstal dengan benar
+    - Periksa pengaturan H5P di Site administration
+    - Coba gunakan H5P content type yang berbeda
 
 ### Debugging
 

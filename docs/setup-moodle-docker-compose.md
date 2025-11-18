@@ -287,12 +287,12 @@ Jika `localhost` tidak bisa diakses:
    ```bash
    ip addr show eth0 | grep inet | awk '{print $2}' | cut -d/ -f1
    ```
-   
+    
    Contoh keluaran: `172.29.130.195`
 
 2. **Akses melalui IP:**
-   - `http://172.29.130.195`
-   - `https://172.29.130.195`
+    - `http://172.29.130.195`
+    - `https://172.29.130.195`
 
 Jika berhasil, Anda akan melihat halaman depan Moodle sebelum `login`:
 
@@ -324,18 +324,18 @@ Jika berhasil, Anda akan melihat halaman depan Moodle sebelum `login`:
 ![Moodle Admin Dashboard](img/instalasi/dashboard.png)
 
 2. Konfigurasi:
-   - **`Site name`**
-   - **`Front page settings`**
-   - **`Location settings`** (`timezone`)
-   - **`Language settings`**
+    - **`Site name`**
+    - **`Front page settings`**
+    - **`Location settings`** (`timezone`)
+    - **`Language settings`**
 
 ### Pengaturan Keamanan
 
 1. Buka **`Site administration`** → **`Security`**
 2. Konfigurasi:
-   - **`Site policies`**
-   - **`HTTP security`**
-   - **`Notifications`**
+    - **`Site policies`**
+    - **`HTTP security`**
+    - **`Notifications`**
 
 ## Langkah 6: Manajemen `Container`
 

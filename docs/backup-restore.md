@@ -71,10 +71,10 @@ Backup dan restore adalah operasi krusial dalam manajemen Moodle untuk memastika
 **Moodle Native Backup:**
 
 1. **Course Backup via Interface:**
-   - Buka course
-   - Administration → Backup
-   - Pilih item untuk dibackup
-   - Atur schedule dan retention
+    - Buka course
+    - Administration → Backup
+    - Pilih item untuk dibackup
+    - Atur schedule dan retention
 
 2. **Command Line Backup:**
 ```bash
@@ -160,14 +160,14 @@ echo "Backup completed: $BACKUP_DIR/moodle_backup_$DATE.tar.gz"
 **Emergency Restore Steps:**
 
 1. **Assess the Situation:**
-   - Identify what needs to be restored
-   - Determine the cause of failure
-   - Choose appropriate backup version
+    - Identify what needs to be restored
+    - Determine the cause of failure
+    - Choose appropriate backup version
 
 2. **Prepare Environment:**
-   - Stop all services
-   - Create temporary workspace
-   - Verify backup integrity
+    - Stop all services
+    - Create temporary workspace
+    - Verify backup integrity
 
 3. **Restore Database:**
 ```bash
@@ -188,19 +188,19 @@ tar -xzf moodledata_backup_20240101.tar.gz -C /path/to/moodledata
 ```
 
 5. **Update Configuration:**
-   - Review config.php settings
-   - Update database credentials
-   - Verify file permissions
+    - Review config.php settings
+    - Update database credentials
+    - Verify file permissions
 
 ### 2. Course Restore
 
 **Individual Course Restore:**
 
 1. **Via Moodle Interface:**
-   - Navigation: Site administration → Courses → Restore course
-   - Upload backup file
-   - Select restore options
-   - Map users and settings
+    - Navigation: Site administration → Courses → Restore course
+    - Upload backup file
+    - Select restore options
+    - Map users and settings
 
 2. **Command Line Restore:**
 ```bash
@@ -221,19 +221,19 @@ php admin/cli/restore.php --backupfile=/path/to/backup.mbz --courseid=[NEW_COURS
 **Disaster Recovery Plan:**
 
 1. **Immediate Actions:**
-   - Declare disaster situation
-   - Activate disaster recovery team
-   - Communicate with stakeholders
+    - Declare disaster situation
+    - Activate disaster recovery team
+    - Communicate with stakeholders
 
 2. **Recovery Process:**
-   - Restore from latest verified backup
-   - Validate system functionality
-   - Test critical features
+    - Restore from latest verified backup
+    - Validate system functionality
+    - Test critical features
 
 3. **Post-Recovery:**
-   - Conduct post-mortem analysis
-   - Update disaster recovery procedures
-   - Implement preventive measures
+    - Conduct post-mortem analysis
+    - Update disaster recovery procedures
+    - Implement preventive measures
 
 ## Automation and Monitoring
 

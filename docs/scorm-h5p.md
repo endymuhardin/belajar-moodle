@@ -45,9 +45,9 @@ Bab ini membahas berbagai standar e-learning yang didukung Moodle: SCORM, CMI5, 
 1. **SCORM 1.1** (Versi pertama, jarang digunakan)
 2. **SCORM 1.2** (Masih banyak digunakan, kompatibilitas luas)
 3. **SCORM 2004** (Versi terbaru, fitur lebih lengkap)
-   - 2nd Edition (2004)
-   - 3rd Edition (2006)
-   - 4th Edition (2009)
+    - 2nd Edition (2004)
+    - 3rd Edition (2006)
+    - 4th Edition (2009)
 
 ### Komponen SCORM
 
@@ -324,9 +324,9 @@ CMI5 memerlukan plugin tambahan di Moodle:
    ```
 
 2. **Configure Plugin**
-   - Site administration → Plugins → Activity modules → CMI5
-   - Set LRS (Learning Record Store) endpoint
-   - Configure authentication settings
+    - Site administration → Plugins → Activity modules → CMI5
+    - Set LRS (Learning Record Store) endpoint
+    - Configure authentication settings
 
 #### Creating CMI5 Content
 
@@ -414,19 +414,19 @@ tincan.sendStatement(completedStmt);
 ### CMI5 Best Practices
 
 1. **Statement Design**
-   - Use standard verb IDs from xAPI registry
-   - Include meaningful context data
-   - Follow ADL's cmi5 profile strictly
+    - Use standard verb IDs from xAPI registry
+    - Include meaningful context data
+    - Follow ADL's cmi5 profile strictly
 
 2. **Package Structure**
-   - Keep packages modular
-   - Include fallback content for older LMS
-   - Test across different LRS implementations
+    - Keep packages modular
+    - Include fallback content for older LMS
+    - Test across different LRS implementations
 
 3. **Testing**
-   - Use cmi5 conformance test suite
-   - Test in multiple browsers
-   - Validate xAPI statements
+    - Use cmi5 conformance test suite
+    - Test in multiple browsers
+    - Validate xAPI statements
 
 ### LRS (Learning Record Store)
 
@@ -435,26 +435,26 @@ CMI5 memerlukan LRS untuk menyimpan xAPI statements:
 **Pilihan LRS yang Aktif Dimaintain:**
 
 1. **Trax LRS** (Open Source - **Recommended**)
-   - Self-hosted, Docker support
-   - xAPI 1.0.3 compliant
-   - Aktif dimaintain
-   - Laravel-based, mudah di-deploy
+    - Self-hosted, Docker support
+    - xAPI 1.0.3 compliant
+    - Aktif dimaintain
+    - Laravel-based, mudah di-deploy
 
 2. **Ralph** (Open Source)
-   - Modern Python-based LRS
-   - Dikembangkan Kementerian Pendidikan Perancis
-   - Cloud-native, Kubernetes ready
-   - Aktif development
+    - Modern Python-based LRS
+    - Dikembangkan Kementerian Pendidikan Perancis
+    - Cloud-native, Kubernetes ready
+    - Aktif development
 
 3. **Veracity Learning LRS** (Commercial)
-   - Cloud-hosted
-   - Enterprise features
-   - Support 24/7
+    - Cloud-hosted
+    - Enterprise features
+    - Support 24/7
 
 4. **Yet Analytics Watershed** (Commercial)
-   - Advanced analytics
-   - Multi-tenant
-   - Integration tools
+    - Advanced analytics
+    - Multi-tenant
+    - Integration tools
 
 > **⚠️ Catatan**: Learning Locker sudah tidak dimaintain sejak 2020. Gunakan Trax LRS atau Ralph untuk deployment baru.
 
@@ -821,9 +821,9 @@ Jika tidak ingin self-host, gunakan hosted LRS:
 1. Daftar akun di penyedia LRS pilihan Anda
 2. Dapatkan API credentials (endpoint, key, secret)
 3. Konfigurasi di Moodle:
-   - LRS Endpoint: https://cloud.lrs.io/xapi/
-   - LRS Key: provided-key
-   - LRS Secret: provided-secret
+    - LRS Endpoint: https://cloud.lrs.io/xapi/
+    - LRS Key: provided-key
+    - LRS Secret: provided-secret
 4. Test koneksi
 5. Deploy content
 ```
@@ -933,10 +933,10 @@ http://localhost/course/modedit.php?add=h5pactivity&type=&course=[COURSE_ID]&sec
 
 1. Upload video (MP4, WebM, atau YouTube URL)
 2. Add interactions:
-   - True/False questions
-   - Multiple choice
-   - Fill in the blanks
-   - Text/Label
+    - True/False questions
+    - Multiple choice
+    - Fill in the blanks
+    - Text/Label
 3. Set timing untuk setiap interaction
 4. Configure behavior settings
 5. Preview dan test
@@ -946,36 +946,36 @@ http://localhost/course/modedit.php?add=h5pactivity&type=&course=[COURSE_ID]&sec
 ### SCORM Best Practices
 
 1. **Compatibility**
-   - Gunakan SCORM 1.2 untuk kompatibilitas maksimal
-   - Test di multiple browsers
-   - Validate manifest file sebelum upload
+    - Gunakan SCORM 1.2 untuk kompatibilitas maksimal
+    - Test di multiple browsers
+    - Validate manifest file sebelum upload
 
 2. **File Size**
-   - Compress images dan media
-   - Keep package size < 100MB
-   - Use external hosting untuk large media files
+    - Compress images dan media
+    - Keep package size < 100MB
+    - Use external hosting untuk large media files
 
 3. **Tracking**
-   - Test tracking data sebelum deploy
-   - Document tracking requirements
-   - Set completion criteria clearly
+    - Test tracking data sebelum deploy
+    - Document tracking requirements
+    - Set completion criteria clearly
 
 ### H5P Best Practices
 
 1. **Content Design**
-   - Keep interactions simple dan clear
-   - Use consistent design patterns
-   - Provide immediate feedback
+    - Keep interactions simple dan clear
+    - Use consistent design patterns
+    - Provide immediate feedback
 
 2. **Accessibility**
-   - Add alt text untuk images
-   - Ensure keyboard navigation works
-   - Test with screen readers
+    - Add alt text untuk images
+    - Ensure keyboard navigation works
+    - Test with screen readers
 
 3. **Performance**
-   - Optimize media files
-   - Test pada slow connections
-   - Consider offline usage
+    - Optimize media files
+    - Test pada slow connections
+    - Consider offline usage
 
 ## Troubleshooting
 
