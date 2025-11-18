@@ -64,29 +64,26 @@ markdown_extensions:
 
 nav:
   - Home: index.md
-  - Pendahuluan:
-    - Deskripsi dan Outline: deskripsi-dan-outline.md
-  - Persiapan:
-    - Persiapan Komputer Windows: persiapan-komputer-windows.md
-  - Instalasi:
-    - Setup Moodle dengan Docker Compose: setup-moodle-docker-compose.md
-  - Administrasi:
-    - Administrasi Moodle: administrasi-moodle.md
-  - Role dan Pengguna:
-    - Manajemen Pengguna dan Role: pengguna-dan-role.md
-  - Course Management:
-    - Membuat dan Mengelola Course: course-management.md
-  - Courseware Authoring:
-    - Dasar-dasar Pembuatan Konten: courseware-authoring.md
-    - SCORM dan Standar E-Learning: scorm-dan-standar.md
-    - Learning Progress Tracking: learning-progress-tracking.md
-    - Weakness Analysis dan Improvement: weakness-analysis.md
-    - Advanced Courseware Development: advanced-courseware.md
-  - Maintenance:
-    - Backup dan Restore: backup-restore.md
-    - Troubleshooting: troubleshooting.md
+  - 'PART I: Getting Started':
+    - 'Bab 1: Introduction & Overview': deskripsi-dan-outline.md
+    - 'Bab 2: Environment Setup': persiapan-komputer-windows.md
+    - 'Bab 3: Installing Moodle with Docker': setup-moodle-docker-compose.md
+  - 'PART II: Administration':
+    - 'Bab 4: Moodle Administration Basics': administrasi-moodle.md
+    - 'Bab 5: User Management & Roles': pengguna-dan-role.md
+    - 'Bab 6: Backup & Restore': backup-restore.md
+    - 'Bab 7: Troubleshooting': troubleshooting.md
+  - 'PART III: Content Creation':
+    - 'Bab 8: Course Management Basics': course-management.md
+    - 'Bab 9: Creating Learning Content': courseware-authoring.md
+    - 'Bab 10: E-Learning Standards (SCORM, CMI5, H5P)': scorm-h5p.md
+    - 'Bab 11: Complete Learning Workflow': complete-learning-workflow.md
+  - 'PART IV: Advanced Pedagogy':
+    - 'Bab 12: Learning Progress & Assessment': learning-progress-tracking.md
+    - 'Bab 13: Weakness Analysis & Improvement': weakness-analysis.md
+    - 'Bab 14: Advanced Courseware Development': advanced-courseware.md
   - Appendix:
-    - Referensi dan Dokumentasi: referensi.md
+    - 'References & Resources': references.md
 
 extra:
   social:

@@ -63,32 +63,35 @@ Buku ini adalah panduan komprehensif untuk mempelajari **Moodle Learning Managem
 3. **Akses Moodle**
    ```
    http://localhost
-   Username: user
-   Password: bitnami
+   Username: admin
+   Password: admin123
    ```
 
 ## 📖 Struktur Buku
 
-### Bagian 1: Persiapan
-- [Bab 1: Deskripsi dan Garis Besar](deskripsi-dan-outline.md)
-- [Bab 2: Persiapan Komputer Windows](persiapan-komputer-windows.md)
+### PART I: Getting Started (Foundation)
+- [Bab 1: Introduction & Overview](deskripsi-dan-outline.md)
+- [Bab 2: Environment Setup](persiapan-komputer-windows.md)
+- [Bab 3: Installing Moodle with Docker](setup-moodle-docker-compose.md)
 
-### Bagian 2: Instalasi
-- [Bab 3: `Setup` Moodle dengan `Docker Compose`](setup-moodle-docker-compose.md)
+### PART II: Administration (Admin Fundamentals)
+- [Bab 4: Moodle Administration Basics](administrasi-moodle.md)
+- [Bab 5: User Management & Roles](pengguna-dan-role.md)
+- [Bab 6: Backup & Restore](backup-restore.md)
+- [Bab 7: Troubleshooting](troubleshooting.md)
 
-### Bagian 3: Administrasi
-- [Bab 4: Administrasi Moodle](administrasi-moodle.md)
-- [Bab 5: Manajemen Pengguna dan `Role`](pengguna-dan-role.md)
+### PART III: Content Creation (Teaching Basics)
+- [Bab 8: Course Management Basics](course-management.md)
+- [Bab 9: Creating Learning Content](courseware-authoring.md)
+- [Bab 10: Interactive Content (SCORM & H5P)](scorm-h5p.md)
 
-### Bagian 4: Manajemen `Course`
-- [Bab 6: Membuat dan Mengelola `Course`](course-management.md)
+### PART IV: Advanced Pedagogy (Advanced Features)
+- [Bab 11: Learning Progress & Assessment](learning-progress-tracking.md)
+- [Bab 12: Weakness Analysis & Improvement](weakness-analysis.md)
+- [Bab 13: Advanced Courseware Development](advanced-courseware.md)
 
-### Bagian 5: Pemeliharaan
-- [Bab 7: `Backup` dan `Restore`](backup-restore.md)
-- [Bab 8: Pemecahan Masalah](troubleshooting.md)
-
-### Lampiran
-- [Referensi dan Dokumentasi](referensi.md)
+### Appendix
+- [References & Resources](references.md)
 
 ## 💡 Fitur Buku Ini
 
@@ -101,8 +104,8 @@ Buku ini adalah panduan komprehensif untuk mempelajari **Moodle Learning Managem
 ### `Stack` Teknologi Modern
 - **`Docker Compose`** untuk `deployment` yang mudah
 - **WSL 2** untuk `environment` Linux di Windows
-- **`Bitnami Images`** untuk `setup` yang siap `production`
-- **`Local volumes`** untuk penyimpanan persisten
+- **erseco/alpine-moodle** untuk image ringan dan performant
+- **Docker managed volumes** untuk penyimpanan portabel
 
 ### Praktik Terbaik
 - Pengerasan keamanan
@@ -114,11 +117,11 @@ Buku ini adalah panduan komprehensif untuk mempelajari **Moodle Learning Managem
 
 | Komponen | Teknologi | Versi |
 |---|---|---|
-| `Platform` LMS | Moodle | 5.0 |
+| `Platform` LMS | Moodle | 5.1.0 |
 | `Container` | Docker | Terbaru |
 | Orkestrasi | `Docker Compose` | v2 |
-| `Database` | MariaDB | Terbaru |
-| `Web Server` | Apache | 2.4 |
+| `Database` | PostgreSQL | 17 Alpine |
+| `Web Server` | Nginx | 1.26 |
 | OS | Windows + WSL 2 | 10/11 |
 
 ## 📝 Konvensi
@@ -165,7 +168,8 @@ Dengan syarat:
 ## 🙏 Ucapan Terima Kasih
 
 - Komunitas Moodle untuk dokumentasi yang luar biasa
-- Tim Bitnami untuk `Docker images` berkualitas tinggi
+- erseco untuk alpine-moodle Docker image yang ringan dan performant
+- PostgreSQL team untuk database yang powerful dan reliable
 - Tim Docker untuk `platform` `containerization`
 - Semua kontributor yang telah membantu
 
