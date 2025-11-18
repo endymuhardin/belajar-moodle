@@ -263,6 +263,272 @@ Berbeda dengan SCORM, CMI5 **tidak bisa berjalan tanpa LRS**. Ini karena CMI5 me
 - **Better Security**: Improved authentication dan data security
 - **Cross-Platform**: Tidak terbatas pada web browser
 
+#### Elaborasi: Better Tracking (CMI5 vs SCORM)
+
+**SCORM Tracking Limitations:**
+
+SCORM tracking sangat terbatas karena hanya bisa melacak:
+- Quiz scores (nilai benar/salah)
+- Completion status (completed/incomplete)
+- Session time (waktu yang dihabiskan)
+- Bookmark (posisi terakhir)
+
+**CMI5/xAPI Tracking Capabilities:**
+
+CMI5 menggunakan xAPI yang memungkinkan tracking ANY learning experience:
+
+**1. Detailed Learning Activities:**
+```json
+{
+  "actor": {"name": "John Doe", "email": "john@example.com"},
+  "verb": {"id": "http://adlnet.gov/expapi/verbs/watched"},
+  "object": {
+    "id": "http://example.com/video/intro-to-cmi5",
+    "definition": {
+      "name": {"en": "Introduction to CMI5 Video"},
+      "type": "http://activitystrea.ms/schema/1.0/video"
+    }
+  },
+  "result": {
+    "duration": "PT2M15S",  // Watched for 2 min 15 sec
+    "extensions": {
+      "http://example.com/position": "00:01:30",  // Stopped at 1:30
+      "http://example.com/completion": 0.65  // 65% completed
+    }
+  }
+}
+```
+
+**2. Rich Interaction Tracking:**
+
+CMI5 dapat melacak berbagai interaksi yang tidak mungkin di SCORM:
+
+- **Video Interactions**: Play, pause, seek, volume changes, subtitle toggles
+- **Document Reading**: Pages read, time per page, scrolling behavior
+- **Simulations**: Every action dalam simulasi (clicks, decisions, outcomes)
+- **Collaboration**: Forum posts, peer reviews, group discussions
+- **Real-world Activities**: Field work, lab exercises, praktikum
+
+**Contoh Tracking Simulation:**
+```json
+{
+  "actor": {"name": "Student A"},
+  "verb": {"id": "http://adlnet.gov/expapi/verbs/interacted"},
+  "object": {
+    "id": "http://example.com/simulation/troubleshooting",
+    "definition": {"name": {"en": "Network Troubleshooting Simulation"}}
+  },
+  "context": {
+    "contextActivities": {
+      "parent": [{"id": "http://example.com/course/networking-101"}]
+    }
+  },
+  "result": {
+    "success": true,
+    "score": {"scaled": 0.85},
+    "extensions": {
+      "http://example.com/steps-taken": 7,
+      "http://example.com/optimal-steps": 5,
+      "http://example.com/tools-used": ["ping", "traceroute", "nslookup"],
+      "http://example.com/time-to-complete": "PT15M"
+    }
+  }
+}
+```
+
+**3. Learning Analytics:**
+
+Data yang kaya memungkinkan analytics mendalam:
+
+- **Learning Paths**: Track jalur pembelajaran setiap siswa
+- **Struggle Points**: Identifikasi bagian yang sulit untuk siswa
+- **Engagement Patterns**: Kapan siswa paling aktif, berapa lama mereka fokus
+- **Skill Progression**: Track perkembangan skill tertentu across courses
+- **Predictive Analytics**: Prediksi siswa yang berisiko gagal
+
+**Comparison Table:**
+
+| Aspect | SCORM | CMI5/xAPI |
+|--------|-------|-----------|
+| **Quiz Score** | ✅ Ya | ✅ Ya |
+| **Completion** | ✅ Ya | ✅ Ya |
+| **Time Spent** | ✅ Total only | ✅ Detailed per activity |
+| **Video Interactions** | ❌ Tidak | ✅ Full tracking |
+| **Reading Behavior** | ❌ Tidak | ✅ Page-by-page |
+| **Simulation Actions** | ❌ Tidak | ✅ Every action |
+| **Social Learning** | ❌ Tidak | ✅ Forums, collaboration |
+| **Real-world Activities** | ❌ Tidak | ✅ Field work, labs |
+| **Custom Extensions** | ❌ Terbatas | ✅ Unlimited |
+| **Data Format** | XML (rigid) | JSON (flexible) |
+
+#### Elaborasi: Mobile Friendly (CMI5 vs SCORM)
+
+**SCORM Mobile Limitations:**
+
+SCORM dirancang untuk desktop browsers tahun 2000-an:
+- ❌ Tidak mendukung offline learning
+- ❌ Harus selalu terhubung ke LMS
+- ❌ Tidak ada sync mechanism untuk mobile
+- ❌ Navigation sulit di mobile screens
+- ❌ File size besar (karena semua resources harus di-bundle)
+
+**CMI5 Mobile Capabilities:**
+
+**1. Native Mobile Support:**
+
+CMI5 designed untuk berbagai platforms:
+```javascript
+// CMI5 dapat dijalankan di:
+- Progressive Web Apps (PWA)
+- Native mobile apps (iOS/Android)
+- Responsive web apps
+- Offline-capable applications
+- Cross-platform frameworks (React Native, Flutter)
+```
+
+**2. Offline Learning:**
+
+CMI5 mendukung offline learning dengan sync mechanism:
+
+```javascript
+// Offline Learning Flow
+1. Download content ke device
+   - Simpan di IndexedDB atau local storage
+   - Cache assets (videos, images, documents)
+
+2. Launch content offline
+   - Content berjalan tanpa internet
+   - xAPI statements disimpan di local queue
+
+3. Auto-sync saat online
+   - Queue statements dikirim ke LRS
+   - Progress di-sync
+   - Conflicts di-resolve otomatis
+```
+
+**Contoh Implementation:**
+```javascript
+// Service Worker untuk offline support
+self.addEventListener('fetch', function(event) {
+  event.respondWith(
+    caches.match(event.request).then(function(response) {
+      // Serve dari cache jika ada
+      if (response) {
+        return response;
+      }
+
+      // Fetch dari network jika tidak ada
+      return fetch(event.request).then(function(response) {
+        // Cache response untuk next time
+        return caches.open('cmi5-v1').then(function(cache) {
+          cache.put(event.request, response.clone());
+          return response;
+        });
+      });
+    })
+  );
+});
+
+// Queue xAPI statements saat offline
+function sendStatement(statement) {
+  if (navigator.onLine) {
+    // Send langsung jika online
+    return fetch(LRS_ENDPOINT, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(statement)
+    });
+  } else {
+    // Simpan ke IndexedDB jika offline
+    return saveToQueue(statement);
+  }
+}
+
+// Sync saat kembali online
+window.addEventListener('online', function() {
+  syncQueuedStatements();
+});
+```
+
+**3. Mobile-Optimized Features:**
+
+- **Adaptive Content**: Content menyesuaikan dengan screen size
+- **Touch-Friendly**: Designed untuk touch interactions
+- **Low Bandwidth Mode**: Dapat download low-quality media untuk koneksi lambat
+- **Resume Capability**: Dapat resume dari exact position di device lain
+- **Push Notifications**: Reminder untuk melanjutkan learning
+
+**4. Real-world Mobile Use Cases:**
+
+**Field Training:**
+```
+Scenario: Teknisi lapangan belajar troubleshooting equipment
+
+1. Download course content sebelum ke lapangan (offline area)
+2. Buka simulation troubleshooting di tablet
+3. Ikuti steps, ambil photo/video hasil work
+4. xAPI track semua actions (offline, tersimpan di device)
+5. Kembali ke kantor, auto-sync ke LRS
+6. Manager dapat review hasil training + field work
+```
+
+**Commuter Learning:**
+```
+Scenario: Karyawan belajar saat commute (subway tanpa signal)
+
+1. Download 3 video lessons sebelum berangkat
+2. Watch videos di kereta (offline)
+3. Complete quiz offline
+4. Tracking data disimpan lokal
+5. Sampai kantor, auto-sync progress
+6. Melanjutkan di desktop dari posisi terakhir
+```
+
+**5. Sync Conflict Resolution:**
+
+CMI5 menangani conflicts dari multi-device learning:
+
+```javascript
+// Conflict resolution strategy
+{
+  "statement": {
+    "actor": {"email": "learner@example.com"},
+    "verb": {"id": "completed"},
+    "object": {"id": "lesson-3"}
+  },
+  "stored": "2025-11-18T08:00:00Z",  // Synced dari mobile
+  "timestamp": "2025-11-18T07:55:00Z", // Actual completion time
+  "context": {
+    "platform": "Mobile App",
+    "extensions": {
+      "http://example.com/device-id": "mobile-abc123",
+      "http://example.com/sync-status": "offline-queued"
+    }
+  }
+}
+
+// LRS akan:
+1. Accept statement dengan timestamp original
+2. Merge dengan data dari desktop jika ada
+3. Resolve berdasarkan timestamp (latest wins)
+4. Keep audit trail semua statements
+```
+
+**Comparison Table:**
+
+| Feature | SCORM | CMI5 |
+|---------|-------|------|
+| **Offline Learning** | ❌ Tidak | ✅ Full support |
+| **Mobile Apps** | ❌ Browser only | ✅ Native apps |
+| **Auto-sync** | ❌ Tidak | ✅ Ya |
+| **Multi-device** | ❌ Terbatas | ✅ Seamless |
+| **Touch Optimization** | ❌ Tidak | ✅ Ya |
+| **Low Bandwidth** | ❌ Harus download semua | ✅ Adaptive quality |
+| **Resume Position** | ✅ Bookmark saja | ✅ Exact position + context |
+| **Field Work** | ❌ Tidak praktis | ✅ Designed untuk ini |
+| **Photo/Video Upload** | ❌ Sulit | ✅ Native support |
+| **Push Notifications** | ❌ Tidak | ✅ Ya |
+
 **Trade-offs:**
 
 - ❌ Perlu LRS (setup lebih kompleks)
