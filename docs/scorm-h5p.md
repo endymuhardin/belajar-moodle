@@ -268,6 +268,7 @@ Berbeda dengan SCORM, CMI5 **tidak bisa berjalan tanpa LRS**. Ini karena CMI5 me
 **SCORM Tracking Limitations:**
 
 SCORM tracking sangat terbatas karena hanya bisa melacak:
+
 - Quiz scores (nilai benar/salah)
 - Completion status (completed/incomplete)
 - Session time (waktu yang dihabiskan)
@@ -366,6 +367,7 @@ Data yang kaya memungkinkan analytics mendalam:
 **SCORM Mobile Limitations:**
 
 SCORM dirancang untuk desktop browsers tahun 2000-an:
+
 - ❌ Tidak mendukung offline learning
 - ❌ Harus selalu terhubung ke LMS
 - ❌ Tidak ada sync mechanism untuk mobile
