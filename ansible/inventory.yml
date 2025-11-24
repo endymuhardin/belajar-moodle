@@ -1,0 +1,6 @@
+all:
+  hosts:
+    moodle:
+      ansible_host: moodle.artivisi.id
+      ansible_user: endymuhardin
+      ansible_become: true

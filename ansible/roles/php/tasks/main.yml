@@ -1,0 +1,50 @@
+---
+- name: Add PHP repository
+  ansible.builtin.apt_repository:
+    repo: ppa:ondrej/php
+    state: present
+
+- name: Install PHP and extensions
+  ansible.builtin.apt:
+    name:
+      - "php{{ php_version }}-fpm"
+      - "php{{ php_version }}-cli"
+      - "php{{ php_version }}-pgsql"
+      - "php{{ php_version }}-curl"
+      - "php{{ php_version }}-gd"
+      - "php{{ php_version }}-intl"
+      - "php{{ php_version }}-mbstring"
+      - "php{{ php_version }}-soap"
+      - "php{{ php_version }}-xml"
+      - "php{{ php_version }}-xmlrpc"
+      - "php{{ php_version }}-zip"
+      - "php{{ php_version }}-opcache"
+      - "php{{ php_version }}-redis"
+    state: present
+    update_cache: true
+
+- name: Configure PHP-FPM pool
+  ansible.builtin.template:
+    src: www.conf.j2
+    dest: "/etc/php/{{ php_version }}/fpm/pool.d/www.conf"
+    mode: "0644"
+  notify: Restart PHP-FPM
+
+- name: Configure PHP-FPM settings
+  ansible.builtin.template:
+    src: moodle.ini.j2
+    dest: "/etc/php/{{ php_version }}/fpm/conf.d/99-moodle.ini"
+    mode: "0644"
+  notify: Restart PHP-FPM
+
+- name: Configure PHP CLI settings
+  ansible.builtin.template:
+    src: moodle.ini.j2
+    dest: "/etc/php/{{ php_version }}/cli/conf.d/99-moodle.ini"
+    mode: "0644"
+
+- name: Ensure PHP-FPM is running
+  ansible.builtin.service:
+    name: "php{{ php_version }}-fpm"
+    state: started
+    enabled: true

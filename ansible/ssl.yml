@@ -1,0 +1,17 @@
+---
+- name: Setup SSL with Let's Encrypt
+  hosts: moodle
+  tasks:
+    - name: Obtain SSL certificate
+      ansible.builtin.command:
+        cmd: certbot --nginx -d {{ moodle_domain }} --non-interactive --agree-tos --email {{ moodle_admin_email }}
+      vars:
+        moodle_domain: "moodle.artivisi.id"
+        moodle_admin_email: "admin@artivisi.id"
+
+    - name: Setup certbot renewal cron
+      ansible.builtin.cron:
+        name: "Certbot renewal"
+        hour: "3"
+        minute: "0"
+        job: "certbot renew --quiet"

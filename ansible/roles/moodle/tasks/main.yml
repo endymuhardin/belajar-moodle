@@ -1,0 +1,84 @@
+---
+- name: Create moodledata directory
+  ansible.builtin.file:
+    path: "{{ moodle_data_dir }}"
+    state: directory
+    owner: www-data
+    group: www-data
+    mode: "0770"
+
+- name: Check if Moodle is already installed
+  ansible.builtin.stat:
+    path: "{{ moodle_web_dir }}/version.php"
+  register: moodle_installed
+
+- name: Download Moodle
+  ansible.builtin.get_url:
+    url: "https://download.moodle.org/download.php/direct/stable500/moodle-latest-500.tgz"
+    dest: /tmp/moodle.tgz
+    mode: "0644"
+  when: not moodle_installed.stat.exists
+
+- name: Extract Moodle
+  ansible.builtin.unarchive:
+    src: /tmp/moodle.tgz
+    dest: /var/www
+    remote_src: true
+    owner: www-data
+    group: www-data
+  when: not moodle_installed.stat.exists
+
+- name: Set Moodle directory permissions
+  ansible.builtin.file:
+    path: "{{ moodle_web_dir }}"
+    state: directory
+    owner: www-data
+    group: www-data
+    recurse: true
+
+- name: Check if config.php exists
+  ansible.builtin.stat:
+    path: "{{ moodle_web_dir }}/config.php"
+  register: moodle_config
+
+- name: Run Moodle CLI installation
+  ansible.builtin.command:
+    cmd: >
+      php admin/cli/install.php
+      --wwwroot=https://{{ moodle_domain }}
+      --dataroot={{ moodle_data_dir }}
+      --dbtype=pgsql
+      --dbhost=localhost
+      --dbname={{ moodle_db_name }}
+      --dbuser={{ moodle_db_user }}
+      --dbpass={{ moodle_db_password }}
+      --fullname="Moodle Learning"
+      --shortname="Moodle"
+      --adminuser={{ moodle_admin_user }}
+      --adminpass={{ moodle_admin_password }}
+      --adminemail={{ moodle_admin_email }}
+      --agree-license
+      --non-interactive
+    chdir: "{{ moodle_web_dir }}"
+  become_user: www-data
+  when: not moodle_config.stat.exists
+
+- name: Set config.php permissions
+  ansible.builtin.file:
+    path: "{{ moodle_web_dir }}/config.php"
+    owner: www-data
+    group: www-data
+    mode: "0440"
+  when: not moodle_config.stat.exists
+
+- name: Setup Moodle cron job
+  ansible.builtin.cron:
+    name: "Moodle cron"
+    minute: "*/1"
+    job: "/usr/bin/php {{ moodle_web_dir }}/admin/cli/cron.php > /dev/null 2>&1"
+    user: www-data
+
+- name: Clean up downloaded archive
+  ansible.builtin.file:
+    path: /tmp/moodle.tgz
+    state: absent

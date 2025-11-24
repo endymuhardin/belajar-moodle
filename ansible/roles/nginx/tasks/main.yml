@@ -1,0 +1,31 @@
+---
+- name: Install Nginx
+  ansible.builtin.apt:
+    name: nginx
+    state: present
+
+- name: Remove default Nginx site
+  ansible.builtin.file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+  notify: Reload Nginx
+
+- name: Deploy Moodle Nginx configuration
+  ansible.builtin.template:
+    src: moodle.conf.j2
+    dest: /etc/nginx/sites-available/moodle.conf
+    mode: "0644"
+  notify: Reload Nginx
+
+- name: Enable Moodle site
+  ansible.builtin.file:
+    src: /etc/nginx/sites-available/moodle.conf
+    dest: /etc/nginx/sites-enabled/moodle.conf
+    state: link
+  notify: Reload Nginx
+
+- name: Ensure Nginx is running
+  ansible.builtin.service:
+    name: nginx
+    state: started
+    enabled: true

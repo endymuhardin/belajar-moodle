@@ -1,0 +1,30 @@
+---
+- name: Install PostgreSQL
+  ansible.builtin.apt:
+    name:
+      - postgresql
+      - postgresql-contrib
+      - python3-psycopg2
+    state: present
+
+- name: Ensure PostgreSQL is running
+  ansible.builtin.service:
+    name: postgresql
+    state: started
+    enabled: true
+
+- name: Create Moodle database user
+  become_user: postgres
+  community.postgresql.postgresql_user:
+    name: "{{ moodle_db_user }}"
+    password: "{{ moodle_db_password }}"
+
+- name: Create Moodle database with user as owner
+  become_user: postgres
+  community.postgresql.postgresql_db:
+    name: "{{ moodle_db_name }}"
+    encoding: UTF8
+    lc_collate: en_US.UTF-8
+    lc_ctype: en_US.UTF-8
+    template: template0
+    owner: "{{ moodle_db_user }}"

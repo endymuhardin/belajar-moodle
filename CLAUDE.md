@@ -4,209 +4,107 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a **Moodle learning and documentation project**, not the core Moodle LMS codebase. It's a comprehensive learning environment for understanding Moodle LMS installation, configuration, administration, and usage using Docker Compose. The project is written in Indonesian and serves as an educational platform for Moodle administrators and users.
+Moodle documentation project written in Indonesian. Contains MkDocs-based learning materials and Playwright scripts for automated screenshot generation. Not the Moodle LMS codebase itself.
 
-## Development Environment
+## Commands
 
-### Prerequisites
-- **Docker Desktop**: Latest version for Windows/Mac/Linux
-- **Node.js**: For Playwright screenshot automation
-- **Python**: For MkDocs documentation generation
-- **RAM**: Minimum 2GB (recommended 4GB+)
-- **Disk Space**: Minimum 2GB for images and data
-- **Ports**: 80 and 443 must be available
-
-### Initial Setup
+### Docker (Moodle Environment)
 ```bash
-# Install Node.js dependencies
-npm install
-
-# Install Playwright browsers
-npx playwright install chromium
-
-# Install Python dependencies
-pip install -r requirements.txt
-
-# Create volumes directory with proper permissions
-mkdir -p volumes/mariadb volumes/moodle volumes/moodledata
-chmod -R 777 volumes/
+docker compose up -d          # Start Moodle + PostgreSQL
+docker compose down           # Stop containers
+docker compose logs -f        # View logs
+docker compose exec moodle sh # Access container shell
+docker compose exec postgres psql -U moodle -d moodle  # Access database
 ```
 
-## Common Development Commands
-
-### Docker Operations
+### MkDocs (Documentation)
 ```bash
-# Start Moodle environment
-docker compose up -d
-
-# Stop containers
-docker compose down
-
-# View logs
-docker compose logs -f
-
-# Access Moodle container
-docker compose exec moodle bash
-
-# Check container status
-docker compose ps
+mkdocs serve                  # Preview at http://127.0.0.1:8000
+mkdocs build                  # Build static site to /site/
 ```
 
-### Documentation Development
+### Playwright (Screenshots)
 ```bash
-# Local preview (serves on http://127.0.0.1:8000)
-mkdocs serve
+cd screenshots
+node run-all-screenshots.js   # Generate all screenshots
 
-# Build production site
-mkdocs build
-
-# Clean build
-rm -rf site/ && mkdocs build
-```
-
-### Screenshot Automation
-```bash
-# Run all screenshots
-cd screenshots && node run-all-screenshots.js
-
-# Run specific chapter
+# Individual chapters (run from screenshots/ directory)
 node chapter3-installation/installation-screenshots.js
 node chapter4-administration/admin-screenshots.js
 node chapter5-user-management/user-screenshots.js
 node chapter6-course-management/course-screenshots.js
+node chapter7-courseware/courseware-screenshots.js
+node chapter8-scorm/scorm-screenshots.js
+node chapter9-progress-tracking/progress-tracking-screenshots.js
+node chapter10-weakness-analysis/weakness-analysis-screenshots.js
+node chapter11-advanced-courseware/advanced-courseware-screenshots.js
+```
+
+### Setup
+```bash
+npm install                   # Node.js dependencies
+npx playwright install chromium
+pip install -r requirements.txt
+```
+
+### Ansible (VPS Deployment)
+```bash
+cd ansible
+
+# Deploy Moodle to VPS (requires MOODLE_DB_PASSWORD and MOODLE_ADMIN_PASSWORD env vars)
+export MOODLE_DB_PASSWORD=your_db_password
+export MOODLE_ADMIN_PASSWORD=your_admin_password
+ansible-playbook playbook.yml
+
+# Setup SSL after initial deployment
+ansible-playbook ssl.yml
+
+# Run specific role only
+ansible-playbook playbook.yml --tags nginx
 ```
 
 ## Architecture
 
-### Docker Infrastructure
-- **Moodle Application**: Bitnami Moodle 5.0 image
-- **Database**: MariaDB with UTF-8 support
-- **Volumes**: Persistent storage in `./volumes/`
-  - `mariadb/`: Database files
-  - `moodle/`: Application files
-  - `moodledata/`: User uploads and data
+### Docker Stack
+- **erseco/alpine-moodle:v5.1.0** on ports 80/443
+- **PostgreSQL 17 Alpine** for database
+- Docker-managed volumes: `moodledata`, `moodlehtml`, `postgresdata`
+- Moodle credentials: `admin` / `admin123`
 
-### Documentation System
-- **Source**: Markdown files in `/docs/`
-- **Generator**: MkDocs with Material theme
-- **Output**: Static site in `/site/`
-- **Deployment**: GitHub Pages via GitHub Actions
+### Documentation Pipeline
+- Source: Markdown in `docs/`
+- Screenshots: `docs/img/{category}/`
+- Output: `site/` (gitignored)
+- Deployment: GitHub Actions → GitHub Pages (triggers on docs/mkdocs.yml changes)
 
-### Screenshot Automation
-- **Framework**: Playwright with Chromium
-- **Structure**: Chapter-based organization
-- **Output**: Categorized images in `docs/img/`
-
-## Key Configuration Files
-
-### docker-compose.yml
-- Uses Bitnami Moodle 5.0 image
-- Port mapping: 80→8080, 443→8443
-- Environment variables for database configuration
-- Default credentials: `user`/`bitnami`
-
-### mkdocs.yml
-- Material theme with Indonesian language support
-- Comprehensive navigation structure
-- Dark/light theme support
-- GitHub Pages deployment configuration
-
-### package.json
-- Playwright dependency for screenshot automation
-- Minimal configuration for documentation tools
-
-## Development Workflow
-
-### 1. Environment Management
-```bash
-# Start development environment
-docker compose up -d
-
-# Verify Moodle is running
-curl -I http://localhost
-
-# Access Moodle at http://localhost
-# Default login: user / bitnami
+### Screenshot Scripts
+Each chapter script in `screenshots/chapter{N}-{name}/` logs into Moodle and captures UI screenshots. Scripts use consistent config:
+```javascript
+const MOODLE_URL = 'http://localhost:80';
+const ADMIN_USERNAME = 'admin';
+const ADMIN_PASSWORD = 'admin123';
 ```
 
-### 2. Documentation Updates
-- Edit markdown files in `/docs/`
-- Preview changes with `mkdocs serve`
-- Build and test before committing
+### Ansible VPS Stack
+- Target: `moodle.artivisi.id` (Ubuntu)
+- Components: Nginx + PHP 8.3-FPM + PostgreSQL
+- Roles: `base` → `postgresql` → `php` → `nginx` → `moodle`
+- Moodle installed to `/var/www/moodle`, data in `/var/www/moodledata`
 
-### 3. Screenshot Generation
-- Ensure Moodle is running before generating screenshots
-- Screenshots are organized by chapter in `docs/img/`
-- Run specific chapter scripts when making targeted updates
+## Key Files
 
-## Important Considerations
+| File | Purpose |
+|------|---------|
+| `docker-compose.yml` | Moodle + PostgreSQL containers |
+| `mkdocs.yml` | Documentation config, nav structure |
+| `screenshots/run-all-screenshots.js` | Runs all chapter scripts sequentially |
+| `.github/workflows/deploy-mkdocs.yml` | Auto-deploy on push to master |
+| `ansible/playbook.yml` | Main Ansible playbook for VPS deployment |
+| `ansible/inventory.yml` | VPS host configuration |
+| `ansible/ssl.yml` | Let's Encrypt SSL setup |
 
-### File Permissions
-- Bitnami containers require specific permissions (1001:1001)
-- Use `chmod -R 777 volumes/` for development
-- For production, use proper user ownership
+## Notes
 
-### WSL2 Support (Windows)
-- Special considerations for Windows + WSL2 setup
-- May need to use WSL IP address instead of localhost
-- Ensure Docker Desktop is configured for WSL2 backend
-
-### Backup Strategy
-- Database: `docker compose exec mariadb mysqldump`
-- Files: Archive the `./volumes/` directory
-- Configuration: Backup `docker-compose.yml` and environment files
-
-## Deployment
-
-### Automatic Deployment
-- Triggered by push to master/main branch
-- GitHub Actions builds MkDocs site
-- Deploys to GitHub Pages
-- Only triggered by changes to docs, mkdocs.yml, or workflow files
-
-### Manual Deployment
-```bash
-# Build and test locally
-mkdocs build
-
-# Verify output in /site/ directory
-# Push changes to trigger automatic deployment
-```
-
-## Troubleshooting
-
-### Common Issues
-1. **Permission denied**: Set proper permissions on volumes directory
-2. **Port conflicts**: Change port mapping in docker-compose.yml
-3. **Connection refused**: Wait 2-3 minutes after container start
-4. **Screenshot failures**: Verify Moodle is accessible and credentials are correct
-
-### Debug Commands
-```bash
-# Check container logs
-docker compose logs moodle
-docker compose logs mariadb
-
-# Restart services
-docker compose restart
-
-# Rebuild containers
-docker compose down && docker compose up -d --force-recreate
-```
-
-## Project Structure
-
-```
-moodle/
-├── docs/                    # Markdown documentation
-├── screenshots/            # Playwright automation scripts
-├── site/                   # Generated MkDocs site
-├── volumes/               # Docker persistent data
-├── .github/workflows/     # GitHub Actions
-├── docker-compose.yml     # Docker configuration
-├── mkdocs.yml            # Documentation configuration
-├── package.json          # Node.js dependencies
-└── requirements.txt      # Python dependencies
-```
-
-This project combines practical Docker deployment with comprehensive documentation and automated visual documentation generation, designed specifically for educational purposes.
+- Screenshot scripts require Moodle running and accessible at localhost
+- Wait 2-3 minutes after `docker compose up -d` for Moodle to initialize
+- WSL2 users may need to use WSL IP instead of localhost for Windows browser access

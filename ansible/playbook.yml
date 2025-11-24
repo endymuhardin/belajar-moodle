@@ -1,0 +1,30 @@
+---
+- name: Deploy Moodle LMS
+  hosts: moodle
+  vars:
+    moodle_version: "5.0"
+    moodle_domain: "moodle.artivisi.id"
+    moodle_db_name: "moodle"
+    moodle_db_user: "moodle"
+    moodle_db_password: "{{ lookup('env', 'MOODLE_DB_PASSWORD') }}"
+    moodle_admin_user: "admin"
+    moodle_admin_password: "{{ lookup('env', 'MOODLE_ADMIN_PASSWORD') }}"
+    moodle_admin_email: "admin@artivisi.id"
+    moodle_data_dir: "/var/www/moodledata"
+    moodle_web_dir: "/var/www/moodle"
+    php_version: "8.3"
+
+  pre_tasks:
+    - name: Validate required environment variables
+      ansible.builtin.assert:
+        that:
+          - moodle_db_password | length > 0
+          - moodle_admin_password | length > 0
+        fail_msg: "Set MOODLE_DB_PASSWORD and MOODLE_ADMIN_PASSWORD environment variables"
+
+  roles:
+    - base
+    - postgresql
+    - php
+    - nginx
+    - moodle
