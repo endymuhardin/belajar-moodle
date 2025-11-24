@@ -1,0 +1,55 @@
+---
+# CMI5 Launch Link plugin (mod_cmi5launch) from GitHub
+- name: Check if CMI5 plugin exists
+  ansible.builtin.stat:
+    path: "{{ moodle_web_dir }}/mod/cmi5launch"
+  register: cmi5_plugin
+
+- name: Clone CMI5 plugin from GitHub
+  ansible.builtin.git:
+    repo: https://github.com/adlnet/Moodle-mod_cmi5launch.git
+    dest: "{{ moodle_web_dir }}/mod/cmi5launch"
+    version: main
+    depth: 1
+  when: not cmi5_plugin.stat.exists
+
+- name: Set CMI5 plugin ownership
+  ansible.builtin.file:
+    path: "{{ moodle_web_dir }}/mod/cmi5launch"
+    state: directory
+    owner: www-data
+    group: www-data
+    recurse: true
+  when: not cmi5_plugin.stat.exists
+
+# Logstore xAPI plugin from GitHub
+- name: Check if Logstore xAPI plugin exists
+  ansible.builtin.stat:
+    path: "{{ moodle_web_dir }}/admin/tool/log/store/xapi"
+  register: xapi_plugin
+
+- name: Clone Logstore xAPI plugin from GitHub
+  ansible.builtin.git:
+    repo: https://github.com/xAPI-vle/moodle-logstore_xapi.git
+    dest: "{{ moodle_web_dir }}/admin/tool/log/store/xapi"
+    version: master
+    depth: 1
+  when: not xapi_plugin.stat.exists
+
+- name: Set Logstore xAPI plugin ownership
+  ansible.builtin.file:
+    path: "{{ moodle_web_dir }}/admin/tool/log/store/xapi"
+    state: directory
+    owner: www-data
+    group: www-data
+    recurse: true
+  when: not xapi_plugin.stat.exists
+
+# Run Moodle upgrade to install plugins
+- name: Run Moodle upgrade for plugins
+  ansible.builtin.command:
+    cmd: php admin/cli/upgrade.php --non-interactive
+    chdir: "{{ moodle_web_dir }}"
+  become_user: www-data
+  register: moodle_upgrade
+  changed_when: "'Success' in moodle_upgrade.stdout"

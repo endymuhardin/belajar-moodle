@@ -596,6 +596,14 @@ CMI5 memerlukan plugin tambahan di Moodle:
     - Set LRS (Learning Record Store) endpoint
     - Configure authentication settings
 
+![Site Administration](img/cmi5/01-site-admin.png)
+
+![Plugins Overview](img/cmi5/02-plugins-overview.png)
+
+![Activity Modules - CMI5](img/cmi5/03-activity-modules.png)
+
+![CMI5 Plugin Settings](img/cmi5/04-cmi5-settings.png)
+
 #### Creating CMI5 Content
 
 **1. Setup Development Environment:**
@@ -696,6 +704,16 @@ tincan.sendStatement(completedStmt);
     - Test in multiple browsers
     - Validate xAPI statements
 
+### xAPI Logstore Configuration
+
+Selain CMI5 plugin, Anda perlu mengkonfigurasi xAPI Logstore untuk tracking:
+
+![Logstore Plugins](img/cmi5/05-logstore-plugins.png)
+
+![xAPI Logstore Settings](img/cmi5/06-xapi-logstore-settings.png)
+
+![Log Stores Manager](img/cmi5/07-logstores-manager.png)
+
 ### LRS (Learning Record Store)
 
 CMI5 memerlukan LRS untuk menyimpan xAPI statements:
@@ -707,6 +725,14 @@ CMI5 memerlukan LRS untuk menyimpan xAPI statements:
     - xAPI 1.0.3 compliant
     - Aktif dimaintain
     - Laravel-based, mudah di-deploy
+
+**Trax LRS Interface:**
+
+![Trax LRS Login](img/cmi5/11-trax-lrs-login.png)
+
+![Trax LRS Homepage](img/cmi5/12-trax-lrs-homepage.png)
+
+![Trax LRS xAPI Endpoint](img/cmi5/13-trax-lrs-xapi-endpoint.png)
 
 2. **Ralph** (Open Source)
     - Modern Python-based LRS
@@ -930,6 +956,8 @@ Buat simple test package untuk memverifikasi tracking berfungsi.
 #### Langkah 5: Deploy CMI5 Content
 
 **1. Upload CMI5 Package ke Moodle:**
+
+![Course Edit Mode](img/cmi5/08-course-edit-mode.png)
 
 ```
 Course → Turn editing on → Add activity → CMI5 Launch

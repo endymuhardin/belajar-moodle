@@ -1,13 +1,25 @@
 ---
 - name: Setup SSL with Let's Encrypt
   hosts: moodle
+  vars:
+    moodle_domain: "moodle.artivisi.id"
+    trax_domain: "lrs.artivisi.id"
+    admin_email: "admin@artivisi.id"
+
   tasks:
-    - name: Obtain SSL certificate
+    - name: Obtain SSL certificate for Moodle
       ansible.builtin.command:
-        cmd: certbot --nginx -d {{ moodle_domain }} --non-interactive --agree-tos --email {{ moodle_admin_email }}
-      vars:
-        moodle_domain: "moodle.artivisi.id"
-        moodle_admin_email: "admin@artivisi.id"
+        cmd: certbot --nginx -d {{ moodle_domain }} --non-interactive --agree-tos --email {{ admin_email }}
+      register: moodle_cert
+      changed_when: "'Successfully' in moodle_cert.stdout"
+      failed_when: false
+
+    - name: Obtain SSL certificate for Trax LRS
+      ansible.builtin.command:
+        cmd: certbot --nginx -d {{ trax_domain }} --non-interactive --agree-tos --email {{ admin_email }}
+      register: trax_cert
+      changed_when: "'Successfully' in trax_cert.stdout"
+      failed_when: false
 
     - name: Setup certbot renewal cron
       ansible.builtin.cron:

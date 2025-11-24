@@ -13,6 +13,12 @@
     moodle_data_dir: "/var/www/moodledata"
     moodle_web_dir: "/var/www/moodle"
     php_version: "8.3"
+    # Trax LRS configuration
+    trax_domain: "lrs.artivisi.id"
+    trax_web_dir: "/var/www/trax-lrs"
+    trax_db_name: "trax_lrs"
+    trax_db_user: "trax"
+    trax_db_password: "{{ lookup('env', 'MOODLE_DB_PASSWORD') }}"
 
   pre_tasks:
     - name: Validate required environment variables
@@ -28,3 +34,5 @@
     - php
     - nginx
     - moodle
+    - trax-lrs
+    - moodle-plugins

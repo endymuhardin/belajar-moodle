@@ -1,0 +1,124 @@
+---
+- name: Create Trax LRS database user
+  become_user: postgres
+  community.postgresql.postgresql_user:
+    name: "{{ trax_db_user }}"
+    password: "{{ trax_db_password }}"
+
+- name: Create Trax LRS database
+  become_user: postgres
+  community.postgresql.postgresql_db:
+    name: "{{ trax_db_name }}"
+    encoding: UTF8
+    owner: "{{ trax_db_user }}"
+
+- name: Install Composer
+  ansible.builtin.apt:
+    name: composer
+    state: present
+
+- name: Check if Trax LRS is already installed
+  ansible.builtin.stat:
+    path: "{{ trax_web_dir }}/artisan"
+  register: trax_installed
+
+- name: Clone Trax LRS
+  ansible.builtin.git:
+    repo: https://github.com/trax-project/trax3-starter-lrs.git
+    dest: "{{ trax_web_dir }}"
+    version: master
+  when: not trax_installed.stat.exists
+
+- name: Set Trax LRS directory ownership
+  ansible.builtin.file:
+    path: "{{ trax_web_dir }}"
+    state: directory
+    owner: www-data
+    group: www-data
+    recurse: true
+
+- name: Copy Trax LRS environment file
+  ansible.builtin.template:
+    src: env.j2
+    dest: "{{ trax_web_dir }}/.env"
+    owner: www-data
+    group: www-data
+    mode: "0640"
+  when: not trax_installed.stat.exists
+
+- name: Install Trax LRS dependencies
+  ansible.builtin.command:
+    cmd: composer install --optimize-autoloader
+    chdir: "{{ trax_web_dir }}"
+  become_user: www-data
+  environment:
+    COMPOSER_HOME: /tmp/composer
+  when: not trax_installed.stat.exists
+
+- name: Generate Trax LRS application key
+  ansible.builtin.command:
+    cmd: php artisan key:generate --force
+    chdir: "{{ trax_web_dir }}"
+  become_user: www-data
+  when: not trax_installed.stat.exists
+  register: key_generated
+
+- name: Verify APP_KEY is set
+  ansible.builtin.shell:
+    cmd: grep -q "^APP_KEY=base64:" "{{ trax_web_dir }}/.env"
+  register: app_key_check
+  failed_when: false
+  changed_when: false
+
+- name: Generate APP_KEY if missing
+  ansible.builtin.command:
+    cmd: php artisan key:generate --force
+    chdir: "{{ trax_web_dir }}"
+  become_user: www-data
+  when: app_key_check.rc != 0
+
+- name: Run Trax LRS database migrations
+  ansible.builtin.command:
+    cmd: php artisan migrate --force
+    chdir: "{{ trax_web_dir }}"
+  become_user: www-data
+  when: not trax_installed.stat.exists
+
+- name: Create Trax LRS storage link
+  ansible.builtin.command:
+    cmd: php artisan storage:link
+    chdir: "{{ trax_web_dir }}"
+  become_user: www-data
+  when: not trax_installed.stat.exists
+
+- name: Set storage directory permissions
+  ansible.builtin.file:
+    path: "{{ trax_web_dir }}/storage"
+    state: directory
+    owner: www-data
+    group: www-data
+    mode: "0775"
+    recurse: true
+
+- name: Set bootstrap/cache permissions
+  ansible.builtin.file:
+    path: "{{ trax_web_dir }}/bootstrap/cache"
+    state: directory
+    owner: www-data
+    group: www-data
+    mode: "0775"
+    recurse: true
+
+- name: Deploy Trax LRS Nginx configuration
+  ansible.builtin.template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/sites-available/trax-lrs.conf
+    mode: "0644"
+  notify: Reload Nginx
+
+- name: Enable Trax LRS site
+  ansible.builtin.file:
+    src: /etc/nginx/sites-available/trax-lrs.conf
+    dest: /etc/nginx/sites-enabled/trax-lrs.conf
+    state: link
+  notify: Reload Nginx
